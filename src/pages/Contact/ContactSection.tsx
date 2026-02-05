@@ -31,7 +31,7 @@ const ContactComponent: React.FC = () => {
         </h1>
       </div>
 
-      <div className="relative z-10 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <div className="relative z-10 max-w-6xl px-5 w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
         {/* LEFT SIDE */}
         <div className="flex flex-col gap-10">

@@ -1,41 +1,39 @@
-import type { FC } from 'react';
+import type { FC } from "react";
 
 const Home: FC = () => {
   return (
-    <section className="min-h-screen w-full  text-white bg-black flex items-center max-md:items-start">
-      <div
-        className="
-          flex items-center justify-center
-          max-w-7xl mx-auto w-full
-          flex-col lg:flex-row
-          ml-25 mt-20
-          gap-12 lg:gap-0
-          relative
-          overflow-visible
-          translate-y-28
-          lg:-translate-y-9
-          max-md:ml-0
-          max-md:mt-16
-          max-md:px-4
-        "
-      >
-        {/* LEFT */}
+    <section className="min-h-screen w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-16">
+      {/* MAIN WRAPPER */}
+     <div
+  className="
+    flex flex-col lg:flex-row
+    items-center
+    justify-between
+    max-w-7xl mx-auto w-full
+
+    px-4 
+    lg:pl-8 lg:pr-2
+    xl:pl-5 xl:pr-6
+    2xl:pl-8
+
+    pt-20 lg:pt-10
+    gap-12
+  "
+>
+
+        {/* LEFT CONTENT */}
         <div
           className="
             flex-1 max-w-xl
-            text-left sm:text-center lg:text-left
-            z-50
-            lg:-translate-x-2 2xl:translate-x-44
-
-            max-md:text-center
-            max-md:translate-x-0
+            text-center lg:text-left
+            z-10
           "
         >
           <h1
             className="
               text-[35px] sm:text-[42px] lg:text-[51px]
-              leading-14 tracking-tight
-              px-4 sm:px-0
+              leading-tight
+              tracking-tight px-0 lg:px-4
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
@@ -45,7 +43,7 @@ const Home: FC = () => {
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-center lg:justify-start lg:-space-x-6 leading-tight">
+          <div className="flex justify-center lg:justify-start mt-1 lg:-space-x-6">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
@@ -57,27 +55,32 @@ const Home: FC = () => {
           </div>
 
           {/* DESCRIPTION */}
-          <div
+          <p
             className="
               text-[15px] sm:text-[16px]
-              leading-tight
-              mt-4
-              lg:mt-0
-              mx-auto lg:mx-4
+              leading-snug
+              mt-1 px-0 lg:px-5
               max-w-lg
+              mx-auto lg:mx-0 
             "
-            style={{ fontFamily: "Inter, sans-serif", lineHeight: "1.2" }}
+            style={{ fontFamily: "Inter, sans-serif" }}
           >
-            <p className="md:w-[390px] max-md:w-full">
-              We craft high-performing websites and digital solutions that blend
-              strategy, design, and technology — built for where your business is going next.
-            </p>
-          </div>
+            We craft high-performing websites and digital solutions that blend
+            strategy, design, and technology — built for where your business is
+            going next.
+          </p>
 
           {/* BUTTON */}
-          <div className="flex justify-center lg:justify-start mt-6">
+          <div className="flex justify-center lg:justify-start mt-6 ml-2 lg:ml-4">
             <button
-              className="flex items-center gap-3 px-6 py-3 rounded-lg font-medium transition-all hover:opacity-90"
+              className="
+                flex items-center gap-3
+                px-6 py-3
+                rounded-lg
+                font-medium 
+                transition-opacity
+                hover:opacity-90
+              "
               style={{
                 fontFamily: "Inter, sans-serif",
                 background: `
@@ -89,25 +92,28 @@ const Home: FC = () => {
               }}
             >
               Schedule a Free Consultation
-              <img src="/character.png" className="h-7 w-8" alt="icon" />
+              <img
+                src="/character.png"
+                className="h-7 w-8"
+                alt="icon"
+              />
             </button>
           </div>
         </div>
 
-        {/* RIGHT – VIDEO */}
+        {/* RIGHT VIDEO */}
         <div
           className="
-            flex-shrink-0 w-full
+            flex-shrink-0
+            w-full
             sm:w-[360px] md:w-[420px]
-            lg:w-[512px] xl:w-[650px] 2xl:w-[700px]
+            lg:w-[520px] xl:w-[620px] 2xl:w-[700px]
+
             h-[260px] sm:h-[320px] md:h-[420px]
-            lg:h-[512px] xl:h-[600px] 2xl:h-[700px] -translate-y-30
+            lg:h-[520px] xl:h-[620px] 2xl:h-[700px]
 
-            lg:translate-x-28 xl:translate-x-[79px] 2xl:translate-x-36
-            lg:translate-y-[-46px]
-
-            max-md:translate-x-0
-            max-md:mt-12
+            mx-auto lg:mx-0
+            mt-12 lg:mt-0
           "
         >
           <video
