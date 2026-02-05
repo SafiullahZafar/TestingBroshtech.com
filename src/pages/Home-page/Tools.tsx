@@ -17,6 +17,7 @@ export const Tools: React.FC = () => {
   const iconsRef = useRef<HTMLDivElement[]>([]);
   const textsRef = useRef<HTMLDivElement[]>([]);
   const titlesRef = useRef<HTMLHeadingElement[]>([]);
+  const pinwrapsectionRef = useRef<HTMLDivElement | null>(null);
 
   const getPosition = (i: number, current: number, total: number) => {
     let diff = i - current;
@@ -35,15 +36,15 @@ export const Tools: React.FC = () => {
   const getIconProps = (pos: string) => {
     switch (pos) {
       case "middle":
-        return { x: 0, y: -85, scale: 2.15, scaleX: 1, opacity: 1, zIndex: 20, filter: "blur(0px) grayscale(0)" };
+        return { x: 0, y: -25, scale: 2.15, scaleX: 1, opacity: 1, zIndex: 20, filter: "blur(0px) grayscale(0)" };
       case "top":
         // Top item stays at same Y position but fades
-        return { x: -140, y: -256, scale: 0.75, scaleX: 0.85, opacity: 0.3, zIndex: 10, filter: "blur(6px) grayscale(0.9)" };
+        return { x: -140, y: -153, scale: 0.75, scaleX: 0.85, opacity: 1, zIndex: 10, filter: "blur(4px) grayscale(0.9)" };
       case "bottom":
-        return { x: -130, y: 106, scale: 0.9, scaleX: 0.85, opacity: 1, zIndex: 10, filter: "blur(4px) grayscale(0.8)" };
+        return { x: -130, y: 150, scale: 0.9, scaleX: 0.85, opacity: 1, zIndex: 10, filter: "blur(4px) grayscale(0.9)" };
       case "above":
         // Above stays at top position but completely hidden
-        return { x: -100, y: -216, scale: 0.6, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px) grayscale(1)" };
+        return { x: -100, y: -146, scale: 0.6, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px) grayscale(0.9)" };
       case "below":
         return { x: -100, y: 108, scale: 0.9, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px) grayscale(0.9)" };
       default:
@@ -54,18 +55,18 @@ export const Tools: React.FC = () => {
   const getTextProps = (pos: string) => {
     switch (pos) {
       case "middle":
-        return { x: 28, y: -45, scale: 1, scaleX: 1, opacity: 1, zIndex: 30, filter: "blur(0px)" };
+        return { x: 28, y: 20, scale: 1, scaleX: 1, opacity: 1, zIndex: 30, filter: "blur(0px)" };
 
       case "top":
         // Top text stays at same Y position but fades
-        return { x: -258, y: -202, scale: 0.55, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(0px)" };
+        return { x: -258, y: -142, scale: 0.55, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(2px)" };
 
       case "bottom":
-        return { x: -208, y: 140, scale: 0.65, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(0px)" };
+        return { x: -208, y: 190, scale: 0.65, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(2px)" };
 
       case "above":
         // Above stays at top position but completely hidden
-        return { x: -208, y: -172, scale: 0.45, scaleX: 0.75, opacity: 0, zIndex: 0, filter: "blur(8px)" };
+        return { x: -208, y: -142, scale: 0.45, scaleX: 0.75, opacity: 0, zIndex: 0, filter: "blur(8px)" };
 
       case "below":
         return { x: -208, y: 472, scale: 0.65, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px)" };
@@ -76,7 +77,7 @@ export const Tools: React.FC = () => {
   };
 
   const getTitleProps = (pos: string) => {
-    return { fontSize: pos === "middle" ? 65 : 34 };
+    return { fontSize: pos === "middle" ? 55 : 34 };
   };
 
   useEffect(() => {
@@ -127,7 +128,7 @@ export const Tools: React.FC = () => {
       trigger: sectionRef.current,
       start: "top top",
       end: `+=${(numSteps - 1) * 100}%`,
-      pin: sectionRef.current,
+      pin: pinwrapsectionRef.current,
       scrub: 1,
       snap: 1 / (numSteps - 1),
       animation: tl,
@@ -141,26 +142,28 @@ export const Tools: React.FC = () => {
 
   return (
     <section ref={sectionRef} className="relative w-full min-h-screen bg-black overflow-hidden py-16">
+      <div ref={pinwrapsectionRef}>
       {/* HEADING */}
       <div
-        className="absolute top-2 right-0 z-20 text-white text-[65px] font-bold px-10 py-0 rounded-l-3xl border border-white/10 uppercase tracking-tight"
+        className="absolute top-2 right-0  z-20 text-white text-[60px] lg:-mt-14 font-bold px-10 py-0 rounded-l-3xl border border-white/10 uppercase tracking-tight"
         style={{
           background: "rgba(12, 55, 33, 1)",
-          width: "calc(min(65vw, 790px) - 20px)",
+          width: "calc(min(62vw, 760px) - 20px)",
           boxSizing: "border-box",
+          fontFamily: "Inter, sans-serif"
         }}
       >
         WHAT WE DO
       </div>
 
       {/* HALF CIRCLE */}
-      <div className="absolute md:top-8 z-40 w-72 md:w-[350px] opacity-80">
+      <div className="absolute md:top-1 z-40 w-72 md:w-[350px] opacity-80">
         <img src="/whathalfcircle.png" alt="Decoration" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-15 md:gap-25 h-screen">
         {/* ICONS */}
-        <div className="relative w-full md:w-[30%] h-[400px] flex items-center justify-center md:pt-[30px] md:-translate-x-10">
+        <div className="relative w-full md:w-[30%] h-[400px] flex items-center justify-center md:pt-[30px] md:-translate-x-5">
           {Array.from({ length: texts.length }).map((_, i) => {
             const src = images[i % images.length];
             return (
@@ -176,7 +179,9 @@ export const Tools: React.FC = () => {
         </div>
 
         {/* TEXT */}
-        <div className="relative w-full font-bold md:w-[70%] h-[420px] top-24">
+        <div className="relative w-full font-bold md:w-[70%] h-[420px] top-24"
+        style={{fontFamily: "Inter, sans-serif"}}
+        >
           {texts.map((item, i) => (
             <div
               key={item.id}
@@ -190,7 +195,7 @@ export const Tools: React.FC = () => {
   {item.title}
 </h3>
 
-<p className="text-white font-medium text-[18px] max-w-[500px] uppercase m-0 p-0 leading-snug">
+<p className="text-white font-medium text-[14px] max-w-[350px] uppercase m-0 p-0 leading-snug">
   {item.desc}
 </p>
 
@@ -264,6 +269,7 @@ export const Tools: React.FC = () => {
           }
         }
       `}</style>
+      </div>
     </section>
   );
 };

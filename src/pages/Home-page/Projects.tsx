@@ -54,25 +54,25 @@ export const Projects: React.FC = () => {
   }, []);
 
   return (
-    <section className="w-full bg-black flex flex-col items-center justify-center gap-4 px-4 py-12">
+    <section className="w-full bg-black flex flex-col md:mb-[124px] items-center justify-center gap-1 px-4">
       {/* Header Button */}
-      <div className="bg-[#0b2b1a] text-white text-2xl md:text-5xl font-bold rounded-2xl px-12 py-4 mb-2 shadow-2xl tracking-tight">
+      <div className="bg-[#0b2b1a] text-white text-2xl md:text-5xl font-bold rounded-2xl px-12 py-4 shadow-2xl tracking-tight">
         Our Successful Project
       </div>
 
       {/* Divider */}
-      <div className="text-white tracking-[0.1em] text-xl font-bold opacity-90 mb-2">
+      <div className="text-white tracking-[0.1em] text-xl font-bold opacity-90">
         -------------------------------------------
       </div>
 
       {/* Subtext */}
-      <p className="text-white text-xl md:text-3xl font-light mb-8 opacity-90">
+      <p className="text-white text-xl md:text-3xl font-extralight mb-10 opacity-100">
         Projects With Top Ratings!
       </p>
 
       {/* Project Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4">
-        {["/2.png", "/1.png", "/3.png"].map(
+        {["/1.png", "/2.png", "/3.png"].map(
           (src, i) => (
             <div
               key={i}

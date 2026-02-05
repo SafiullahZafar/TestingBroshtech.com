@@ -40,7 +40,7 @@ const WhyChooseUs: FC = () => {
     return (
         <div className="flex flex-col items-center bg-black w-full min-h-screen px-6 py-20 overflow-x-hidden select-none">
             <div className="flex flex-col lg:flex-row w-full max-w-6xl gap-11 items-start">
-                
+
                 {/* Left side */}
                 <div className="w-full lg:flex-[0.9] flex flex-col justify-between py-2 lg:-mt-10 lg:-mr-14">
                     <h2
@@ -52,11 +52,14 @@ const WhyChooseUs: FC = () => {
                         </span>
                         <br /> Your Digital Growth <br /> Partner?
                     </h2>
-
-                    <p className="text-white text-[17px] leading-relaxed max-w-[463px]">
-                         At BroshTech, We Help Businesses Grow With Powerful Digital Solutions, 
-                        Combining Creativity, Technology, And Strategy. Our Client-Focused 
-                        Approach Ensures Scalable Results, Strong Online Presence, And 
+                    {/* Divider */}
+                    <div className="text-white tracking-[0.1em] md:mb-4 text-xl font-bold opacity-90">
+                        -----------------------------------
+                    </div>
+                    <p className="text-white text-[17px] leading-tight max-w-[463px]">
+                        At BroshTech, We Help Businesses Grow With Powerful Digital Solutions,
+                        Combining Creativity, Technology, And Strategy. Our Client-Focused
+                        Approach Ensures Scalable Results, Strong Online Presence, And
                         Long-Term Success From Planning To Execution.
                     </p>
                 </div>
@@ -76,7 +79,7 @@ const WhyChooseUs: FC = () => {
                                 style={{
                                     height: isOpen ? OPEN_HEIGHT : CLOSED_HEIGHT, // 🔥 THIS IS THE KEY
                                     backgroundColor: isOpen ? '#0b3326' : '#071d17',
-                                    border: '2px solid #16ff88',
+                                    border: '1.5px solid #16ff88',
                                     boxShadow: isOpen
                                         ? '0 0 25px rgba(22,255,136,0.25)'
                                         : 'none',
@@ -98,11 +101,10 @@ const WhyChooseUs: FC = () => {
                                 {/* Content */}
                                 <div className="px-7 pb-6">
                                     <div
-                                        className={`transition-all duration-500 ease-in-out ${
-                                            isOpen
+                                        className={`transition-all duration-500 ease-in-out ${isOpen
                                                 ? 'opacity-100 translate-y-0'
                                                 : 'opacity-0 translate-y-4'
-                                        }`}
+                                            }`}
                                     >
                                         <p className="text-white/90 text-[14px] md:text-[16px] leading-relaxed">
                                             {item.desc}

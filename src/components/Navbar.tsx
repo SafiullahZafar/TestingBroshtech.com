@@ -14,8 +14,6 @@ const styles = `
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-
-
   .mobile-menu-item {
     cursor: pointer;
     width: 100%;
@@ -33,7 +31,7 @@ const styles = `
   .mobile-menu-item.active {
     background-color: rgba(229, 133, 73, 0.2);
   }
- 
+
   .navbar-transition {
     transition: transform 0.3s ease-in-out;
   }
@@ -52,7 +50,6 @@ export const Navbar = () => {
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
   const [isVisible, setIsVisible] = useState(true);
   const lastScrollY = useRef(0);
-  const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const location = useLocation();
 
@@ -66,37 +63,18 @@ export const Navbar = () => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
 
-      // Clear previous timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-
-      // Agar scroll down ho raha hai aur 80px se zyada scroll ho gaya hai
       if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
         setIsVisible(false);
         setIsMobileMenuOpen(false);
-      } 
-      // Agar scroll up ho raha hai
-      else if (currentScrollY < lastScrollY.current) {
+      } else if (currentScrollY < lastScrollY.current) {
         setIsVisible(true);
       }
-
-      // Jab scroll ruk jaye to navbar show karo
-      scrollTimeoutRef.current = setTimeout(() => {
-        setIsVisible(true);
-      }, 150);
 
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-      }
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -105,9 +83,8 @@ export const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Solution", path: "/solution" },
     { name: "Founder", path: "/founder" },
+    { name: "Contact Us", path: "/contact" },
   ];
-
-  const mobileItems = [...menuItems, { name: "Contact Us", path: "/contact" }];
 
   return (
     <>
@@ -119,24 +96,28 @@ export const Navbar = () => {
         }`}
       >
         <div
-          className="flex items-center justify-between max-w-6xl w-full sm:px-8 px-3 py-4 md:rounded-3xl mx-auto"
+          className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto"
           style={{
-            backgroundColor: isDesktop ? "#ffffff42" : "rgba(30, 30, 30, 0.85)",
-            fontFamily: "General Sans, sans-serif",
+            backgroundColor: isDesktop
+              ? "#ffffff42"
+              : "rgba(30, 30, 30, 0.85)",
+            fontFamily: "Inter, sans-serif",
           }}
         >
-          {/* Logo */}
+          {/* LOGO - LEFT */}
           <Link to="/" className="flex items-center gap-2">
             <img src="/html-logo.png" alt="Logo" className="w-11" />
           </Link>
 
-          {/* Desktop Menu */}
-          <ul className="hidden md:flex items-center gap-4 text-white text-[18px] font-medium absolute left-1/2 transform -translate-x-1/2">
+          {/* DESKTOP MENU - RIGHT */}
+          <ul className="hidden md:flex items-center gap-4 text-white text-[14px] font-medium ml-auto">
             {menuItems.map((item) => (
               <li key={item.name}>
                 <Link
                   to={item.path}
-                  className={`menu-item ${location.pathname === item.path ? "active" : ""}`}
+                  className={`menu-item ${
+                    location.pathname === item.path ? "active" : ""
+                  }`}
                 >
                   {item.name}
                 </Link>
@@ -144,16 +125,8 @@ export const Navbar = () => {
             ))}
           </ul>
 
-          {/* Desktop Right Button */}
-          <Link 
-            to="/contact" 
-            className="hidden md:flex items-center text-white text-[18px] font-medium menu-item"
-          >
-            Contact Us
-          </Link>
-
-          {/* Mobile Hamburger */}
-          <div className="md:hidden relative">
+          {/* MOBILE HAMBURGER */}
+          <div className="md:hidden ml-auto relative">
             <button onClick={toggleMobileMenu}>
               {isMobileMenuOpen ? (
                 <X className="w-8 h-8 text-white" />
@@ -162,14 +135,15 @@ export const Navbar = () => {
               )}
             </button>
 
-            {/* Mobile menu under icon */}
             {isMobileMenuOpen && (
               <ul className="absolute right-0 mt-2 w-[200px] bg-white/10 rounded-2xl shadow-lg backdrop-blur-md">
-                {mobileItems.map((item) => (
+                {menuItems.map((item) => (
                   <li key={item.name}>
                     <Link
                       to={item.path}
-                      className={`mobile-menu-item block ${location.pathname === item.path ? "active" : ""}`}
+                      className={`mobile-menu-item block ${
+                        location.pathname === item.path ? "active" : ""
+                      }`}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {item.name}

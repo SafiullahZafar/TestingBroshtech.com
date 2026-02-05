@@ -5,6 +5,7 @@ import Homemain from './pages/Home-page/Homemain'
 
 import { Routes, Route } from "react-router-dom";
 import TeamMain from './pages/Team/Teammain';
+import ContactComponent from './pages/Contact/ContactSection';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Homemain />} />
         <Route path="/founder" element={<TeamMain />} />
+        <Route path="/contact" element={<ContactComponent />} />
       </Routes>
 
       <Footer />

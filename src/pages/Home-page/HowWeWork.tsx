@@ -8,7 +8,6 @@ export const HowWeWork: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
   const whiteGlowRef = useRef<HTMLDivElement[]>([]);
-  const pinRef = useRef<HTMLDivElement | null>(null);
 
   const boxData = [
     {
@@ -51,22 +50,13 @@ export const HowWeWork: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!containerRef.current || !pinRef.current) return;
+    if (!containerRef.current) return;
 
     gsap.set(cardsRef.current, { opacity: 0, y: 120 });
 
-    const totalScroll = boxData.length * 500;
-
     const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: pinRef.current,
-        start: "top top",
-        end: `+=${totalScroll}`,
-        pin: true,
-        pinSpacing: true,
-        scrub: true,
-        snap: 1 / (boxData.length - 1),
-      },
+      paused: true,
+      defaults: { duration: 1.2, ease: "power3.out" },
     });
 
     cardsRef.current.forEach((card, i) => {
@@ -75,17 +65,21 @@ export const HowWeWork: React.FC = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          ease: "power3.out",
-          onComplete: () => {
-            gsap.to(whiteGlowRef.current[i], { opacity: 1, duration: 0.3 });
-          },
-          onReverseComplete: () => {
-            gsap.to(whiteGlowRef.current[i], { opacity: 0, duration: 0.3 });
-          },
+          stagger: 0.3,
         },
-        i
+        i * 0.3
+      ).to(
+        whiteGlowRef.current[i],
+        { opacity: 1, duration: 0.4 },
+        i * 0.3 + 0.8
       );
+    });
+
+    ScrollTrigger.create({
+      trigger: containerRef.current,
+      start: "top 80%",
+      onEnter: () => tl.play(),
+      onLeaveBack: () => tl.reverse(),
     });
 
     return () => {
@@ -95,11 +89,11 @@ export const HowWeWork: React.FC = () => {
 
   return (
     <div className="w-full bg-black flex flex-col items-center px-4 overflow-hidden">
-      {/* PINNED SECTION */}
-      <div ref={pinRef} className="w-full">
+      {/* NO PINNING - NORMAL FLOW */}
+      <div className="w-full">
         <div
           ref={containerRef}
-          className="w-full h-screen bg-black flex flex-col items-center px-4 overflow-hidden"
+          className="w-full min-h-screen bg-black flex flex-col items-center px-4 overflow-hidden py-16"
         >
 
           {/* Header (always visible) */}
