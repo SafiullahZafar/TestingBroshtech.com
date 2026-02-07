@@ -1,1 +1,54 @@
 @import "tailwindcss";
+html, body {
+  font-family: 'Inter', sans-serif;
+}
+
+.auto-show{
+    animation: autoShowAnimation both;
+    animation-timeline: view(60% 15%); /* Starts at 5% from bottom, ends at 50% */
+}
+
+@keyframes autoShowAnimation {
+    from {
+        opacity: 0;
+        transform: translateY(200px) scale(0.3);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* team  */
+
+/* Applying the animation to the elements */
+.fade-up {
+  /* Link the animation to the scroll position */
+  animation-timeline: view();
+  
+  /* Use the keyframes defined above */
+  animation-name: fade-up;
+  
+  /* Ensure the animation speed is consistent with scrolling */
+  animation-timing-function: linear;
+  
+  /* Optional: Standard range for subtle effects */
+  animation-range: entry 0% cover 40%; 
+}
+
+/* Staggered Effect (If you have multiple items) */
+.item-1 { animation-range: entry 0% cover 60%; }
+.item-2 { animation-range: entry 40% cover 60%; }
+.item-3 { animation-range: entry 60% cover 80%; }
+
+/* The Keyframes for the Fade-Up effect */
+@keyframes fade-up {
+  from {
+    opacity: 0.1;               /* Almost invisible */
+    transform: translateY(50px) scale(0.5); /* Pushed down and half size */
+  }
+  to {
+    opacity: 1;                 /* Fully visible */
+    transform: translateY(0) scale(1);      /* Original position and full size */
+  }
+}
