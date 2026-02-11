@@ -1,4 +1,59 @@
 @import "tailwindcss";
+
+/* default: normal cursor on mobile */
+* {
+  cursor: auto;
+}
+
+/* custom cursor only on desktop */
+@media (min-width: 1024px) {
+  * {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+  }
+
+  .custom-cursor .inner {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #0a4b00;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .custom-cursor .outer {
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    border: 3px solid #0a4b00;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Smooth movement */
+  .custom-cursor .inner,
+  .custom-cursor .outer {
+    transition: transform 0.12s ease;
+  }
+}
+
+/* font family */
+
+
 html, body {
   font-family: 'Inter', sans-serif;
 }

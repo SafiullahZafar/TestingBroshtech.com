@@ -22,7 +22,7 @@ const ContactComponent: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen lg:h-[880px] w-full bg-black text-[#D9D9D9] flex items-center justify-center px-4 md:px-8 py-10 overflow-hidden font-sans"
+    <div className="relative min-h-screen Tops lg:h-[880px] w-full bg-black text-[#D9D9D9] flex items-center justify-center px-4 md:px-8 py-10 overflow-hidden font-sans"
       style={{ fontFamily: 'Inter, sans-serif' }}>
 
       {/* Background Text */}
@@ -30,7 +30,7 @@ const ContactComponent: React.FC = () => {
             <img src="/contact.png" alt="contact" />
       </div>
 
-      <div className="relative z-10 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
+      <div className="relative z-10 top-14 sm:-top-14 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
         {/* LEFT SIDE */}
         <div className="flex flex-col gap-10 md:w-[540px] relative md:top-9 md:left-7">
@@ -227,5 +227,13 @@ const ContactComponent: React.FC = () => {
     </div>
   );
 };
+<style>{`
+  @media (max-width: 768px) {
+    .Tops {
+      top: 80px !important;
+      position: relative !important;
+    }
+  }
+`}</style>
 
 export default ContactComponent;

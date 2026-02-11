@@ -18,7 +18,6 @@ export const Tools: React.FC = () => {
   const textsRef = useRef<HTMLDivElement[]>([]);
   const titlesRef = useRef<HTMLHeadingElement[]>([]);
   const pinwrapsectionRef = useRef<HTMLDivElement | null>(null);
-
   const getPosition = (i: number, current: number, total: number) => {
     let diff = i - current;
     diff = (diff % total + total) % total;
@@ -32,98 +31,184 @@ export const Tools: React.FC = () => {
       default: return "hidden";
     }
   };
+const getIconProps = (pos: string, scaleFactor: number) => {
+  const isMobile = window.innerWidth <= 768;
 
-  const getIconProps = (pos: string) => {
-    switch (pos) {
-      case "middle":
-        return { x: 0, y: -25, scale: 2.15, scaleX: 1, opacity: 1, zIndex: 20, filter: "blur(0px) grayscale(0)" };
-      case "top":
-        // Top item stays at same Y position but fades
-        return { x: -140, y: -153, scale: 0.75, scaleX: 0.85, opacity: 1, zIndex: 10, filter: "blur(4px) grayscale(0.9)" };
-      case "bottom":
-        return { x: -130, y: 150, scale: 0.9, scaleX: 0.85, opacity: 1, zIndex: 10, filter: "blur(4px) grayscale(0.9)" };
-      case "above":
-        // Above stays at top position but completely hidden
-        return { x: -100, y: -146, scale: 0.6, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px) grayscale(0.9)" };
-      case "below":
-        return { x: -100, y: 108, scale: 0.9, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px) grayscale(0.9)" };
-      default:
-        return { x: 0, y: 0, scale: 0, scaleX: 1, opacity: 0, zIndex: 0, filter: "blur(0px) grayscale(0)" };
+  const base = {
+    middle: {
+      x: isMobile ? 1 : -29,
+      y: isMobile ? 97 : 41,
+      scale: (isMobile ? 3.4 : 2.15) * scaleFactor,
+      opacity: 1,
+      zIndex: 20,
+      filter: "blur(0px) grayscale(0)"
+    },
+
+    top: {
+      x: isMobile ? -53 : -150,
+      y: isMobile ? 10 : -103,
+      scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
+      opacity: 0.6,
+      zIndex: 10,
+      filter: "blur(2px) grayscale(0.6)"
+    },
+
+    bottom: {
+      x: isMobile ? -53 : -150,
+      y: isMobile ? 190 : 200,
+      scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
+      opacity: 0.6,
+      zIndex: 10,
+      filter: "blur(2px) grayscale(0.6)"
+    },
+
+    above: {
+      x: isMobile ? -53 : -150,
+      y: isMobile ? 10 : -103,
+      scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
+      opacity: 0,
+      zIndex: 10,
+      filter: "blur(2px) grayscale(0.6)"
+    },
+
+    below: {
+      x: isMobile ? -53 : -150,
+      y: isMobile ? 190 : 200,
+      scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
+      opacity: 0,
+      zIndex: 10,
+      filter: "blur(2px) grayscale(0.6)"
+    },
+
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      zIndex: 0
     }
   };
 
-  const getTextProps = (pos: string) => {
-    switch (pos) {
-      case "middle":
-        return { x: 28, y: 20, scale: 1, scaleX: 1, opacity: 1, zIndex: 30, filter: "blur(0px)" };
+  return base[pos as keyof typeof base] || base.hidden;
+};
 
-      case "top":
-        // Top text stays at same Y position but fades
-        return { x: -258, y: -142, scale: 0.55, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(2px)" };
+const getTextProps = (pos: string, scaleFactor: number) => {
+  const isMobile = window.innerWidth <= 768;
 
-      case "bottom":
-        return { x: -208, y: 190, scale: 0.65, scaleX: 0.85, opacity: 0.60, zIndex: 10, filter: "blur(2px)" };
+  const base = {
+    middle: {
+      x: isMobile ? 30 : -8,
+      y: isMobile ? 104 : 50,
+      scale: (isMobile ? 0.95 : .9) * scaleFactor,
+      opacity: 1,
+      zIndex: 30
+    },
 
-      case "above":
-        // Above stays at top position but completely hidden
-        return { x: -208, y: -142, scale: 0.45, scaleX: 0.75, opacity: 0, zIndex: 0, filter: "blur(8px)" };
+    top: {
+      x: isMobile ? -40 : -258,
+      y: isMobile ? 10 : -92,
+      scale: 0.55 * scaleFactor,
+      opacity: 0.6,
+      zIndex: 10
+    },
 
-      case "below":
-        return { x: -208, y: 472, scale: 0.65, scaleX: 0.75, opacity: 0, zIndex: 5, filter: "blur(8px)" };
+    bottom: {
+      x: isMobile ? -40 : -208,
+      y: isMobile ? 198 : 190,
+      scale: 0.6 * scaleFactor,
+      opacity: 0.6,
+      zIndex: 10
+    },
 
-      default:
-        return { x: 0, y: 0, scale: 0.5, scaleX: 1, opacity: 0, zIndex: 0, filter: "blur(0px)" };
+    above: {
+      x: isMobile ? -40 : -258,
+      y: isMobile ? -20 : -92,
+      scale: 0.45 * scaleFactor,
+      opacity: 0,
+      zIndex: 0
+    },
+
+    below: {
+      x: isMobile ? -40 : -208,
+      y: isMobile ? 170 : 190,
+      scale: 0.45 * scaleFactor,
+      opacity: 0,
+      zIndex: 0
+    },
+
+    hidden: {
+      opacity: 0,
+      scale: 0,
+      zIndex: 0
     }
   };
 
-  const getTitleProps = (pos: string) => {
-    return { fontSize: pos === "middle" ? 55 : 34 };
-  };
+  return base[pos as keyof typeof base] || base.hidden;
+};
 
+const getTitleProps = (pos: string, scaleFactor: number) => {
+  const isMobile = window.innerWidth <= 768;
+
+  return {
+fontSize: (
+  isMobile
+    ? pos === "middle" ? 26 : 18
+    : pos === "middle" ? 45 : 34
+) * scaleFactor
+};
+};
   useEffect(() => {
     if (!sectionRef.current) return;
 
+    const calculateScaleFactor = () => {
+  if (window.innerWidth <= 480) return 0.65; // small phones
+  if (window.innerWidth <= 768) return 0.8;  // tablets
+  return 1; // desktop (UNCHANGED)
+};
+
+
+    let scaleFactor = calculateScaleFactor();
+
+    const handleResize = () => {
+      scaleFactor = calculateScaleFactor();
+      ScrollTrigger.refresh();
+    };
+
+    window.addEventListener('resize', handleResize);
+
     iconsRef.current.forEach((icon, i) => {
       const pos = getPosition(i, 0, texts.length);
-      const props = getIconProps(pos);
+      const props = getIconProps(pos, scaleFactor);
       gsap.set(icon, props);
     });
-
     textsRef.current.forEach((text, i) => {
       const pos = getPosition(i, 0, texts.length);
-      const props = getTextProps(pos);
+      const props = getTextProps(pos, scaleFactor);
       gsap.set(text, props);
     });
-
     titlesRef.current.forEach((title, i) => {
       const pos = getPosition(i, 0, texts.length);
-      const props = getTitleProps(pos);
+      const props = getTitleProps(pos, scaleFactor);
       gsap.set(title, props);
     });
-
     const tl = gsap.timeline();
     const numSteps = texts.length;
-
     for (let step = 1; step < numSteps; step++) {
       iconsRef.current.forEach((icon, i) => {
         const pos = getPosition(i, step, numSteps);
-        const props = getIconProps(pos);
+        const props = getIconProps(pos, scaleFactor);
         tl.to(icon, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
       });
-
       textsRef.current.forEach((text, i) => {
         const pos = getPosition(i, step, numSteps);
-        const props = getTextProps(pos);
+        const props = getTextProps(pos, scaleFactor);
         tl.to(text, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
       });
-
       titlesRef.current.forEach((title, i) => {
         const pos = getPosition(i, step, numSteps);
-        const props = getTitleProps(pos);
+        const props = getTitleProps(pos, scaleFactor);
         tl.to(title, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
       });
     }
-    
+
     ScrollTrigger.create({
       trigger: sectionRef.current,
       start: "top top",
@@ -134,74 +219,82 @@ export const Tools: React.FC = () => {
       animation: tl,
       anticipatePin: 1,
     });
-
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
+      window.removeEventListener('resize', handleResize);
     };
   }, []);
-
   return (
-    <section ref={sectionRef} className="relative w-full min-h-screen bg-black overflow-hidden py-16">
-      <div ref={pinwrapsectionRef}>
-      {/* HEADING */}
-      <div
-        className="absolute top-2 right-0  z-20 text-white text-[60px] lg:-mt-14 font-bold px-10 py-0 rounded-l-3xl border border-white/10 uppercase tracking-tight"
-        style={{
-          background: "rgba(12, 55, 33, 1)",
-          width: "calc(min(62vw, 760px) - 20px)",
-          boxSizing: "border-box",
-          fontFamily: "Inter, sans-serif"
-        }}
-      >
-        WHAT WE DO
-      </div>
+    <section ref={sectionRef} className="relative w-full h-auto bg-black overflow-hidden py-12 sm:py-16">
+      <div ref={pinwrapsectionRef} className="relative h-100vh sm:min-h-screen w-full">
 
-      {/* HALF CIRCLE */}
-      <div className="absolute md:top-1 z-40 w-72 md:w-[350px] opacity-80">
-        <img src="/whathalfcircle.png" alt="Decoration" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-center gap-15 md:gap-25 h-screen">
-        {/* ICONS */}
-        <div className="relative w-full md:w-[30%] h-[400px] flex items-center justify-center md:pt-[30px] md:-translate-x-5">
-          {Array.from({ length: texts.length }).map((_, i) => {
-            const src = images[i % images.length];
-            return (
-              <div
-                key={`icon-${i}`}
-                ref={(el) => { if (el) iconsRef.current[i] = el; }}
-                className="absolute"
-              >
-                <img src={src} className="w-16 h-16" />
-              </div>
-            );
-          })}
-        </div>
-
-        {/* TEXT */}
-        <div className="relative w-full font-bold md:w-[70%] h-[420px] top-24"
-        style={{fontFamily: "Inter, sans-serif"}}
+        {/* HEADING */}
+        <div
+          className="absolute top-3 right-3 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
+          style={{
+            background: "rgba(12, 55, 33, 1)",
+            fontSize: "clamp(1.8rem, 6vw, 3.75rem)",
+            width: "clamp(260px, 62vw, 760px)",
+            boxSizing: "border-box",
+            fontFamily: "Inter, sans-serif"
+          }}
         >
-          {texts.map((item, i) => (
-            <div
-              key={item.id}
-              ref={(el) => { if (el) textsRef.current[i] = el; }}
-              className="absolute w-full"
-            >
-              <h3
-  ref={(el) => { if (el) titlesRef.current[i] = el; }}
-  className="text-white tracking-tighter leading-20 m-0 p-0"
->
-  {item.title}
-</h3>
-
-<p className="text-white font-medium text-[14px] max-w-[350px] uppercase m-0 p-0 leading-snug">
-  {item.desc}
-</p>
-
-            </div>
-          ))}
+          WHAT WE DO
         </div>
+        {/* HALF CIRCLE */}
+        <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
+           <div className="absolute half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 w-60 sm:w-72 md:w-96 lg:w-[350px] opacity-80 pointer-events-none">
+          <img src="/whathalfcircle.png" alt="Decoration" className="w-full right-12 relative Top h-auto" />
+        </div>
+            {/* ICONS - always left side */}
+            <div className="relative w-[35%] sm:w-[32%] md:w-[30%] h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
+              {Array.from({ length: texts.length }).map((_, i) => {
+                const src = images[i % images.length];
+                return (
+                  <div
+                    key={`icon-${i}`}
+                    ref={(el) => { if (el) iconsRef.current[i] = el; }}
+                    className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+                  >
+                    <img
+                      src={src}
+                      className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
+                      alt="service icon"
+                    />
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* TEXT - always right side */}
+            <div
+              className="relative w-[65%] sm:w-[68%] md:w-[70%] h-[360px] sm:h-[400px] md:h-[420px] flex items-center"
+              style={{ fontFamily: "Inter, sans-serif" }}
+            >
+              {texts.map((item, i) => (
+                <div
+                  key={item.id}
+                  ref={(el) => { if (el) textsRef.current[i] = el; }}
+                  className="absolute w-full pl-1 sm:pl-2 md:pl-0"
+                >
+                  <h3
+                    ref={(el) => { if (el) titlesRef.current[i] = el; }}
+                    className="text-white tracking-tighter leading-none m-0 p-0 font-bold uppercase"
+                  >
+                    {item.title}
+                  </h3>
+
+                  <p className="text-white/90 font-medium text-xs sm:text-sm md:text-[14px] TopDesc sm:-top-4 relative w-[320px] sm:w-[350px] lg:w-[450px] uppercase mt-3 sm:mt-4 md:mt-5 leading-normal">
+                    {item.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
       </div>
 
       <style>{`
@@ -218,58 +311,106 @@ export const Tools: React.FC = () => {
         }
 
         @media (max-width: 768px) {
+          /* Force row layout on mobile */
+          .flex.flex-row {
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+          }
+  //           .half-circle {
+    top: auto !important;      /* remove top */
+    bottom: 0px !important;   /* move to bottom */
+    left: 0 !important;
+  }
+          /* Scale down proportionally */
           section {
-            padding-top: 18px !important;
-            padding-bottom: 18px !important;
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
           }
-          .absolute.top-6.right-0 {
-            top: 12px !important;
-            right: 0 !important;
-            padding: 10px 12px !important;
-            font-size: 2.1rem !important;
-            width: 92vw !important;
+          .TopDesc{
+          top: -5px !important;
+          position: relative !important;
           }
-          .flex.flex-col.md\\:flex-row {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 10px !important;
-            padding-left: 18px !important;
+
+          /* Adjust widths */
+          .w-\\[35\\%\\] {
+            width: 35% !important;
           }
-          .relative.w-full.md\\:w-\\[30\\%\\] {
-            width: 220px !important;
-            height: 220px !important;
-            left: 0 !important;
-            transform: none !important;
+
+          .w-\\[65\\%\\] {
+            width: 65% !important;
           }
-          .absolute.top-16.md\\:top-10 {
-            width: 220px !important;
-            left: 0px !important;
-            top: 150px !important;
-            transform: none !important;
+
+          /* Smaller icons */
+          img.w-12 {
+            width: clamp(36px, 12vw, 48px) !important;
+            height: clamp(36px, 12vw, 48px) !important;
           }
-          .relative.w-full.md\\:w-\\[30\\%\\] img {
-            width: 46px !important;
-            height: 46px !important;
-          }
-          .relative.w-full.font-bold.md\\:w-\\[70\\%\\] {
-            width: 100% !important;
-            height: auto !important;
-            top: 0 !important;
-            margin-top: 280px !important;
-            padding-left: 18px !important;
-          }
+
+          /* Smaller text */
           h3 {
-            font-size: 1.8rem !important;
+            font-size: clamp(1.4rem, 7vw, 2.2rem) !important;
+            line-height: 1.1 !important;
           }
-          .text-gray-100 {
-            font-size: 0.8rem !important;
+
+          p.text-xs {
+            font-size: clamp(0.65rem, 3.5vw, 0.875rem) !important;
+            line-height: 1.5 !important;
+            margin-top: clamp(8px, 2.5vw, 14px) !important;
+            max-width: clamp(200px, 90%, 320px) !important;
           }
-          .flex.flex-col.md\\:flex-row {
-            gap: 14px !important;
+
+          /* Heading adjustments */
+          .absolute.top-3.right-3 {
+            top: 12px !important;
+            right: 12px !important;
+            padding: 8px 16px !important;
+          }
+
+          /* Half circle */
+          .absolute.top-0 {
+            top: 150px !important;
           }
         }
+
+        @media (max-width: 480px) {
+          .w-\\[35\\%\\] {
+            width: 32% !important;
+          }
+          .w-\\[65\\%\\] {
+            width: 68% !important;
+          }
+            .half-circle {
+  //   bottom: 0px !important;   /* even lower on small phones */
+    width: 185px !important; 
+  //   position: relative !important;
+  }
+          .Tops{
+          top: -60px !important;      /* remove top */
+          position: relative !important;
+          }
+          img.w-12 {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          h3 {
+            font-size: 1.2rem !important;
+          }
+          
+          p {
+            font-size: 1.35rem !important;
+            max-width: 320px !important;
+          }
+        }
+
+        /* General beauty enhancements */
+        section {
+          transition: all 0.3s ease;
+        }
+        h3, p {
+          text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
       `}</style>
-      </div>
     </section>
   );
 };

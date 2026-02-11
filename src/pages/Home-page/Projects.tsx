@@ -56,42 +56,39 @@ export const Projects: React.FC = () => {
   return (
     <section className="w-full bg-black flex flex-col md:mb-[124px] items-center justify-center gap-1 px-4">
       {/* Header Button */}
-      <div className="bg-[#0b2b1a] text-white text-2xl md:text-5xl font-bold rounded-2xl px-12 py-4 shadow-2xl tracking-tight">
+    <div className="bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-4 shadow-2xl tracking-tight">
         Our Successful Project
       </div>
 
       {/* Divider */}
-      <div className="text-white tracking-[0.1em] text-xl font-bold opacity-90">
-        -------------------------------------------
+      <div className="text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90">
+          {window.innerWidth < 768
+    ? "--------------------"
+    : "-------------------------------------------"}
       </div>
 
       {/* Subtext */}
-      <p className="text-white text-xl md:text-3xl font-extralight mb-10 opacity-100">
+      <div className="text-white text-sm Top md:text-3xl font-extralight mb-10 opacity-100">
         Projects With Top Ratings!
-      </p>
-
+      </div>
       {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4">
-        {["/1.png", "/2.png", "/3.png"].map(
-          (src, i) => (
-            <div
-              key={i}
-              className="group transition-all duration-500 hover:-translate-y-3"
-            >
-              <img
-                src={src}
-                className="w-full h-auto object-contain rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500"
-                alt={`P${i + 1}`}
-              />
-            </div>
-          )
-        )}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4 project-grid">
+     {["/1.png", "/2.png", "/3.png"].map((src, i) => (
+  <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
+    <img
+      src={src}
+      className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""}`}
+      alt={`P${i + 1}`}
+    />
+  </div>
+))}
+
       </div>
 
       {/* ICON STRIP */}
       <div
         ref={scrollRef}
-        className="flex flex-nowrap overflow-x-scroll px-2 max-w-[875px] w-full"
+        className="flex flex-nowrap iconwidth overflow-x-scroll px-2 max-w-[875px] w-full icon-strip"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -132,6 +129,125 @@ export const Projects: React.FC = () => {
           );
         })}
       </div>
+
+      {/* CUSTOM CSS for mobile/small screens only */}
+      <style>{`
+        @media (max-width: 767px) {
+          /* Make header smaller */
+          .bg-\\[\\#0b2b1a\\] {
+            font-size: 1.5rem !important;
+            padding: 0.5rem 2rem !important;
+            border-radius: 1rem !important;
+          }
+
+          /* Divider shorter */
+          .text-white.tracking-\\[0\\.1em\\] {
+            font-size: 1rem !important;
+            letter-spacing: 0.05em !important;
+            margin-top: 0.25rem !important;
+            margin-bottom: 0.25rem !important;
+          }
+            .divider {
+    width: 220px; /* 🔥 shorter ONLY on mobile */
+  }
+          /* Subtext smaller */
+          .text-white.text-xl {
+            font-size: 1.2rem !important;
+            margin-bottom: 1rem !important;
+          }
+
+          /* Project grid: two on top, one below centered */
+          .project-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 0.5rem !important;
+            padding: 0 0.5rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          .project-grid > div:nth-child(1),
+          .project-grid > div:nth-child(2) {
+            transform: rotate(-5deg) !important; /* slight tilt like in image */
+          }
+          .project-grid > div:nth-child(3) {
+            grid-column: span  !important;
+            justify-self: center !important;
+            width: 180% !important;
+            left: 80px !important;
+            position: relative !important;
+            margin-top: 0.5rem !important;
+          }
+          .project-grid img {
+            border-radius: 0.5rem !important;
+            box-shadow: 0 4px 12px rgba(0,255,0,0.1) !important;
+          }
+
+          /* Icon strip: smaller icons */
+          .icon-strip {
+            max-width: 100% !important;
+            padding: 0 0.5rem !important;
+            gap: 0.5rem !important;
+          }
+          .icon-strip > div {
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 12px !important;
+          }
+          .icon-strip img {
+            padding: 0.25rem !important;
+          }
+            .third-img {
+    width: 120% !important;
+    transform: scale(1.4) !important;
+    top: 21px !important;
+    position: relative !important;
+    margin-left: 10% !important;
+  }
+          .project-img{
+            width: 100% !important;}
+        }
+
+        @media (max-width: 480px) {
+          .bg-\\[\\#0b2b1a\\] {
+            font-size: 1.2rem !important;
+            padding: 0.4rem 0.8rem !important;
+          }
+             .header-box {
+    border-radius: 6px !important; /* sharper corners */
+    width: 260px !important; /* shrink to fit text */
+    content-center !important; /* center text */
+      text-align: center !important;
+    /* 👇 OPTIONAL but recommended */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+    xt-white.text-sm {
+            font-size: 3rem !important;
+          }
+             /* Subtext smaller */
+          .Top{
+            top: -25px !important;
+            position: relative !important;
+          }
+          .project-grid > div:nth-child(3) {
+            width: 65% !important;
+          }
+           .Topsemi{
+            top: -8px !important;
+            position: relative !important;
+          }
+          .icon-strip > div {
+            width: 50px !important;
+            height: 80px !important;
+            top: px !important;
+            position: relative !important;
+          }
+          .iconwidth{
+            width: 72vw !important;}
+            .project-img{
+            width: 100% !important;}
+        }
+        }
+      `}</style>
     </section>
   );
 };

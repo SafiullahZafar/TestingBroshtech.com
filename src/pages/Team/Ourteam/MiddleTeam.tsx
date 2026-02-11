@@ -1,4 +1,3 @@
-import React from "react";
 
 export default function MiddleTeam() {
   return (
@@ -55,7 +54,7 @@ export default function MiddleTeam() {
             <div className="relative group">
               <div className="absolute inset-0 rounded-full bg-purple-500/20 blur-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
               <img
-                src="/team2.png"
+                src="/team2.jpg"
                 alt="Hamaza"
                 className="relative w-32 h-52 md:w-60 md:h-72 lg:w-60 lg:h-70 object-cover rounded-[9px] shadow-2xl transition-all duration-400 group-hover:scale-[1.04] group-hover:-translate-y-2"
               />
@@ -78,7 +77,7 @@ export default function MiddleTeam() {
             <div className="relative group">
               <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500" />
               <img
-                src="/team3.png"
+                src="/team3.jpg"
                 alt="Hamaza"
                 className="relative w-32 h-52 md:w-60 md:h-80 lg:w-60 lg:h-60 object-cover rounded-[9px] shadow-2xl transition-all duration-400 group-hover:scale-[1.04] group-hover:-translate-y-2"
               />

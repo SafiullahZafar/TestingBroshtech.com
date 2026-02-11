@@ -81,7 +81,7 @@ export const Navbar = () => {
 
   const menuItems = [
     { name: "Home", path: "/" },
-    { name: "Solution", path: "/solution" },
+    { name: "Portfolio", path: "/portfolio" },
     { name: "Founder", path: "/founder" },
     { name: "Contact Us", path: "/contact" },
   ];
@@ -96,7 +96,7 @@ export const Navbar = () => {
         }`}
       >
         <div
-          className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto"
+          className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{
             backgroundColor: isDesktop
               ? "#ffffff42"
@@ -106,11 +106,11 @@ export const Navbar = () => {
         >
           {/* LOGO - LEFT */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/html-logo.png" alt="Logo" className="w-11" />
+            <img src="/html-logo.png" alt="Logo" className="w-8 h-8" />
           </Link>
 
           {/* DESKTOP MENU - RIGHT */}
-          <ul className="hidden md:flex items-center gap-4 text-white text-[14px] font-medium ml-auto">
+          <ul className="hidden md:flex items-center Right gap-4 text-white text-[14px] font-medium ml-auto desktop-menu">
             {menuItems.map((item) => (
               <li key={item.name}>
                 <Link
@@ -126,7 +126,7 @@ export const Navbar = () => {
           </ul>
 
           {/* MOBILE HAMBURGER */}
-          <div className="md:hidden ml-auto relative">
+          <div className="md:hidden ml-auto relative mobile-hamburger">
             <button onClick={toggleMobileMenu}>
               {isMobileMenuOpen ? (
                 <X className="w-8 h-8 text-white" />
@@ -136,7 +136,7 @@ export const Navbar = () => {
             </button>
 
             {isMobileMenuOpen && (
-              <ul className="absolute right-0 mt-2 w-[200px] bg-white/10 rounded-2xl shadow-lg backdrop-blur-md">
+              <ul className="absolute right-0 mt-2 w-[200px] bg-white/10 rounded-2xl shadow-lg backdrop-blur-md mobile-dropdown">
                 {menuItems.map((item) => (
                   <li key={item.name}>
                     <Link
@@ -155,6 +155,39 @@ export const Navbar = () => {
           </div>
         </div>
       </nav>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .nav-bar {
+            background-color: rgba(255, 255, 255, 0.2) !important;
+            top: 10px !important;
+            position:relative !important;
+            border-radius: 10px !important;
+            padding: 0.4rem 0.8rem !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            gap: 0.5rem !important;
+            width: 340px !important;
+          }
+          .mobile-hamburger {
+            display: none !important;
+          }
+          .desktop-menu {
+            display: flex !important;
+            margin-left: 0.1rem !important;
+            gap: 0.1rem !important;
+            font-size: 0.8rem !important;
+          }
+          .Right {
+          left: 28px !important;
+          position: relative !important;
+          }
+          .menu-item {
+            padding: 0.2rem 0.3rem !important;
+            border-radius: 0.4rem !important;
+          }
+        }
+      `}</style>
     </>
   );
 };

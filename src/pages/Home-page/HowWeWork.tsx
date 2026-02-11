@@ -88,33 +88,33 @@ export const HowWeWork: React.FC = () => {
   }, []);
 
   return (
-    <div className="w-full bg-black flex flex-col items-center px-4 overflow-hidden">
+    <div className="w-full bg-black flex flex-col items-center px-4 ">
       {/* NO PINNING - NORMAL FLOW */}
       <div className="w-full">
         <div
           ref={containerRef}
-          className="w-full min-h-screen bg-black flex flex-col items-center px-4 overflow-hidden py-16"
+          className="w-full min-h-screen bg-black flex flex-col items-center px-4 overflow-visible py-16"
         >
 
           {/* Header (always visible) */}
-          <div className="flex flex-col items-center z-50 text-center">
-            <div className="bg-[#0b2414] px-10 py-3 md:px-14 md:py-4 rounded-[20px] border border-[#1a3a26] mb-4">
-              <h2 className="text-white text-4xl md:text-6xl font-black uppercase tracking-tight">
+          <div className="flex flex-col items-center z-50 text-center header-container">
+            <div className="bg-[#0b2414] px-10 py-3 md:px-14 md:py-4 rounded-[20px] border border-[#1a3a26] mb-4 header-bg">
+              <h2 className="text-white text-4xl md:text-6xl font-black uppercase tracking-tight header-title">
                 HOW WE WORK
               </h2>
             </div>
-            <p className="text-white text-[11px] md:text-[19px] font-bold uppercase opacity-90 max-w-[720px] mx-auto">
+            <p className="text-white text-[11px] Text md:text-[19px] font-bold uppercase opacity-90 max-w-[720px] mx-auto header-desc">
               A SIMPLE & PROVEN PROCESS TO BUILD AND GROW DIGITAL PRODUCTS
             </p>
           </div>
 
           {/* Cards Container */}
-          <div className="relative flex flex-col lg:flex-row items-center lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8">
+          <div className="relative flex flex-col lg:flex-row items-center lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8 cards-container">
             {boxData.map((box, i) => (
               <div
                 key={i}
                 ref={(el) => setCardRef(el, i)}
-                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[40px] flex flex-col items-center justify-center text-center p-7 overflow-hidden border border-white/10 transition-all duration-300 ${getMarginTop(i)}`}
+                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[40px] CardRounded flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i+1}`}
                 style={{
                   backgroundImage: "url('/howbg.png')",
                   backgroundSize: "cover",
@@ -125,22 +125,21 @@ export const HowWeWork: React.FC = () => {
                 {/* White Glow */}
                 <div
                   ref={(el) => setGlowRef(el, i)}
-                  className="absolute inset-0 rounded-[40px] border border-white/25 pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.5)] opacity-0 z-20"
+                  className="absolute inset-0 rounded-[10px] pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.5)] opacity-0 z-20 glow"
                 />
 
-                <div className="absolute inset-0 bg-black/80 z-0" />
+                <div className="absolute inset-0 bg-black/80 z-0 bg-overlay" />
 
-                <div className="relative z-10">
+                <div className="relative z-10 card-content">
                   <img
                     src={box.img}
                     alt={box.title}
-                    className="w-10 h-10 mx-auto mb-3"
-                    style={{ filter: "drop-shadow(0 0 8px rgba(255,255,255,0.5))" }}
+                    className="w-10 h-10 mx-auto mb-3 card-img"
                   />
-                  <h3 className="text-white text-[15px] font-black mb-2 uppercase tracking-widest leading-none">
+                  <h3 className="text-white text-[15px] font-black mb-2 uppercase tracking-widest leading-none card-title">
                     {box.title}
                   </h3>
-                  <p className="text-gray-400 text-[10px] font-bold px-2 leading-relaxed opacity-85 uppercase">
+                  <p className="text-gray-400 text-[10px] font-bold px-2 leading-relaxed opacity-85 uppercase card-desc">
                     {box.desc}
                   </p>
                 </div>
@@ -150,6 +149,356 @@ export const HowWeWork: React.FC = () => {
 
         </div>
       </div>
+
+      {/* Custom CSS */}
+      <style>{`
+        @media (max-width: 767px) {
+          /* Vertical stack for mobile */
+          .cards-container {
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1rem !important;
+            margin-top: 1.5rem !important;
+          }
+          .card {
+            max-width: 240px !important;
+            border-radius: 4px !important;
+            padding: 1.2rem !important;
+            aspect-ratio: 1.6/1 !important; /* flatter like in image */
+            background-blend-mode: multiply !important;
+          }
+          .card-content {
+            text-align: left !important;
+            padding-left: 0.5rem !important;
+          }
+          .card-img {
+            width: 1.8rem !important;
+            height: 1.8rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .card-title {
+            font-size: 0.95rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .card-desc {
+            font-size: 0.65rem !important;
+            line-height: 1.2 !important;
+            padding: 0 !important;
+          }
+          .bg-overlay {
+            background: rgba(0,0,0,0.65) !important;
+          }
+          .glow {
+            shadow: inset 0 0 20px rgba(255,255,255,0.35) !important;
+          }
+          .border {
+            border-color: rgba(255,255,255,0.15) !important;
+          }
+          /* Stagger positioning like image */
+          .card-1 {
+            align-self: flex-start !important;
+            margin-left: 2rem !important;
+          }
+          .card-2 {
+            align-self: flex-end !important;
+            margin-right: 2rem !important;
+          }
+          .card-3 {
+            align-self: flex-start !important;
+            margin-left: 4rem !important;
+          }
+          .card-4 {
+            align-self: flex-end !important;
+            margin-right: 4rem !important;
+          }
+          /* Reduce section height */
+          .min-h-screen {
+            min-height: auto !important;
+            padding-bottom: 2rem !important;
+          }
+          .header-title {
+            font-size: 2rem !important;
+          }
+          .header-desc {
+            font-size: 0.7rem !important;
+            max-width: 90% !important;
+          }
+          .header-bg {
+            padding: 0.6rem 1.2rem !important;
+          }
+        }
+
+        @media (min-width: 768px) {
+          /* Desktop remains same */
+          .cards-container {
+            flex-direction: row !important;
+            align-items: flex-start !important;
+          }
+        }
+
+         @media (max-width: 610px) { 
+          .card {
+            max-width: 150px !important;
+            overflow: visible !important;
+            border-radius: 0px !important;
+            padding: 1.2rem !important;
+            top: -1px !important;
+            aspect-ratio: 1.6/1 !important; /* flatter like in image */
+            background-blend-mode: multiply !important;
+          }
+          .Text {
+            font-size: 21px !important;
+          }
+          .card-content {
+            text-align: left !important;
+            padding-left: 0rem !important;
+          }
+          .card-img {
+            width: 1.2rem !important;
+            height: 1.2rem !important;
+            margin-bottom: 0.45rem !important;
+          }
+          .Cardrounded{
+            border-radius: 4px !important;
+          }
+          .card-title {
+            font-size: 0.49rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .card-desc {
+            font-size: 0.58rem !important;
+            line-height: 1.0 !important;
+            padding: 0 !important;
+          }
+          .bg-overlay {
+            background: rgba(0,0,0,0.65) !important;
+          }
+          .glow {
+            shadow: inset 0 0 20px rgba(255,255,255,0.35) !important;
+          }
+          .cards-wrapper {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+
+          /* Stagger positioning like image */
+.card-1 {
+  position: absolute;
+  top: 10% !important;
+  right: 65% !important;
+}
+
+.card-2 {
+  position: absolute;
+  top: 199% !important;
+  right: 38% !important;
+}
+
+.card-3 {
+  position: absolute;
+  top: 404% !important;
+  left: 32% !important;
+}
+
+.card-4 {
+  position: absolute;
+  top: 615% !important;
+  left: 65% !important;
+}
+
+          /* Reduce section height */
+          .min-h-screen {
+            min-height: 90vh !important;
+            padding-bottom: 2rem !important;
+          }
+          .header-title {
+            font-size: 2rem !important;
+          }
+          .header-desc {
+            font-size: 0.7rem !important;
+            max-width: 90% !important;
+          }
+          .header-bg {
+            padding: 0.6rem 1.2rem !important;
+          }
+        
+
+         @media (max-width: 510px) { 
+          .card {
+            max-width: 150px !important;
+            overflow: visible !important;
+            border-radius: 0px !important;
+            padding: 1.2rem !important;
+            top: -5px !important;
+            aspect-ratio: 1.6/1 !important; /* flatter like in image */
+            background-blend-mode: multiply !important;
+          }
+          .Text {
+            font-size: 21px !important;
+          }
+          .card-content {
+            text-align: left !important;
+            padding-left: 0rem !important;
+          }
+          .card-img {
+            width: 0.9rem !important;
+            height: 0.9rem !important;
+            margin-bottom: 0.45rem !important;
+          }
+          .Cardrounded{
+            border-radius: 4px !important;
+          }
+          .card-title {
+            font-size: 0.48rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .card-desc {
+            font-size: 0.38rem !important;
+            line-height: 1.2 !important;
+            padding: 0 !important;
+          }
+          .bg-overlay {
+            background: rgba(0,0,0,0.65) !important;
+          }
+          .glow {
+            shadow: inset 0 0 20px rgba(255,255,255,0.35) !important;
+          }
+          .cards-wrapper {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+
+          /* Stagger positioning like image */
+.card-1 {
+  position: absolute;
+  top: 20% !important;
+  right: 65% !important;
+}
+
+.card-2 {
+  position: absolute;
+  top: 185% !important;
+  right: 33% !important;
+}
+
+.card-3 {
+  position: absolute;
+  top: 364% !important;
+  left: 25% !important;
+}
+
+.card-4 {
+  position: absolute;
+  top: 545% !important;
+  left: 65% !important;
+}
+
+          /* Reduce section height */
+          .min-h-screen {
+            min-height: 80vh !important;
+            padding-bottom: 2rem !important;
+          }
+          .header-title {
+            font-size: 2rem !important;
+          }
+          .header-desc {
+            font-size: 0.7rem !important;
+            max-width: 90% !important;
+          }
+          .header-bg {
+            padding: 0.6rem 1.2rem !important;
+          }
+        }
+        @media (max-width: 420px) { 
+          .card {
+            max-width: 120px !important;
+            overflow: visible !important;
+            border-radius: 0px !important;
+            padding: 1.2rem !important;
+            top: -65px !important;
+            aspect-ratio: 1.6/1 !important; /* flatter like in image */
+            background-blend-mode: multiply !important;
+          }
+          .card-content {
+            text-align: left !important;
+            padding-left: 0rem !important;
+          }
+          .card-img {
+            width: 0.9rem !important;
+            height: 0.9rem !important;
+            margin-bottom: 0.45rem !important;
+          }
+          .Cardrounded{
+            border-radius: 4px !important;
+          }
+          .card-title {
+            font-size: 0.48rem !important;
+            margin-bottom: 0.3rem !important;
+          }
+          .card-desc {
+            font-size: 0.38rem !important;
+            line-height: 1.2 !important;
+            padding: 0 !important;
+          }
+          .bg-overlay {
+            background: rgba(0,0,0,0.65) !important;
+          }
+          .glow {
+            shadow: inset 0 0 20px rgba(255,255,255,0.35) !important;
+          }
+          .cards-wrapper {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+          }
+
+          /* Stagger positioning like image */
+.card-1 {
+  position: absolute;
+  top: 5% !important;
+  right: 65% !important;
+}
+
+.card-2 {
+  position: absolute;
+  top: 185% !important;
+  right: 29% !important;
+}
+
+.card-3 {
+  position: absolute;
+  top: 364% !important;
+  left: 22% !important;
+}
+
+.card-4 {
+  position: absolute;
+  top: 545% !important;
+  left: 65% !important;
+}
+
+          /* Reduce section height */
+          .min-h-screen {
+            min-height: 90vh !important;
+            padding-bottom: 2rem !important;
+          }
+          .header-title {
+            font-size: 2rem !important;
+          }
+          .header-desc {
+            font-size: 0.7rem !important;
+            max-width: 90% !important;
+          }
+          .header-bg {
+            padding: 0.6rem 1.2rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 };
