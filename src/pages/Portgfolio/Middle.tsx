@@ -2,7 +2,7 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Branding from "./Branding";
 import SocialMedia from "./SocialMedia";
-import Photography from "./Photography";
+import Photography from "./UIUx";
 import Webdesign from "./Webdesign";
 
 type MiddlePortfolioProps = {
