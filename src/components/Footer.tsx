@@ -45,7 +45,7 @@ export const Footer = () => {
               <div className="md:col-span-2 md:relative md:left-22 footer-explore">
                 <h3 className="text-xl md:text-[27px] mb-2 uppercase text-white footer-section-title">Explore</h3>
                 <ul className="space-y-2 md:space-y-3">
-                  <li><a href="/home" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Home</a></li>
+                  <li><a href="/" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Home</a></li>
                   <li><a href="/portfolio" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Portfolio</a></li>
                   <li><a href="/founder" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Founder</a></li>
                   <li><a href="/contact" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Contact Us</a></li>
