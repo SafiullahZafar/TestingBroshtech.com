@@ -23,7 +23,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
 
         {/* MAIN HEADING */}
         <div className="flex flex-col md:flex-row justify-between items-start relative mb-10">
-          <h2 className="text-[42px] sm:text-[50px] md:text-[60px] md:relative md:top-20 lg:text-[72px] md:right-12 w-full md:w-[90%] font-bold leading-[0.95] tracking-[-0.04em] text-[#0d7411] z-10">
+          <h2 className="text-[42px] sm:text-[50px] md:text-[60px] md:relative md:top-20 lg:text-[72px] md:right-8 w-full md:w-[90%] font-bold leading-[0.95] tracking-[-0.04em] text-[#0d7411] z-10">
             Explore Our Latest Portfolio
           </h2>
 
@@ -37,7 +37,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
         </div>
 
         {/* CATEGORY FILTER NAVIGATION */}
-        <nav className="flex justify-center flex-wrap gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-10 lg:gap-x-28">
+        <nav className="flex justify-center flex-wrap md:relative md:right-14.5 gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-10 lg:gap-x-28">
           {categories.map((cat) => (
             <button
               key={cat}

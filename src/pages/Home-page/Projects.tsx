@@ -1,7 +1,6 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 export const Projects: React.FC = () => {
-  // NOW: 16 icons
   const icons = [
     "/sucessicon1.png",
     "/sucessicon2.png",
@@ -22,13 +21,69 @@ export const Projects: React.FC = () => {
   ];
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
-  const speed = 0.4; // auto scroll speed (unchanged)
 
+  const headerRef = useRef<HTMLDivElement | null>(null);
+  const dividerRef = useRef<HTMLDivElement | null>(null);
+  const subtextRef = useRef<HTMLDivElement | null>(null);
+  const gridRef = useRef<HTMLDivElement | null>(null);
+
+  const [visible, setVisible] = useState({
+    header: false,
+    divider: false,
+    subtext: false,
+    grid: false,
+  });
+
+  const speed = 0.4;
+
+  /* ===============================
+     DESKTOP ONLY SCROLL ANIMATION
+  =============================== */
+  useEffect(() => {
+    // ✅ Disable animation on mobile
+    if (window.innerWidth < 768) {
+      setVisible({
+        header: true,
+        divider: true,
+        subtext: true,
+        grid: true,
+      });
+      return;
+    }
+
+  const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const type = entry.target.getAttribute("data-section");
+
+      if (!type) return;
+
+      setVisible((prev) => ({
+        ...prev,
+        [type]: entry.isIntersecting,
+      }));
+    });
+  },
+  {
+    threshold: 0,
+  }
+);
+
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (dividerRef.current) observer.observe(dividerRef.current);
+    if (subtextRef.current) observer.observe(subtextRef.current);
+    if (gridRef.current) observer.observe(gridRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  /* ===============================
+        ICON STRIP AUTO SCROLL
+  =============================== */
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
 
-    // We render icons 3 times → middle copy trick
     const singleWidth = el.scrollWidth / 3;
     el.scrollLeft = singleWidth;
 
@@ -37,7 +92,6 @@ export const Projects: React.FC = () => {
     const autoScroll = () => {
       el.scrollLeft += speed;
 
-      // Infinite loop correction
       if (el.scrollLeft >= singleWidth * 2) {
         el.scrollLeft -= singleWidth;
       }
@@ -54,35 +108,81 @@ export const Projects: React.FC = () => {
   }, []);
 
   return (
-    <section className="w-full bg-black flex flex-col md:mb-[124px] items-center justify-center gap-1 px-4">
-      {/* Header Button */}
-    <div className="bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-4 shadow-2xl tracking-tight">
+    <section className="w-full bg-black flex md:h-screen flex-col md:mb-[124px] items-center justify-center gap-1 px-4">
+
+      {/* ===== ANIMATION STYLE (Desktop Only Effect) ===== */}
+      <style>{`
+        .scroll-hidden {
+          opacity: 0;
+          transform: translateY(120px) scale(0.7) rotateX(20deg);
+          transition: 
+            opacity 0.6s ease-in,
+            transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .scroll-show {
+          opacity: 1;
+          transform: translateY(0) scale(1) rotateX(0deg);
+          transition: 
+            opacity 0.8s ease-out,
+            transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+      `}</style>
+
+      {/* Header */}
+      <div
+        ref={headerRef}
+        data-section="header"
+        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-4 shadow-2xl tracking-tight ${
+          visible.header ? "scroll-show" : "scroll-hidden"
+        }`}
+      >
         Our Successful Project
       </div>
 
       {/* Divider */}
-      <div className="text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90">
-          {window.innerWidth < 768
-    ? "--------------------"
-    : "-------------------------------------------"}
+      <div
+        ref={dividerRef}
+        data-section="divider"
+        className={`text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90 ${
+          visible.divider ? "scroll-show" : "scroll-hidden"
+        }`}
+      >
+        {window.innerWidth < 768
+          ? "--------------------"
+          : "-------------------------------------------"}
       </div>
 
       {/* Subtext */}
-      <div className="text-white text-sm Top md:text-3xl font-extralight mb-10 opacity-100">
+      <div
+        ref={subtextRef}
+        data-section="subtext"
+        className={`text-white text-sm Top md:text-3xl font-extralight mb-10 ${
+          visible.subtext ? "scroll-show" : "scroll-hidden"
+        }`}
+      >
         Projects With Top Ratings!
       </div>
-      {/* Project Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4 project-grid">
-     {["/1.png", "/2.png", "/3.png"].map((src, i) => (
-  <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
-    <img
-      src={src}
-      className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""}`}
-      alt={`P${i + 1}`}
-    />
-  </div>
-))}
 
+      {/* Project Grid */}
+      <div
+        ref={gridRef}
+        data-section="grid"
+        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4 project-grid ${
+          visible.grid ? "scroll-show" : "scroll-hidden"
+        }`}
+      >
+        {["/2.png", "/1.png", "/3.png"].map((src, i) => (
+          <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
+            <img
+              src={src}
+              className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${
+                i === 2 ? "third-img" : ""
+              }`}
+              alt={`P${i + 1}`}
+            />
+          </div>
+        ))}
       </div>
 
       {/* ICON STRIP */}
@@ -102,18 +202,18 @@ export const Projects: React.FC = () => {
           `}
         </style>
 
-        {/* Render icons 3 times for infinite loop */}
         {[...icons, ...icons, ...icons].map((icon, index) => {
-          // keep your “special” sizing logic if you want
-          const isSpecial = index % icons.length === 6;
+          // const isSpecial = index % icons.length === 6;
 
           return (
             <div
               key={index}
               className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg active:scale-95"
               style={{
-                width: isSpecial ? "112.6px" : "95px",
-                height: isSpecial ? "112.6px" : "95px",
+                // width: isSpecial ? "112.6px" : "95px",
+                // height: isSpecial ? "112.6px" : "95px",
+                width: "95px",
+                height: "95px",
                 borderRadius: "20px",
                 overflow: "hidden",
                 backgroundColor: "transparent",
@@ -130,7 +230,7 @@ export const Projects: React.FC = () => {
         })}
       </div>
 
-      {/* CUSTOM CSS for mobile/small screens only */}
+          {/* CUSTOM CSS for mobile/small screens only */}
       <style>{`
         @media (max-width: 767px) {
           /* Make header smaller */

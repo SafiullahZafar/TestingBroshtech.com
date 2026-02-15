@@ -16,21 +16,6 @@ export default function DiscussionComponent() {
             className="w-full h-auto max-w-[60%] object-contain"
           />
         </div>
-
-        {/* THREE TRIANGLES - Exactly positioned as per image */}
-        {/* Left Triangle */}
-        <div className="absolute  top-[25%] left-[18%] text-[#16FF88] scale-55 md:scale-75 opacity-40">
-          <TriangleIcon />
-        </div>
-        {/* Bottom Triangle */}
-        <div className="absolute hidden md:block bottom-[15%] left-[40%] text-[#16FF88] scale-50 md:scale-75 opacity-40">
-          <TriangleIcon />
-        </div>
-        {/* Right Triangle */}
-        <div className="absolute top-[35%] right-[22%] text-[#16FF88] scale-50 md:scale-75 opacity-40">
-          <TriangleIcon />
-        </div>
-
         {/* TEXT CONTENT - Responsive & High Accuracy */}
         <div className="relative z-10 w-full max-w-3xl top-5">
           <h2 className="text-white text-3xl  sm:text-4xl md:text-4xl font-semibold tracking-tight leading-[1] mb-10">
@@ -48,13 +33,6 @@ export default function DiscussionComponent() {
     </div>
   );
 }
-
-// Fixed Triangle SVG - Pointing down like in your image
-const TriangleIcon = () => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M24 22h-24l12-20z" transform="rotate(180 12 12)"/>
-  </svg>
-);
 
 <style>{`
   /* SCALE WHOLE COMPONENT ON SMALL SCREENS */

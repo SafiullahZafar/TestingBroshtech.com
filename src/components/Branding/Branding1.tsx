@@ -8,9 +8,9 @@ const Branding1: React.FC = () => {
     "/branding1(2).png",
     "/branding1(3).png",
     "/branding1(4).png",
+    "/branding1(7).png",
     "/branding1(5).png",
     "/branding1(6).png",
-    "/branding1(7).png",
   ];
 
   return (

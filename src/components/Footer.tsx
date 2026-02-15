@@ -1,4 +1,4 @@
-import { ArrowUpCircle} from "lucide-react";
+import { ArrowUpCircle } from "lucide-react";
 import { GoArrowUpRight } from "react-icons/go";
 
 export const Footer = () => {
@@ -17,53 +17,54 @@ export const Footer = () => {
             <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 footer-grid">
 
               {/* Left Section - Project Start */}
-         <div className="md:col-span-4 flex flex-col justify-start items-center md:items-start footer-left">
-  <h1 className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">Have a project?</h1>
-  <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Let's start.</h1>
-  <div className="w-32 md:w-50 h-0.5 bg-white mb-6 md:-top-3 md:relative md:mb-8"></div>
+              <div className="md:col-span-4 flex flex-col justify-start items-center md:items-start footer-left">
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-1 md:mb-2">Have a project?</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-4 md:mb-6">Let's start.</h1>
+                <div className="w-32 md:w-50 h-0.5 bg-white mb-6 md:-top-3 md:relative md:mb-8"></div>
 
-  <div className="w-full max-w-md relative">
-    {/* Input with bottom border only */}
-    <input
-      type="email"
-      placeholder="Enter your email..."
-      className="w-full bg-transparent border-b-1 border-white/90 pb-3 md:pb-1 text-white placeholder-gray-200 focus:outline-none text-base md:text-lg"
-    />
+                <div className="w-full max-w-md relative">
+                  {/* Input with bottom border only */}
+                  <input
+                    type="email"
+                    placeholder="Enter your email..."
+                    className="w-full bg-transparent border-b-1 border-white/90 pb-3 md:pb-1 text-white placeholder-gray-200 focus:outline-none text-base md:text-lg"
+                  />
 
-    {/* Green arrow button positioned at the end, slightly overlapping the line */}
- <button
-  className="group absolute right-0 bottom-0 translate-y-1/2 translate-x-0 md:translate-x-2 w-8 h-8 md:w-11 md:h-9 rounded-sm md:-top-6 bg-white hover:bg-black flex items-center justify-center shadow-lg transition-colors"
-  aria-label="Submit email"
->
-  <GoArrowUpRight className="w-4 h-4 md:w-8 md:h-8 text-[#0B6E4F] group-hover:text-white transition-colors" />
-</button>
+                  {/* Green arrow button positioned at the end, slightly overlapping the line */}
+                  <button
+                    className="group absolute right-0 bottom-0 sm:translate-y-3/4 translate-x-0 md:translate-x-2 w-10 h-6 md:w-7 md:h-7 rounded-sm md:-top-6 bg-white hover:bg-black flex items-center justify-center shadow-lg transition-colors"
+                    aria-label="Submit email"
+                  >
+                    <GoArrowUpRight className="w-4 h-4 md:w-5 md:h-5 text-[#0B6E4F] group-hover:text-white transition-colors" />
+                  </button>
 
-  </div>
-</div>
+                </div>
+              </div>
 
               {/* Explore */}
               <div className="md:col-span-2 md:relative md:left-22 footer-explore">
                 <h3 className="text-xl md:text-[27px] mb-2 uppercase text-white footer-section-title">Explore</h3>
                 <ul className="space-y-2 md:space-y-3">
-                  <li><a className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">About Us</a></li>
-                  <li><a  className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Projects</a></li>
+                  <li><a href="/home" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Home</a></li>
+                  <li><a href="/portfolio" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Portfolio</a></li>
+                  <li><a href="/founder" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Founder</a></li>
                   <li><a href="/contact" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Contact Us</a></li>
                 </ul>
               </div>
 
               {/* Services */}
-              <div className="md:col-span-2 md:relative md:left-30 footer-services">
+              <div className="md:col-span-2 md:relative md:left-32 footer-services">
                 <h3 className="text-xl md:text-[27px] mb-2 uppercase text-white footer-section-title">Services</h3>
                 <ul className="space-y-2 md:space-y-3">
-                  <li><a  className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Branding</a></li>
-                  <li><a  className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Social Media Marketing</a></li>
-                  <li><a  className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">UI / UX</a></li>
-                  <li><a  className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Web Development</a></li>
+                  <li><a href="/branding1" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Branding</a></li>
+                  <li><a href="/socialmedia1" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Social Media Marketing</a></li>
+                  <li><a href="/uiux" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">UI / UX</a></li>
+                  <li><a href="/webdevelopment" className="text-gray-100 text-base md:text-[20px] hover:text-[#0B6E4F] transition">Web Development</a></li>
                 </ul>
               </div>
 
               {/* Quick Links */}
-              <div className="md:col-span-2 md:relative md:left-44 footer-quick-links">
+              <div className="md:col-span-2 md:relative md:left-47 footer-quick-links">
                 <h3 className="text-xl md:text-[27px] mb-1 text-white footer-section-title">Quick Links</h3>
                 <div className="flex gap-3 md:gap-4">
                   <a href="#" className="hover:opacity-70 transition-opacity">
@@ -79,21 +80,28 @@ export const Footer = () => {
               </div>
 
             </div>
-
             {/* Contact Section */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center mt-6 md:mt-10 gap-6 md:gap-0 footer-contact-section">
-              <div className="space-y-1 md:space-y-2">
-                <h3 className="text-xl md:text-[21px] uppercase tracking-[1px] text-white footer-section-title">Give Us A Call</h3>
-                <p className="text-gray-100 text-lg md:text-[16px] footer-contact">+92 317 7676560</p>
-              </div>
-              <div className="space-y-1 md:space-y-2">
-                <h3 className="text-xl md:text-[21px] uppercase text-white footer-section-title">Our Location</h3>
-                <p className="text-gray-200 text-base md:text-[16px] leading-[1.1] max-w-[260px] footer-address">
-                  113 Mall,Faisalabad
+            <div className="w-full flex flex-col md:flex-row justify-between items-start mt-6 md:mt-10 gap-6 md:gap-0 footer-contact-section">
+
+              <div className="flex flex-col items-start text-left space-y-1 md:space-y-1 w-full md:w-auto">
+                <h3 className="text-xl md:text-[21px] uppercase tracking-[1px] text-white footer-section-title">
+                  Give Us A Call
+                </h3>
+                <p className="text-gray-100 text-lg md:text-[16px] footer-contact">
+                  +92 317 7676560
                 </p>
               </div>
-            </div>
 
+              <div className="flex flex-col items-start md:items-end text-left md:text-right space-y-1 md:space-y-2 w-full md:w-auto">
+                <h3 className="text-xl md:text-[21px] uppercase text-white footer-section-title">
+                  Our Location
+                </h3>
+                <p className="text-gray-200 text-base md:text-[16px] leading-[1.1] max-w-[260px] footer-address">
+                  113 Mall, Faisalabad
+                </p>
+              </div>
+
+            </div>
             {/* Divider */}
             <div className="w-full h-[1px] bg-white/90 mt-6 md:mt-10 footer-divider"></div>
 

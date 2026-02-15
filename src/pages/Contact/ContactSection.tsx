@@ -39,7 +39,7 @@ const ContactComponent: React.FC = () => {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setShowInfo(true)}
-              className="flex items-center gap-0.75 bg-[#D9D9D9]/21 border border-white/50 px-3.75 py-1.75 hover:cursor-pointer hover:bg-[#D9D9D9]/31 rounded-full w-fit"
+              className="flex items-center gap-0.75 bg-[#D9D9D9]/21 md:relative md:left-0.75 border border-white/50 px-3.75 py-1.75 hover:cursor-pointer hover:bg-[#D9D9D9]/31 rounded-full w-fit"
             >
               <QuestionMarkCircleIcon className="w-6 h-8 relative md:right-2.5 md:top-0.44" />
               <span className="text-[13px] tracking-tight font-semibold md:right-2.5 relative md:top-0.5">
