@@ -55,6 +55,7 @@
 
 
 html, body {
+  overflow-y: scroll;
   font-family: 'Inter', sans-serif;
 }
 
