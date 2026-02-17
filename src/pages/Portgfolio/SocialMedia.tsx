@@ -27,16 +27,16 @@ const SocialMedia: React.FC = () => {
         
         {/* Header Text */}
         <div className="absolute bottom-12 left-8 md:left-16">
-          <div className="flex items-center gap-4 mb-4">
-            <span className="w-14 h-[2px] bg-[#0d7411]"></span>
-            <p className="text-[#0d7411] text-xl font-bold uppercase tracking-[0.3em]">Work Series</p>
+          <div className="flex items-center WorkSeries gap-4 mb-4">
+            <span className="w-14 h-[2px] Topper bg-[#0d7411]"></span>
+            <p className="text-[#0d7411] text-[12px] font-bold Topper  uppercase tracking-[0.3em]">Work Series</p>
           </div>
-          <h3 className="text-white text-5xl md:text-5xl lg:text-7xl md:w-3xl font-black uppercase leading-[0.9] tracking-tighter">
+          <h3 className="text-white text-2xl md:text-5xl Topper lg:text-7xl md:w-3xl font-black uppercase leading-[0.9] tracking-tighter">
             Social Media <br /> Designing & Management
           </h3>
           
           {/* Optional: Visual cue that it's clickable */}
-          <p className="text-white/40 text-xs mt-4 uppercase tracking-widest group-hover:text-[#0d7411] transition-colors">
+          <p className="text-white/90 text-xs mt-4 uppercase tracking-widest group-hover:text-[#0d7411] transition-colors">
             Click to view project details
           </p>
         </div>
@@ -64,6 +64,16 @@ const SocialMedia: React.FC = () => {
           50% { transform: scale(1); opacity: 0.8; }
           75% { transform: scale(1.1); opacity: 1; }
           100% { transform: scale(1); opacity: 0.8; }
+        }
+        @media (max-width: 458px){
+        .Topper {
+  position: relative !important;
+  right: 10% !important;
+}
+  .WorkSeries {
+  position: relative !important;
+  top: -210px !important;
+}
         }
       `}</style>
 

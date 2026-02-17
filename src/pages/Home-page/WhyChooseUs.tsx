@@ -56,7 +56,7 @@ const WhyChooseUs: FC = () => {
       <div className="why-wrapper">
 
         {/* LEFT */}
-        <div className="why-left left-3 sm:left-12 relative">
+        <div className="why-left relative">
           <h2 className="why-title">
             Why Choose <br />
             <span className="why-highlight">BroshTech</span><br />

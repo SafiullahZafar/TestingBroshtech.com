@@ -105,22 +105,22 @@ export const Navbar = () => {
           }}
         >
           {/* LOGO - LEFT */}
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/html-logo.png" alt="Logo" className="w-8 h-8" />
-          </Link>
+          <a href="/" className="flex items-center gap-2">
+            <img src="/html-logo.png" alt="Logo" className="w-6 h-6 sm:w-8 sm:h-8" />
+          </a>
 
           {/* DESKTOP MENU - RIGHT */}
           <ul className="hidden md:flex items-center Right gap-4 text-white text-[14px] font-medium ml-auto desktop-menu">
             {menuItems.map((item) => (
               <li key={item.name}>
-                <Link
-                  to={item.path}
+                <a
+                  href={item.path}
                   className={`menu-item ${
                     location.pathname === item.path ? "active" : ""
                   }`}
                 >
                   {item.name}
-                </Link>
+                </a>
               </li>
             ))}
           </ul>
@@ -179,7 +179,7 @@ export const Navbar = () => {
             font-size: 0.8rem !important;
           }
           .Right {
-          left: 28px !important;
+          left: 32px !important;
           position: relative !important;
           }
           .menu-item {

@@ -138,20 +138,22 @@ onMouseLeave={handleMouseLeave}
   <div
   className="absolute top-[30%] left-[-5%] z-10"
   style={getStyle(40)}
->
+><a href="/portfolio">
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Web Development
     </span>
+    </a>
   </div>
 
   {/* Middle Left Label */}
   <div
   className="absolute bottom-[20%] left-[2%] z-10"
   style={getStyle(-60)}
->
+> <a href="/portfolio">
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Social Media
     </span>
+    </a>
   </div>
 
   {/* Right Side Label */}
@@ -159,9 +161,11 @@ onMouseLeave={handleMouseLeave}
   className="absolute top-[50%] right-[9%] z-10"
   style={getStyle(30)}
 >
+  <a href="/portfolio">
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Branding
     </span>
+    </a>
   </div>
 
   {/* --- Video Component --- */}
@@ -246,7 +250,7 @@ onMouseLeave={handleMouseLeave}
 
         @media (max-width: 480px) {
           .title {
-            top: 10px !important;
+            top: -15px !important;
             right: 41px !important;
             position: relative !important;
             font-size: 1.6rem !important;

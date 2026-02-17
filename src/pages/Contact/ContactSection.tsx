@@ -33,7 +33,7 @@ const ContactComponent: React.FC = () => {
       <div className="relative z-10 top-14 sm:-top-14 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
         {/* LEFT SIDE */}
-        <div className="flex flex-col gap-10 md:w-[540px] relative md:top-9 md:left-7">
+        <div className="flex flex-col gap-10 relative md:top-9 lg:left-7 lg:w-[510px]">
 
           {/* Top Header */}
           <div className="flex flex-col gap-4">
@@ -95,7 +95,7 @@ const ContactComponent: React.FC = () => {
 
         {/* RIGHT SIDE */}
         <div className="w-full md:top-14 relative md:right-3">
-          <div className="w-full md:w-[540px] bg-[#D9D9D9]/21 border border-white/10 rounded-[10px] p-6 md:p-8 text-[#8B8B8B]">
+          <div className="w-full lg:w-[510px] bg-[#D9D9D9]/21 border lg:left-7 relative border-white/10 rounded-[10px] p-6 md:p-8 text-[#8B8B8B]">
 
             <AnimatePresence mode="wait">
 

@@ -188,7 +188,7 @@ export const Projects: React.FC = () => {
       {/* ICON STRIP */}
       <div
         ref={scrollRef}
-        className="flex flex-nowrap iconwidth overflow-x-scroll px-2 max-w-[875px] w-full icon-strip"
+        className="flex flex-nowrap iconwidth overflow-x-scroll px-2 max-w-[925px] w-full icon-strip"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -212,8 +212,8 @@ export const Projects: React.FC = () => {
               style={{
                 // width: isSpecial ? "112.6px" : "95px",
                 // height: isSpecial ? "112.6px" : "95px",
-                width: "95px",
-                height: "95px",
+                width: "85px",
+                height: "80px",
                 borderRadius: "20px",
                 overflow: "hidden",
                 backgroundColor: "transparent",
@@ -337,7 +337,7 @@ export const Projects: React.FC = () => {
           }
           .icon-strip > div {
             width: 50px !important;
-            height: 80px !important;
+            height: 120px !important;
             top: px !important;
             position: relative !important;
           }

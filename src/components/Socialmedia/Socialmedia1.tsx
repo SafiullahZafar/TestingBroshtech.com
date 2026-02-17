@@ -28,7 +28,7 @@ const SocialMedia1: React.FC = () => {
             <span className="text-[#0d7411] uppercase tracking-[0.4em] text-sm font-bold">Project Details</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none">
+          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
             Here are things <br /> <span className="text-white bg-[#0b2b1a] top-4 md:text-6xl px-6 relative">what you need</span>
           </h1>
           
@@ -70,12 +70,13 @@ const SocialMedia1: React.FC = () => {
 
       {/* FOOTER CALL TO ACTION */}
       <div className="py-20 text-center border-t border-white/5">
-        <button 
-          onClick={() => window.close()} 
+      <a href="/portfolio">
+        <button    
           className="px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-[#0d7411] hover:text-white transition-all duration-300 rounded-sm"
         >
           Let's start
         </button>
+        </a>
       </div>
 
     </div>

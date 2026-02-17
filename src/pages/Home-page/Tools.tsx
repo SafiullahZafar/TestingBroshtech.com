@@ -5,7 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Tools: React.FC = () => {
-  const images = ["/whaticon1.png", "/whaticon2.png", "/whaticon3.png"];
+  const images = ["/whaticon2.png", "/whaticon1.png", "/whaticon3.png","/whaticon2.png","/whaticon4.png"];
   const texts = [
     { id: "t1", title: "BRANDING", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
     { id: "t2", title: "UI/UX DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
@@ -18,6 +18,7 @@ export const Tools: React.FC = () => {
   const textsRef = useRef<HTMLDivElement[]>([]);
   const titlesRef = useRef<HTMLHeadingElement[]>([]);
   const pinwrapsectionRef = useRef<HTMLDivElement | null>(null);
+  const isMobile = window.innerWidth <= 768;
   const getPosition = (i: number, current: number, total: number) => {
     let diff = i - current;
     diff = (diff % total + total) % total;
@@ -36,8 +37,8 @@ const getIconProps = (pos: string, scaleFactor: number) => {
 
   const base = {
     middle: {
-      x: isMobile ? 1 : -29,
-      y: isMobile ? 97 : 41,
+      x: isMobile ? 1 : -76,
+      y: isMobile ? 97 : 31,
       scale: (isMobile ? 3.4 : 2.15) * scaleFactor,
       opacity: 1,
       zIndex: 20,
@@ -45,8 +46,8 @@ const getIconProps = (pos: string, scaleFactor: number) => {
     },
 
     top: {
-      x: isMobile ? -53 : -150,
-      y: isMobile ? 10 : -103,
+      x: isMobile ? -53 : -170,
+      y: isMobile ? 10 : -93,
       scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
       opacity: 0.6,
       zIndex: 10,
@@ -54,8 +55,8 @@ const getIconProps = (pos: string, scaleFactor: number) => {
     },
 
     bottom: {
-      x: isMobile ? -53 : -150,
-      y: isMobile ? 190 : 200,
+      x: isMobile ? -53 : -170,
+      y: isMobile ? 190 : 180,
       scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
       opacity: 0.6,
       zIndex: 10,
@@ -63,7 +64,7 @@ const getIconProps = (pos: string, scaleFactor: number) => {
     },
 
     above: {
-      x: isMobile ? -53 : -150,
+      x: isMobile ? -53 : -190,
       y: isMobile ? 10 : -103,
       scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
       opacity: 0,
@@ -72,7 +73,7 @@ const getIconProps = (pos: string, scaleFactor: number) => {
     },
 
     below: {
-      x: isMobile ? -53 : -150,
+      x: isMobile ? -53 : -190,
       y: isMobile ? 190 : 200,
       scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
       opacity: 0,
@@ -95,7 +96,7 @@ const getTextProps = (pos: string, scaleFactor: number) => {
 
   const base = {
     middle: {
-      x: isMobile ? 30 : -8,
+      x: isMobile ? 30 : 58,
       y: isMobile ? 104 : 50,
       scale: (isMobile ? 0.95 : .9) * scaleFactor,
       opacity: 1,
@@ -103,7 +104,7 @@ const getTextProps = (pos: string, scaleFactor: number) => {
     },
 
     top: {
-      x: isMobile ? -40 : -258,
+      x: isMobile ? -40 : -158,
       y: isMobile ? 10 : -92,
       scale: 0.55 * scaleFactor,
       opacity: 0.6,
@@ -111,7 +112,7 @@ const getTextProps = (pos: string, scaleFactor: number) => {
     },
 
     bottom: {
-      x: isMobile ? -40 : -208,
+      x: isMobile ? -40 : -158,
       y: isMobile ? 198 : 190,
       scale: 0.6 * scaleFactor,
       opacity: 0.6,
@@ -209,28 +210,61 @@ fontSize: (
       });
     }
 
-    ScrollTrigger.create({
-      trigger: sectionRef.current,
-      start: "top top",
-      end: `+=${(numSteps - 1) * 100}%`,
-      pin: pinwrapsectionRef.current,
-      scrub: 1,
-      snap: 1 / (numSteps - 1),
-      animation: tl,
-      anticipatePin: 1,
+ if (!isMobile) {
+  ScrollTrigger.create({
+    trigger: sectionRef.current,
+    start: "top top",
+    end: `+=${(numSteps - 1) * 100}%`,
+    pin: pinwrapsectionRef.current,
+    scrub: 1,
+    snap: 1 / (numSteps - 1),
+    animation: tl,
+    anticipatePin: 1,
+  });
+}
+if (isMobile) {
+  let currentStep = 0;
+
+  const rotateItems = () => {
+    currentStep = (currentStep + 1) % numSteps;
+
+    iconsRef.current.forEach((icon, i) => {
+      const pos = getPosition(i, currentStep, numSteps);
+      const props = getIconProps(pos, scaleFactor);
+      gsap.to(icon, { ...props, duration: 0.8, ease: "power2.inOut" });
     });
+
+    textsRef.current.forEach((text, i) => {
+      const pos = getPosition(i, currentStep, numSteps);
+      const props = getTextProps(pos, scaleFactor);
+      gsap.to(text, { ...props, duration: 0.8, ease: "power2.inOut" });
+    });
+
+    titlesRef.current.forEach((title, i) => {
+      const pos = getPosition(i, currentStep, numSteps);
+      const props = getTitleProps(pos, scaleFactor);
+      gsap.to(title, { ...props, duration: 0.8, ease: "power2.inOut" });
+    });
+  };
+
+  const interval = setInterval(rotateItems, 2500); // change every 2.5 sec
+
+  return () => clearInterval(interval);
+}
+
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); 
+  
   return (
-    <section ref={sectionRef} className="relative w-full h-auto bg-black overflow-hidden py-12 sm:py-16">
-      <div ref={pinwrapsectionRef} className="relative h-100vh sm:min-h-screen w-full">
+    <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black overflow-hidden py-12 sm:py-16">
+      <div ref={pinwrapsectionRef} className="relative h-100vh lg:-top-13 sm:min-h-screen w-full">
 
         {/* HEADING */}
         <div
-          className="absolute top-3 right-3 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
+          className="absolute top-3 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
           style={{
             background: "rgba(12, 55, 33, 1)",
             fontSize: "clamp(1.8rem, 6vw, 3.75rem)",
@@ -244,11 +278,11 @@ fontSize: (
         {/* HALF CIRCLE */}
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
-           <div className="absolute half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 w-60 sm:w-72 md:w-96 lg:w-[350px] opacity-80 pointer-events-none">
-          <img src="/whathalfcircle.png" alt="Decoration" className="w-full right-12 relative Top h-auto" />
+           <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none">
+          <img src="/whathalfcircle.png" alt="Decoration" className="w-[250px] Width sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
         </div>
             {/* ICONS - always left side */}
-            <div className="relative w-[35%] sm:w-[32%] md:w-[30%] h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
+            <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
               {Array.from({ length: texts.length }).map((_, i) => {
                 const src = images[i % images.length];
                 return (
@@ -269,7 +303,7 @@ fontSize: (
 
             {/* TEXT - always right side */}
             <div
-              className="relative w-[65%] sm:w-[68%] md:w-[70%] h-[360px] sm:h-[400px] md:h-[420px] flex items-center"
+              className="relative w-[65%] sm:w-[68%] md:w-[70%] Rights h-[360px] sm:h-[400px] md:h-[420px] flex items-center"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
               {texts.map((item, i) => (
@@ -303,13 +337,23 @@ fontSize: (
           background: #000 !important;
           overflow-x: hidden !important;
         }
-
+        .Rights{
+        right: 35% !important;
+        }
         .hidden-text {
           visibility: hidden !important;
           opacity: 0 !important;
           pointer-events: none !important;
         }
-
+        @media (max-width: 990px) {
+          .Rights{
+            right: 31% !important;
+      }
+        }
+      @media (max-width: 798px) {
+        .Width{
+          // width: 1000px !important;}
+      }
         @media (max-width: 768px) {
           /* Force row layout on mobile */
           .flex.flex-row {
@@ -322,6 +366,9 @@ fontSize: (
     bottom: 0px !important;   /* move to bottom */
     left: 0 !important;
   }
+  .Rights{
+    left: -50% !important;
+    }
           /* Scale down proportionally */
           section {
             padding-top: 40px !important;
@@ -330,6 +377,7 @@ fontSize: (
           .TopDesc{
           top: -5px !important;
           position: relative !important;
+          width: 500px !important;
           }
 
           /* Adjust widths */
@@ -357,7 +405,7 @@ fontSize: (
             font-size: clamp(0.65rem, 3.5vw, 0.875rem) !important;
             line-height: 1.5 !important;
             margin-top: clamp(8px, 2.5vw, 14px) !important;
-            max-width: clamp(200px, 90%, 320px) !important;
+            // max-width: clamp(200px, 90%, 320px) !important;
           }
 
           /* Heading adjustments */
@@ -369,9 +417,24 @@ fontSize: (
 
           /* Half circle */
           .absolute.top-0 {
-            top: 150px !important;
+            top: 110px !important;
           }
         }
+          @media (max-width: 640px) {
+          .Rights{
+            left: -6% !important;}
+                /* Half circle */
+          .absolute.top-0 {
+            top: 50px !important;
+          }
+              .TopDesc{
+          top: -5px !important;
+          position: relative !important;
+          width: 300px !important;
+          }
+
+          }
+           
 
         @media (max-width: 480px) {
           .w-\\[35\\%\\] {
@@ -385,10 +448,18 @@ fontSize: (
     width: 185px !important; 
   //   position: relative !important;
   }
+  .Rights{
+    left: -1% !important;}
           .Tops{
           top: -60px !important;      /* remove top */
           position: relative !important;
           }
+                  .TopDesc{
+          top: -5px !important;
+          position: relative !important;
+          width: 250px !important;
+          }
+
           img.w-12 {
             width: 32px !important;
             height: 32px !important;
@@ -396,7 +467,10 @@ fontSize: (
           h3 {
             font-size: 1.2rem !important;
           }
-          
+            /* Half circle */
+          .absolute.top-0 {
+            top: 150px !important;
+          }
           p {
             font-size: 1.35rem !important;
             max-width: 320px !important;

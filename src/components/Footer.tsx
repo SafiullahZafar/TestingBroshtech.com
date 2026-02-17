@@ -1,6 +1,8 @@
 import { ArrowUpCircle } from "lucide-react";
 import { GoArrowUpRight } from "react-icons/go";
-import { Link } from "react-router-dom";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaSquareInstagram } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
 
 export const Footer = () => {
   const scrollToTop = () => {
@@ -8,146 +10,118 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="relative bg-[#0A0A0A] text-white py-16 px-6 overflow-hidden">
-      {/* Main Footer Card */}
-      <div className="max-w-7xl mx-auto bg-[#111111] rounded-3xl p-8 md:p-12 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Left Section - Project Start */}
-          <div className="lg:col-span-2">
-            <h3 className="text-4xl md:text-5xl font-bold mb-6">
-              Have a project?
-              <br />
-              Let's start.
-            </h3>
-            {/* Input with bottom border only */}
-            <div className="relative">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full bg-transparent border-0 border-b-2 border-gray-700 pb-3 pr-12 focus:outline-none focus:border-green-500 transition-colors"
-              />
-              {/* Green arrow button positioned at the end, slightly overlapping the line */}
-              <Link
-                to="/contact"
-                className="absolute right-0 bottom-2 bg-green-500 rounded-full p-2 hover:bg-green-600 transition-colors"
+    <footer className="w-full bg-black text-white pt-16 md:pt-24 px-4 md:px-10">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Footer Card - Adjusted mt for mobile */}
+        <div className="bg-[#1b1b1b] border border-white/5 rounded-3xl md:rounded-[40px] p-8 md:p-14 mt-[-40px] md:mt-[-120px] relative overflow-hidden shadow-2xl">
+          <div className="flex flex-col justify-start md:justify-end min-h-auto md:min-h-[520px]">
+
+            {/* Main Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+              
+              {/* Left - Have a project? - FIXED ALIGNMENT */}
+              <div className="md:col-span-4 flex flex-col items-start"> {/* Changed from items-center to start for consistency */}
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-1">Have a project?</h1>
+                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-8">Let's start.</h1>
+
+                <div className="w-32 h-0.5 bg-white mb-8"></div>
+
+                <div className="w-full max-w-md relative">
+                  <input
+                    type="email"
+                    placeholder="Enter your email..."
+                    className="w-full bg-transparent border-b border-white/70 pb-4 text-white placeholder:text-gray-400 focus:outline-none text-lg"
+                  />
+                  <button
+                    className="absolute right-0 bottom-2 w-11.5 sm:top-0 h-9.5 sm:w-7 sm:h-7 rounded-[5px] bg-white hover:bg-black flex items-center justify-center shadow-xl transition-all group"
+                  >
+                    <GoArrowUpRight className="w-6 h-6 text-[#0B6E4F] group-hover:text-white transition-colors" />
+                  </button>
+                </div>
+              </div>
+
+              {/* Right Section */}
+              <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-x-5 md:gap-x-10 gap-y-14 md:gap-12">
+                
+                {/* Explore */}
+                <div className="flex flex-col items-start">
+                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Explore</h3>
+                  <ul className="space-y-3 text-base md:text-xl text-gray-200">
+                    <li><a href="/" className="hover:text-[#0B6E4F] transition-colors">Home</a></li>
+                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Portfolio</a></li>
+                    <li><a href="/founder" className="hover:text-[#0B6E4F] transition-colors">Founder</a></li>
+                    <li><a href="/contact" className="hover:text-[#0B6E4F] transition-colors">Contact Us</a></li>
+                  </ul>
+                </div>
+
+                {/* Services */}
+                <div className="flex flex-col items-start">
+                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Services</h3>
+                  <ul className="space-y-3 text-base md:text-xl text-gray-200">
+                    <li><a href="/branding1" className="hover:text-[#0B6E4F] transition-colors">Branding</a></li>
+                    <li><a href="/socialmedia1" className="hover:text-[#0B6E4F] transition-colors">Marketing</a></li>
+                    <li><a href="/uiux" className="hover:text-[#0B6E4F] transition-colors">UI / UX</a></li>
+                    <li><a href="/webdevelopment" className="hover:text-[#0B6E4F] transition-colors">Web Dev</a></li>
+                  </ul>
+                </div>
+
+                {/* Quick Links - VISUALLY BALANCED */}
+                <div className="col-span-2 md:col-span-1 flex flex-col items-start">
+                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Quick Links</h3>
+                  <div className="flex gap-6 md:gap-5 items-center">
+                    <a href="#" className="hover:scale-110 transition-transform">
+                      <FaFacebookSquare className="w-9 h-9 md:w-8 md:h-8" />
+                    </a>
+                    <a href="#" className="hover:scale-110 transition-transform">
+                      <FaLinkedin className="w-9 h-9 md:w-8 md:h-8" />
+                    </a>
+                    <a href="#" className="hover:scale-110 transition-transform">
+                      <FaSquareInstagram className="w-9 h-9 md:w-8 md:h-8" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Contact Info - FIXED TEXT SIZES */}
+            <div className="mt-16 md:relative md:top-9 flex flex-col md:flex-row justify-between gap-10 md:gap-0">
+              <div>
+                <h3 className="uppercase text-lg md:text-xl font-medium tracking-widest text-white">Give Us A Call</h3>
+                <p className="text-gray-100 text-base md:text-lg mt-2">+92 317 7676560</p>
+              </div>
+
+              <div className="md:text-right">
+                <h3 className="uppercase text-lg md:text-xl font-medium tracking-widest text-white">Our Location</h3>
+                <p className="text-gray-200 text-base md:text-lg leading-tight max-w-full md:max-w-[260px] mt-2">
+                  113 Mall, Faisalabad
+                </p>
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-white/90 mt-14 md:mt-16"></div>
+
+            {/* Back to Top */}
+            <div className="flex justify-end mt-10">
+              <button
+                onClick={scrollToTop}
+                className="flex items-center gap-3 text-xl md:text-2xl font-light text-white hover:text-[#0B6E4F] transition-all group"
               >
-                <GoArrowUpRight className="w-5 h-5 text-black" />
-              </Link>
+                Back To Top
+                <ArrowUpCircle className="w-7 h-7 md:w-8 md:h-8 group-hover:-translate-y-1 transition-transform" />
+              </button>
             </div>
           </div>
-
-          {/* Explore */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Explore</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-gray-400 hover:text-white transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/portfolio" className="text-gray-400 hover:text-white transition-colors">
-                  Portfolio
-                </Link>
-              </li>
-              <li>
-                <Link to="/founder" className="text-gray-400 hover:text-white transition-colors">
-                  Founder
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Services</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/services/branding" className="text-gray-400 hover:text-white transition-colors">
-                  Branding
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/social-media" className="text-gray-400 hover:text-white transition-colors">
-                  Social Media Marketing
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/ui-ux" className="text-gray-400 hover:text-white transition-colors">
-                  UI / UX
-                </Link>
-              </li>
-              <li>
-                <Link to="/services/web-development" className="text-gray-400 hover:text-white transition-colors">
-                  Web Development
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
-                  Terms of Service
-                </Link>
-              </li>
-            </ul>
-          </div>
         </div>
 
-        {/* Contact Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          <div>
-            <p className="text-gray-400 mb-2">Give Us A Call</p>
-            <Link to="tel:+923177676560" className="text-xl font-semibold hover:text-green-500 transition-colors">
-              +92 317 7676560
-            </Link>
-          </div>
-          <div>
-            <p className="text-gray-400 mb-2">Our Location</p>
-            <Link
-              to="https://maps.google.com/?q=113+Mall+Faisalabad"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xl font-semibold hover:text-green-500 transition-colors"
-            >
-              113 Mall, Faisalabad
-            </Link>
-          </div>
+        {/* Background Image - Adjusted to prevent overflow */}
+        <div className="flex justify-center mt-8 md:mt-20">
+          <img
+            src="/fotterfotter.png"
+            alt="Background"
+            className="w-full md:w-[103%] max-w-none h-auto object-cover"
+          />
         </div>
-
-        {/* Divider */}
-        <div className="border-t border-gray-800 mb-6"></div>
-
-        {/* Back to Top */}
-        <div className="flex justify-between items-center">
-          <p className="text-gray-400">© 2024 All rights reserved</p>
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
-          >
-            <span>Back To Top</span>
-            <ArrowUpCircle className="w-5 h-5" />
-          </button>
-        </div>
-      </div>
-
-      {/* Background Image */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-        <div className="w-full h-full bg-gradient-to-b from-green-500/20 to-transparent"></div>
       </div>
     </footer>
   );

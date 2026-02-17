@@ -32,14 +32,15 @@ export const HowWeWork: React.FC = () => {
     },
   ];
 
-  const getMarginTop = (index: number) => {
-    switch (index) {
-      case 1: return "lg:mt-[60px]";
-      case 2: return "lg:mt-[120px]";
-      case 3: return "lg:mt-[180px]";
-      default: return "lg:mt-0";
-    }
-  };
+const getMarginTop = (index: number) => {
+  switch (index) {
+    case 1: return "md:mt-[60px]";
+    case 2: return "md:mt-[120px]";
+    case 3: return "md:mt-[180px]";
+    default: return "md:mt-0";
+  }
+};
+
 
   const setCardRef = (el: HTMLDivElement | null, index: number) => {
     if (el) cardsRef.current[index] = el;
@@ -109,12 +110,12 @@ export const HowWeWork: React.FC = () => {
           </div>
 
           {/* Cards Container */}
-          <div className="relative flex flex-col lg:flex-row items-center lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8 cards-container">
+          <div className="relative flex flex-col lg:flex-row items-start lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8 cards-container">
             {boxData.map((box, i) => (
               <div
                 key={i}
                 ref={(el) => setCardRef(el, i)}
-                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[40px] CardRounded flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i+1}`}
+                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[20px] lg:rounded-[30px] flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i+1}`}
                 style={{
                   backgroundImage: "url('/howbg.png')",
                   backgroundSize: "cover",
@@ -125,7 +126,7 @@ export const HowWeWork: React.FC = () => {
                 {/* White Glow */}
                 <div
                   ref={(el) => setGlowRef(el, i)}
-                  className="absolute inset-0 rounded-[10px] pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.5)] opacity-0 z-20 glow"
+                  className="absolute inset-0 rounded-[13px] lg:rounded-[10px] pointer-events-none shadow-[inset_0_0_30px_rgba(255,255,255,0.5)] opacity-0 z-20 glow"
                 />
 
                 <div className="absolute inset-0 bg-black/80 z-0 bg-overlay" />
@@ -134,12 +135,12 @@ export const HowWeWork: React.FC = () => {
                   <img
                     src={box.img}
                     alt={box.title}
-                    className="w-10 h-10 mx-auto mb-3 card-img"
+                    className="w-7 h-7 lg:w-10 lg:h-10 mx-auto mb-3 card-img"
                   />
-                  <h3 className="text-white text-[15px] font-black mb-2 uppercase tracking-widest leading-none card-title">
+                  <h3 className="text-white text-[10px] lg:text-[14px] font-black mb-2 uppercase tracking-widest leading-none card-title">
                     {box.title}
                   </h3>
-                  <p className="text-gray-400 text-[10px] font-bold px-2 leading-relaxed opacity-85 uppercase card-desc">
+                  <p className="text-gray-400 text-[7px] lg:text-[10px] font-bold px-2 leading-relaxed opacity-85 uppercase card-desc">
                     {box.desc}
                   </p>
                 </div>
@@ -152,7 +153,7 @@ export const HowWeWork: React.FC = () => {
 
       {/* Custom CSS */}
       <style>{`
-        @media (max-width: 767px) {
+        @media (max-width: 777px) {
           /* Vertical stack for mobile */
           .cards-container {
             flex-direction: column !important;
@@ -194,26 +195,33 @@ export const HowWeWork: React.FC = () => {
           .border {
             border-color: rgba(255,255,255,0.15) !important;
           }
-          /* Stagger positioning like image */
-          .card-1 {
-            align-self: flex-start !important;
-            margin-left: 2rem !important;
-          }
-          .card-2 {
-            align-self: flex-end !important;
-            margin-right: 2rem !important;
-          }
-          .card-3 {
-            align-self: flex-start !important;
-            margin-left: 4rem !important;
-          }
-          .card-4 {
-            align-self: flex-end !important;
-            margin-right: 4rem !important;
-          }
+                /* Stagger positioning like image */
+.card-1 {
+  position: absolute;
+  top: 10% !important;
+  right: 65% !important;
+}
+
+.card-2 {
+  position: absolute;
+  top: 271% !important;
+  right: 42% !important;
+}
+
+.card-3 {
+  position: absolute;
+  top: 538% !important;
+  left: 43% !important;
+}
+
+.card-4 {
+  position: absolute;
+  top: 799% !important;
+  left: 65% !important;
+}
           /* Reduce section height */
           .min-h-screen {
-            min-height: auto !important;
+            min-height: 100vh !important;
             padding-bottom: 2rem !important;
           }
           .header-title {
@@ -240,7 +248,7 @@ export const HowWeWork: React.FC = () => {
           .card {
             max-width: 150px !important;
             overflow: visible !important;
-            border-radius: 0px !important;
+            border-radius: 10px !important;
             padding: 1.2rem !important;
             top: -1px !important;
             aspect-ratio: 1.6/1 !important; /* flatter like in image */
@@ -287,19 +295,19 @@ export const HowWeWork: React.FC = () => {
 .card-1 {
   position: absolute;
   top: 10% !important;
-  right: 65% !important;
+  right: 70% !important;
 }
 
 .card-2 {
   position: absolute;
   top: 199% !important;
-  right: 38% !important;
+  right: 49% !important;
 }
 
 .card-3 {
   position: absolute;
   top: 404% !important;
-  left: 32% !important;
+  left: 44% !important;
 }
 
 .card-4 {
@@ -329,7 +337,7 @@ export const HowWeWork: React.FC = () => {
           .card {
             max-width: 150px !important;
             overflow: visible !important;
-            border-radius: 0px !important;
+            border-radius: 10px !important;
             padding: 1.2rem !important;
             top: -5px !important;
             aspect-ratio: 1.6/1 !important; /* flatter like in image */
@@ -382,13 +390,13 @@ export const HowWeWork: React.FC = () => {
 .card-2 {
   position: absolute;
   top: 185% !important;
-  right: 33% !important;
+  right: 43% !important;
 }
 
 .card-3 {
   position: absolute;
   top: 364% !important;
-  left: 25% !important;
+  left: 44% !important;
 }
 
 .card-4 {
@@ -417,7 +425,7 @@ export const HowWeWork: React.FC = () => {
           .card {
             max-width: 120px !important;
             overflow: visible !important;
-            border-radius: 0px !important;
+            border-radius: 10px !important;
             padding: 1.2rem !important;
             top: -65px !important;
             aspect-ratio: 1.6/1 !important; /* flatter like in image */
@@ -433,7 +441,7 @@ export const HowWeWork: React.FC = () => {
             margin-bottom: 0.45rem !important;
           }
           .Cardrounded{
-            border-radius: 4px !important;
+            border-radius: 14px !important;
           }
           .card-title {
             font-size: 0.48rem !important;
@@ -467,13 +475,13 @@ export const HowWeWork: React.FC = () => {
 .card-2 {
   position: absolute;
   top: 185% !important;
-  right: 29% !important;
+  right: 41% !important;
 }
 
 .card-3 {
   position: absolute;
   top: 364% !important;
-  left: 22% !important;
+  left: 44% !important;
 }
 
 .card-4 {
