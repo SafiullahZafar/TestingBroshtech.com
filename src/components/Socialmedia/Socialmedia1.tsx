@@ -1,5 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+const Skeleton = () => (
+  <div className="absolute inset-0 z-0 bg-[#111] overflow-hidden">
+    <motion.div
+      className="w-full h-full"
+      style={{
+        background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+      }}
+      initial={{ x: "-100%" }}
+      animate={{ x: "100%" }}
+      transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+    />
+  </div>
+);
 
 const SocialMedia1: React.FC = () => {
   // Array of your 6 images from the public folder
@@ -11,6 +25,13 @@ const SocialMedia1: React.FC = () => {
     "/socialmedia1(5).png",
     "/socialmedia1(6).png",
   ];
+
+  // Track loaded state so skeleton disappears when image is loaded
+  const [loaded, setLoaded] = useState<Record<number, boolean>>({});
+
+  const handleLoad = (index: number) => {
+    setLoaded((prev) => ({ ...prev, [index]: true }));
+  };
 
   return (
     <div className="min-h-screen bg-black text-white font-sans selection:bg-[#0d7411]">
@@ -51,10 +72,18 @@ const SocialMedia1: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="relative aspect-[4/5] overflow-hidden bg-[#111] border border-white/5 group"
             >
+              {/* Skeleton / placeholder */}
+              <AnimatePresence>
+                {!loaded[index] && <Skeleton />}
+              </AnimatePresence>
+
               <img
                 src={src}
                 alt={`Social Media Work ${index + 1}`}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                onLoad={() => handleLoad(index)}
+                className={`w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 ${
+                  loaded[index] ? "opacity-100" : "opacity-0"
+                }`}
               />
               
               {/* Subtle Overlay on Hover */}
@@ -70,15 +99,14 @@ const SocialMedia1: React.FC = () => {
 
       {/* FOOTER CALL TO ACTION */}
       <div className="py-20 text-center border-t border-white/5">
-      <a href="/portfolio">
-        <button    
-          className="px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-[#0d7411] hover:text-white transition-all duration-300 rounded-sm"
-        >
-          Let's start
-        </button>
+        <a href="/portfolio">
+          <button     
+            className="px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-[#0d7411] hover:text-white transition-all duration-300 rounded-sm"
+          >
+            Let's start
+          </button>
         </a>
       </div>
-
     </div>
   );
 };

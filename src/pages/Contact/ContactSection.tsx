@@ -22,11 +22,11 @@ const ContactComponent: React.FC = () => {
   };
 
   return (
-    <div className="relative min-h-screen Tops lg:h-[880px] w-full bg-black text-[#D9D9D9] flex items-center justify-center px-4 md:px-8 py-10 overflow-hidden font-sans"
+    <div className="relative min-h-screen lg:h-[880px] w-full bg-black text-[#D9D9D9] flex items-center justify-center px-4 md:px-8 py-16 overflow-hidden font-sans"
       style={{ fontFamily: 'Inter, sans-serif' }}>
 
       {/* Background Text */}
-      <div className="absolute lg:top-[123px] w-full md:w-[74vw] flex justify-center pointer-events-none">
+      <div className="absolute hidden sm:block lg:top-[123px] w-full md:w-[74vw] flex justify-center pointer-events-none">
             <img src="/contact.png" alt="contact" />
       </div>
 
@@ -227,13 +227,5 @@ const ContactComponent: React.FC = () => {
     </div>
   );
 };
-<style>{`
-  @media (max-width: 768px) {
-    .Tops {
-      top: 80px !important;
-      position: relative !important;
-    }
-  }
-`}</style>
 
 export default ContactComponent;

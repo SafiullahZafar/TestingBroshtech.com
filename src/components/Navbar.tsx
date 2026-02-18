@@ -99,7 +99,7 @@ export const Navbar = () => {
           className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{
             backgroundColor: isDesktop
-              ? "#ffffff42"
+              ? "rgba(30, 30, 30, 0.5)"
               : "rgba(30, 30, 30, 0.85)",
             fontFamily: "Inter, sans-serif",
           }}
@@ -159,7 +159,7 @@ export const Navbar = () => {
       <style>{`
         @media (max-width: 767px) {
           .nav-bar {
-            background-color: rgba(255, 255, 255, 0.2) !important;
+            background-color: rgba(30, 30, 30, 0.5) !important;
             top: 10px !important;
             position:relative !important;
             border-radius: 10px !important;
