@@ -10,10 +10,13 @@ import Portfolio from './pages/Portgfolio/Portfolio';
 import Branding1 from './components/Branding/Branding1';
 import SocialMedia1 from './components/Socialmedia/Socialmedia1';
 import SCROOLToTop from './components/ScrollToTop';
+import Branding2 from './components/Branding/Branding2';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
     <>
+      <Toaster position="top-right" />
       <Navbar />
       <SCROOLToTop />
       <Routes>
@@ -22,6 +25,7 @@ function App() {
         <Route path="/founder" element={<TeamMain />} />
         <Route path="/contact" element={<ContactComponent />} />
         <Route path="/branding1" element={<Branding1 />} />
+        <Route path="/branding2" element={<Branding2 />} />
         <Route path="/socialmedia1" element={<SocialMedia1 />} />
       </Routes>
 

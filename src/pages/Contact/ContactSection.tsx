@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import toast from "react-hot-toast";
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   EnvelopeIcon,
@@ -14,6 +15,7 @@ type Section = 'email' | 'call' | 'location';
 const ContactComponent: React.FC = () => {
   const [activeTab, setActiveTab] = useState<Section>('email');
   const [showInfo, setShowInfo] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const tabVariants = {
     initial: { opacity: 0, y: 10 },
@@ -21,6 +23,29 @@ const ContactComponent: React.FC = () => {
     exit: { opacity: 0, y: -10 }
   };
 
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    await fetch("https://formspree.io/f/mnjbpgvo", {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    formRef.current?.reset();
+
+    toast.success("Message Sent Successfully ");
+
+  } catch (error) {
+    toast.error("Something went wrong ");
+  }
+};
   return (
     <div className="relative min-h-screen lg:h-[880px] w-full bg-black text-[#D9D9D9] flex items-center justify-center px-4 md:px-8 py-16 overflow-hidden font-sans"
       style={{ fontFamily: 'Inter, sans-serif' }}>
@@ -100,47 +125,67 @@ const ContactComponent: React.FC = () => {
             <AnimatePresence mode="wait">
 
               {/* EMAIL */}
-              {activeTab === 'email' && (
-                <motion.div
-                  key="email"
-                  {...tabVariants}
-                  transition={{ duration: 0.4 }}
-                  className="flex flex-col gap-5 text-white font-medium"
-                >
-                  {[
-                    { label: 'Name', placeholder: 'John Doe', type: 'text' },
-                    { label: 'Email', placeholder: 'example@gmail.com', type: 'email' }
-                  ].map((field) => (
-                    <div key={field.label} className="flex flex-col gap-1">
-                      <label className="text-[13px] tracking-widest font-semibold"
-                        style={{ fontFamily: 'Inter, sans-serif' }}>
-                        {field.label}
-                      </label>
-                      <input
-                        type={field.type}
-                        placeholder={field.placeholder}
-                        className="w-full p-3 py-4 md:top-2.25 relative rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm outline-none"
-                        style={{ fontFamily: 'Inter, sans-serif' }}
-                      />
-                    </div>
-                  ))}
+         {activeTab === 'email' && (
+<motion.form
+  ref={formRef}
+  onSubmit={handleSubmit}
+  key="email"
+  {...tabVariants}
+  transition={{ duration: 0.4 }}
+  className="flex flex-col gap-5 text-white font-medium"
+>
 
-                  <div className="flex flex-col gap-1">
-                    <label className="text-[13px] tracking-widest text-white font-medium"
-                      style={{ fontFamily: 'Inter, sans-serif' }}>
-                      Message
-                    </label>
-                    <textarea
-                      placeholder="Write your message here..."
-                      className="w-full h-32 p-3 relative md:top-2.25 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm resize-none outline-none"
-                    />
-                  </div>
+    {/* Name */}
+    <div className="flex flex-col gap-1">
+      <label className="text-[13px] tracking-widest font-semibold">
+        Name
+      </label>
+      <input
+        type="text"
+        name="name"
+        required
+        placeholder="John Doe"
+        className="w-full p-3 py-4 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm outline-none"
+      />
+    </div>
 
-                  <button className="w-full bg-white text-black py-4 relative md:top-2.25 hover:cursor-pointer hover:bg-[#aeaeae] hover:text-white rounded-[10px] font-medium text-sm">
-                    Send Message
-                  </button>
-                </motion.div>
-              )}
+    {/* Email */}
+    <div className="flex flex-col gap-1">
+      <label className="text-[13px] tracking-widest font-semibold">
+        Email
+      </label>
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="example@gmail.com"
+        className="w-full p-3 py-4 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm outline-none"
+      />
+    </div>
+
+    {/* Message */}
+    <div className="flex flex-col gap-1">
+      <label className="text-[13px] tracking-widest font-medium">
+        Message
+      </label>
+      <textarea
+        name="message"
+        required
+        placeholder="Write your message here..."
+        className="w-full h-32 p-3 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm resize-none outline-none"
+      />
+    </div>
+
+    <button
+      type="submit"
+      className="w-full bg-white text-black py-4 hover:bg-[#aeaeae] hover:text-white rounded-[10px] font-medium text-sm transition"
+    >
+      Send Message
+    </button>
+
+  </motion.form>
+)}
+
 
               {/* CALL */}
               {activeTab === 'call' && (
