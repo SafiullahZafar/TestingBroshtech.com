@@ -9,8 +9,8 @@ type BrandingProject = {
 };
 
 const brandingData: BrandingProject[] = [
-  { id: 1, title: "Backlot", subTitle: "Brand Design", image: "/branding1.png", path: "/branding1" },
-  { id: 2, title: "Dome AI", subTitle: "Brand Design", image: "/branding2.jpg", path: "/branding2" },
+  { id: 1, title: "Bean Bar", subTitle: "Brand Design", image: "/branding1.png", path: "/branding1" },
+  { id: 2, title: "Rang Raz", subTitle: "Brand Design", image: "/branding2(8).webp", path: "/branding2" },
   { id: 3, title: "Sargodha", subTitle: "Brand Design", image: "/branding3.jpg", path: "/branding3" },
 ];
 
@@ -39,12 +39,12 @@ const Branding: React.FC = () => {
 
               {/* Project Text */}
               <div className="absolute bottom-0 left-0 w-full p-10 md:p-14">
-                <h3 className="text-white text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-none mb-2">
+                <h3 className="text-white text-4xl md:text-5xl lg:text-5xl font-black uppercase tracking-tighter leading-none mb-2">
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-3">
                   <span className="w-12 h-[2px] bg-[#0d7411]"></span>
-                  <p className="text-[#0d7411] text-xl md:text-2xl font-bold uppercase tracking-widest">
+                  <p className="text-[#0d7411] text-xl md:text-xl font-bold uppercase tracking-widest">
                     {project.subTitle}
                   </p>
                 </div>

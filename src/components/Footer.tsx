@@ -58,10 +58,10 @@ export const Footer = () => {
                 <div className="flex flex-col items-start">
                   <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Services</h3>
                   <ul className="space-y-3 text-base md:text-xl text-gray-200">
-                    <li><a href="/branding1" className="hover:text-[#0B6E4F] transition-colors">Branding</a></li>
-                    <li><a href="/socialmedia1" className="hover:text-[#0B6E4F] transition-colors">Marketing</a></li>
-                    <li><a href="/uiux" className="hover:text-[#0B6E4F] transition-colors">UI / UX</a></li>
-                    <li><a href="/webdevelopment" className="hover:text-[#0B6E4F] transition-colors">Web Dev</a></li>
+                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Branding</a></li>
+                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Marketing</a></li>
+                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">UI / UX</a></li>
+                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Web Dev</a></li>
                   </ul>
                 </div>
 

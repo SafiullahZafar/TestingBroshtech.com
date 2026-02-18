@@ -7,7 +7,8 @@ const Skeleton = () => (
     <motion.div
       className="w-full h-full"
       style={{
-        background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
+        background:
+          "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)",
       }}
       initial={{ x: "-100%" }}
       animate={{ x: "100%" }}
@@ -17,12 +18,11 @@ const Skeleton = () => (
 );
 
 const Branding2: React.FC = () => {
-  // Array updated for branding2(1) through branding2(8)
   const images = [
     "/branding2(1).webp",
-    "/branding2(2).webp",
-    "/branding2(3).webp",
-    "/branding2(4).webp",
+    "/branding2(2).jpeg",
+    "/branding2(3).png", // Image 3
+    "/branding2(4).png", // Image 4
     "/branding2(5).webp",
     "/branding2(6).webp",
     "/branding2(7).webp",
@@ -35,61 +35,67 @@ const Branding2: React.FC = () => {
     setLoaded((prev) => ({ ...prev, [index]: true }));
   };
 
+  const renderImageBlock = (
+    src: string,
+    index: number,
+    isHalf: boolean = false
+  ) => {
+    const isAboveFold = index < 2;
+
+    return (
+      <motion.div
+        key={index}
+        initial={isAboveFold ? { opacity: 1 } : { opacity: 0, y: 15 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "200px" }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className={`img-wrapper p-0 m-0 leading-[0] overflow-hidden relative ${
+          isHalf ? "responsive-half" : "w-full"
+        }`}
+      >
+        <AnimatePresence>
+          {!loaded[index] && <Skeleton />}
+        </AnimatePresence>
+
+        <img
+          src={src}
+          onLoad={() => handleLoad(index)}
+          className={`block border-none branding-img transition-opacity duration-1000 ${
+            loaded[index] ? "opacity-100" : "opacity-0"
+          }`}
+          alt={`Branding Section ${index + 1}`}
+          loading={isAboveFold ? "eager" : "lazy"}
+          fetchPriority={isAboveFold ? "high" : "low"}
+          decoding={isAboveFold ? "sync" : "async"}
+        />
+      </motion.div>
+    );
+  };
+
   return (
     <div className="w-full bg-black min-h-screen branding-page-container overflow-x-hidden">
-      {/* 1. PRELOAD CRITICAL IMAGES (First 2 for instant load) */}
       {images.slice(0, 2).map((src) => (
         <link key={src} rel="preload" as="image" href={src} />
       ))}
 
-      {/* TOP DECORATIVE BAR */}
-      {/* <div className="w-full h-[60px] md:h-[50px] flex">
-        <div className="w-1/2 h-full bg-[#7a0006]"></div> 
-        <div className="w-1/2 h-full bg-[#fbefdb]"></div>
-      </div> */}
-
       <div className="flex flex-col w-full p-0 m-0 gap-0">
-        {/* SEQUENTIAL VERTICAL LAYOUT (1 to 8) */}
-        {images.map((src, index) => {
-          // Images 1 and 2 are usually "above the fold"
-          const isAboveFold = index < 2;
-          
-          return (
-            <motion.div
-              key={index}
-              initial={isAboveFold ? { opacity: 1 } : { opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "200px" }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="img-wrapper w-full p-0 m-0 leading-[0] overflow-hidden relative"
-            >
-              {/* SHIMMER/SKELETON placeholder */}
-              <AnimatePresence>
-                {!loaded[index] && <Skeleton />}
-              </AnimatePresence>
+        {renderImageBlock(images[0], 0)}
+        {renderImageBlock(images[1], 1)}
 
-              <img 
-                src={src} 
-                onLoad={() => handleLoad(index)}
-                className={`w-full h-auto block border-none branding-img transition-opacity duration-1000 ${
-                  loaded[index] ? "opacity-100" : "opacity-0"
-                }`} 
-                alt={`Branding Section ${index + 1}`} 
-                loading={isAboveFold ? "eager" : "lazy"}
-                fetchPriority={isAboveFold ? "high" : "low"}
-                decoding={isAboveFold ? "sync" : "async"}
-              />
-            </motion.div>
-          );
-        })}
+        {/* RESPONSIVE CONTAINER: Stack on mobile, Side-by-side on Desktop */}
+        <div className="flex flex-col md:flex-row w-full p-0 m-0 items-stretch half-parent">
+          {renderImageBlock(images[2], 2, true)}
+          {renderImageBlock(images[3], 3, true)}
+        </div>
+
+        {images.slice(4).map((src, idx) =>
+          renderImageBlock(src, idx + 4)
+        )}
       </div>
 
-      {/* FOOTER BUTTON */}
       <div className="pt-32 pb-24 flex flex-col items-center justify-center bg-black">
         <a href="/portfolio">
-          <button 
-            className="group relative overflow-hidden text-white border border-white/20 px-12 py-5 rounded-full transition-all duration-500 md:hover:border-white"
-          >
+          <button className="group relative overflow-hidden text-white border border-white/20 px-12 py-5 rounded-full transition-all duration-500 md:hover:border-white">
             <span className="relative z-10 uppercase tracking-[0.3em] font-bold text-sm">
               Back To Portfolio
             </span>
@@ -108,17 +114,43 @@ const Branding2: React.FC = () => {
         .branding-img {
           display: block !important;
           border: none !important;
-          background-color: black; 
+          background-color: black;
           width: 100%;
-          /* Removes tiny white-space gaps between images */
-          margin-bottom: -1px; 
+          margin-bottom: -1px;
         }
 
         .img-wrapper {
           background-color: #000;
-          /* Fixed min-height so skeletons show properly before image loads */
-          min-height: 200px; 
+          min-height: 200px;
           width: 100%;
+        }
+
+        /* Responsive Logic for Images 3 & 4 */
+        .responsive-half {
+          width: 100%; /* Default mobile: Full Width */
+        }
+
+        @media (min-width: 768px) {
+          .half-parent {
+            height: 75vh; /* Desktop Height for the side-by-side section */
+          }
+          .responsive-half {
+            width: 50% !important; /* Desktop: Half Width */
+            height: 100%;
+          }
+          .responsive-half img {
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        @media (max-width: 767px) {
+          .half-parent {
+            height: auto;
+          }
+          .responsive-half {
+            height: auto;
+          }
         }
 
         @media (min-width: 768px) {
