@@ -1,4 +1,5 @@
 import { useState, type FC } from "react"
+import { Link } from "react-router-dom";
 
 const Home: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -55,7 +56,7 @@ onMouseLeave={handleMouseLeave}
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            Hi i’am brosh
+            Hi I’am Brosh
             <span className="block">Your Web & Software</span>
             <span className="block">Builder</span>
           </h1>
@@ -135,39 +136,31 @@ onMouseLeave={handleMouseLeave}
   {/* --- Floating Labels Start --- */}
   
   {/* Top Left Label */}
-  <div
-  className="absolute top-[30%] left-[-5%] z-10"
-  style={getStyle(40)}
-><a href="/portfolio">
+ <div className="absolute top-[30%] left-[-5%] z-10" style={getStyle(40)}>
+  <Link to="/portfolio" state={{ category: "Web Design" }}>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Web Development
     </span>
-    </a>
-  </div>
+  </Link>
+</div>
 
-  {/* Middle Left Label */}
-  <div
-  className="absolute bottom-[20%] left-[2%] z-10"
-  style={getStyle(-60)}
-> <a href="/portfolio">
+{/* Middle Left Label */}
+<div className="absolute bottom-[20%] left-[2%] z-10" style={getStyle(-60)}>
+  <Link to="/portfolio" state={{ category: "Social Media" }}>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Social Media
     </span>
-    </a>
-  </div>
+  </Link>
+</div>
 
-  {/* Right Side Label */}
-  <div
-  className="absolute top-[50%] right-[9%] z-10"
-  style={getStyle(30)}
->
-  <a href="/portfolio">
+{/* Right Side Label */}
+<div className="absolute top-[50%] right-[9%] z-10" style={getStyle(30)}>
+  <Link to="/portfolio" state={{ category: "Branding" }}>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Branding
     </span>
-    </a>
-  </div>
-
+  </Link>
+</div>
   {/* --- Video Component --- */}
   <video
     src="/character animation final_2.mp4"

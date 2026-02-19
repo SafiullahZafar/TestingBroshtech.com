@@ -21,10 +21,10 @@ export const Footer = () => {
               
               {/* Left - Have a project? - FIXED ALIGNMENT */}
               <div className="md:col-span-4 flex flex-col items-start"> {/* Changed from items-center to start for consistency */}
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-1">Have a project?</h1>
-                <h1 className="text-4xl md:text-5xl font-bold leading-tight text-white mb-8">Let's start.</h1>
+                <h1 className="text-4xl md:text-[42px] lg:w-92 font-medium leading-tight text-white mb-1">Have a project?</h1>
+                <h1 className="text-4xl md:text-[42px] font-bold leading-tight text-white mb-8">Let's start.</h1>
 
-                <div className="w-32 h-0.5 bg-white mb-8"></div>
+                <div className="w-32 md:w-54 h-0.5 md:-top-6 md:relative bg-white mb-8"></div>
 
                 <div className="w-full max-w-md relative">
                   <input
@@ -41,11 +41,11 @@ export const Footer = () => {
               </div>
 
               {/* Right Section */}
-              <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-x-5 md:gap-x-10 gap-y-14 md:gap-12">
+              <div className="md:col-span-8 grid grid-cols-2 lg:left-13 lg:top-2.75 md:relative md:grid-cols-3 gap-x-5 md:gap-x-10 gap-y-14 md:gap-12">
                 
                 {/* Explore */}
-                <div className="flex flex-col items-start">
-                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Explore</h3>
+                <div className="flex lg:relative lg:left-1.25 flex-col items-start">
+                  <h3 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Explore</h3>
                   <ul className="space-y-3 text-base md:text-xl text-gray-200">
                     <li><a href="/" className="hover:text-[#0B6E4F] transition-colors">Home</a></li>
                     <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Portfolio</a></li>
@@ -56,26 +56,26 @@ export const Footer = () => {
 
                 {/* Services */}
                 <div className="flex flex-col items-start">
-                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Services</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Services</h3>
                   <ul className="space-y-3 text-base md:text-xl text-gray-200">
-                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Branding</a></li>
-                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Marketing</a></li>
-                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">UI / UX</a></li>
-                    <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Web Dev</a></li>
+                    <li><a href="/portfolio?category=Branding" className="hover:text-[#0B6E4F] transition-colors">Branding</a></li>
+                    <li><a href="/portfolio?category=Social%20Media" className="hover:text-[#0B6E4F] transition-colors">Social Media</a></li>
+                    <li><a href="/portfolio?category=Ui/Ux%20Designing" className="hover:text-[#0B6E4F] transition-colors">UI / UX Designing</a></li>
+                    <li><a href="/portfolio?category=Web%20Development" className="hover:text-[#0B6E4F] transition-colors">Web Development</a></li>
                   </ul>
                 </div>
 
                 {/* Quick Links - VISUALLY BALANCED */}
                 <div className="col-span-2 md:col-span-1 flex flex-col items-start">
-                  <h3 className="text-xl md:text-3xl font-semibold uppercase mb-6 text-white">Quick Links</h3>
+                  <h3 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Quick Links</h3>
                   <div className="flex gap-6 md:gap-5 items-center">
-                    <a href="#" className="hover:scale-110 transition-transform">
+                    <a href="https://www.facebook.com/p/BroshTech-61569795868977/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
                       <FaFacebookSquare className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
-                    <a href="#" className="hover:scale-110 transition-transform">
+                    <a href="https://pk.linkedin.com/company/broshtech" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
                       <FaLinkedin className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
-                    <a href="#" className="hover:scale-110 transition-transform">
+                    <a href="https://www.instagram.com/broshtech/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
                       <FaSquareInstagram className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
                   </div>

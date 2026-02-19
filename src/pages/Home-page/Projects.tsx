@@ -188,7 +188,7 @@ export const Projects: React.FC = () => {
       {/* ICON STRIP */}
       <div
         ref={scrollRef}
-        className="flex flex-nowrap iconwidth overflow-x-scroll px-2 max-w-[925px] w-full icon-strip"
+        className="flex flex-nowrap iconwidth overflow-x-scroll px-2 w-full icon-strip"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",

@@ -34,9 +34,9 @@ export const HowWeWork: React.FC = () => {
 
 const getMarginTop = (index: number) => {
   switch (index) {
-    case 1: return "md:mt-[60px]";
-    case 2: return "md:mt-[120px]";
-    case 3: return "md:mt-[180px]";
+    case 1: return "md:mt-[100px]";
+    case 2: return "md:mt-[190px]";
+    case 3: return "md:mt-[290px]";
     default: return "md:mt-0";
   }
 };
@@ -53,37 +53,56 @@ const getMarginTop = (index: number) => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    gsap.set(cardsRef.current, { opacity: 0, y: 120 });
+    const isDesktop = window.innerWidth >= 768;
 
-    const tl = gsap.timeline({
-      paused: true,
-      defaults: { duration: 1.2, ease: "power3.out" },
-    });
+    if (isDesktop) {
+      // Desktop: keyframes-based, appear early (trigger at 95%), smooth
+      cardsRef.current.forEach((card, i) => {
+        if (!card) return;
+        card.classList.remove("howwork-card-visible");
+        whiteGlowRef.current[i]?.classList.remove("howwork-glow-visible");
 
-    cardsRef.current.forEach((card, i) => {
-      tl.to(
-        card,
-        {
-          opacity: 1,
-          y: 0,
-          stagger: 0.3,
-        },
-        i * 0.3
-      ).to(
-        whiteGlowRef.current[i],
-        { opacity: 1, duration: 0.4 },
-        i * 0.3 + 0.8
-      );
-    });
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 95%",
+          end: "top 30%",
+          onEnter: () => {
+            card.classList.add("howwork-card-visible");
+            whiteGlowRef.current[i] && (whiteGlowRef.current[i].classList.add("howwork-glow-visible"));
+          },
+          onLeaveBack: () => {
+            card.classList.remove("howwork-card-visible");
+            whiteGlowRef.current[i]?.classList.remove("howwork-glow-visible");
+          },
+        });
+      });
+    } else {
+      // Mobile: unchanged - original GSAP animation
+      gsap.set(cardsRef.current, { opacity: 0, y: 120 });
 
-    ScrollTrigger.create({
-      trigger: containerRef.current,
-      start: "top 80%",
-      onEnter: () => tl.play(),
-      onLeaveBack: () => tl.reverse(),
-    });
+      cardsRef.current.forEach((card, i) => {
+        if (!card) return;
+        ScrollTrigger.create({
+          trigger: card,
+          start: "top 85%",
+          onEnter: () => {
+            const tl = gsap.timeline();
+            tl.to(card, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0)
+              .to(whiteGlowRef.current[i], { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.6);
+          },
+          onLeaveBack: () => {
+            gsap.set(card, { opacity: 0, y: 120 });
+            gsap.set(whiteGlowRef.current[i], { opacity: 0 });
+          },
+        });
+      });
+    }
+
+    const handleResize = () => ScrollTrigger.refresh();
+    window.addEventListener("resize", handleResize);
 
     return () => {
+      window.removeEventListener("resize", handleResize);
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
@@ -94,7 +113,7 @@ const getMarginTop = (index: number) => {
       <div className="w-full">
         <div
           ref={containerRef}
-          className="w-full min-h-screen bg-black flex flex-col items-center px-4 overflow-visible py-16"
+          className="w-full min-h-screen md:min-h-[75vh] bg-black flex flex-col items-center px-4 overflow-visible py-16 md:py-12 md:pt-10"
         >
 
           {/* Header (always visible) */}
@@ -110,7 +129,7 @@ const getMarginTop = (index: number) => {
           </div>
 
           {/* Cards Container */}
-          <div className="relative flex flex-col lg:flex-row items-start lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8 cards-container">
+          <div className="relative flex flex-col lg:flex-row items-start lg:items-start justify-center gap-4 lg:gap-6 max-w-[1300px] w-full h-full mt-8 md:mt-4 cards-container">
             {boxData.map((box, i) => (
               <div
                 key={i}
@@ -153,6 +172,40 @@ const getMarginTop = (index: number) => {
 
       {/* Custom CSS */}
       <style>{`
+        @keyframes howworkCardSlideUp {
+          0% {
+            opacity: 0;
+            transform: translateY(80px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        @keyframes howworkGlowFade {
+          0% {
+            opacity: 0;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+        @media (min-width: 768px) {
+          .card:not(.howwork-card-visible) {
+            opacity: 0;
+            transform: translateY(80px);
+          }
+          .card.howwork-card-visible {
+            animation: howworkCardSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+          }
+          .glow:not(.howwork-glow-visible) {
+            opacity: 0;
+          }
+          .glow.howwork-glow-visible {
+            animation: howworkGlowFade 0.6s 0.3s ease-out forwards;
+          }
+        }
+
         @media (max-width: 777px) {
           /* Vertical stack for mobile */
           .cards-container {

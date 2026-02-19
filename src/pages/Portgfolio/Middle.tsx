@@ -2,8 +2,9 @@ import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Branding from "./Branding";
 import SocialMedia from "./SocialMedia";
-import Photography from "./UIUx";
-import Webdesign from "./Webdesign";
+import UIUx from "./UIUx";
+import WebDevelopment from "./WebDevelopment";
+ "./WebDevelopment";
 
 type MiddlePortfolioProps = {
   activeCategory: string;
@@ -29,13 +30,13 @@ const MiddlePortfolio: React.FC<MiddlePortfolioProps> = ({ activeCategory }) => 
               initial="initial"
               animate="animate"
               exit="exit"
-              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }} // Professional "Cubic Bezier" ease
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col gap-2"
             >
               <Branding />
               <SocialMedia />
-              <Photography />
-              <Webdesign />
+              <UIUx />
+              <WebDevelopment />
             </motion.div>
           )}
 
@@ -67,31 +68,31 @@ const MiddlePortfolio: React.FC<MiddlePortfolioProps> = ({ activeCategory }) => 
             </motion.div>
           )}
 
-          {/* PHOTOGRAPHY */}
-          {activeCategory === "Photography" && (
+          {/* UI/UX DESIGNING */}
+          {activeCategory === "Ui/Ux Designing" && (
             <motion.div
-              key="photo"
+              key="uiux"
               variants={slideUpVariants}
               initial="initial"
               animate="animate"
               exit="exit"
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <Photography />
+              <UIUx />
             </motion.div>
           )}
 
-          {/* WEB DESIGN */}
-          {activeCategory === "Web Design" && (
+          {/* WEB DEVELOPMENT */}
+          {activeCategory === "Web Development" && (
             <motion.div
-              key="web"
+              key="webdev"
               variants={slideUpVariants}
               initial="initial"
               animate="animate"
               exit="exit"
               transition={{ duration: 0.5, ease: "easeOut" }}
             >
-              <Webdesign />
+              <WebDevelopment />
             </motion.div>
           )}
         </AnimatePresence>

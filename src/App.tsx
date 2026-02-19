@@ -10,6 +10,7 @@ import Portfolio from './pages/Portgfolio/Portfolio';
 import Branding1 from './components/Branding/Branding1';
 import SocialMedia1 from './components/Socialmedia/Socialmedia1';
 import SCROOLToTop from './components/ScrollToTop';
+import CustomCursor from './components/CustomCursor';
 import Branding2 from './components/Branding/Branding2';
 import { Toaster } from 'react-hot-toast';
 
@@ -19,6 +20,7 @@ function App() {
       <Toaster position="top-right" />
       <Navbar />
       <SCROOLToTop />
+      <CustomCursor />
       <Routes>
         <Route path="/" element={<Homemain />} />
         <Route path="/portfolio" element={< Portfolio/>} />

@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const styles = ` 
   .menu-item {
-    cursor: pointer;
+    // cursor: pointer;
     padding: 0.5rem 1rem;
     border-radius: 0.75rem;
     transition: all 0.3s ease;
@@ -15,7 +15,7 @@ const styles = `
   }
 
   .mobile-menu-item {
-    cursor: pointer;
+    // cursor: pointer;
     width: 100%;
     padding: 0.5rem 1rem;
     border-radius: 0.75rem;

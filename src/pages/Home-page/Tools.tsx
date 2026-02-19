@@ -18,7 +18,6 @@ export const Tools: React.FC = () => {
   const textsRef = useRef<HTMLDivElement[]>([]);
   const titlesRef = useRef<HTMLHeadingElement[]>([]);
   const pinwrapsectionRef = useRef<HTMLDivElement | null>(null);
-  const isMobile = window.innerWidth <= 768;
   const getPosition = (i: number, current: number, total: number) => {
     let diff = i - current;
     diff = (diff % total + total) % total;
@@ -156,107 +155,141 @@ fontSize: (
 ) * scaleFactor
 };
 };
-  useEffect(() => {
-    if (!sectionRef.current) return;
+ useEffect(() => {
+  if (!sectionRef.current) return;
+
+  let ctx = gsap.context(() => {
 
     const calculateScaleFactor = () => {
-  if (window.innerWidth <= 480) return 0.65; // small phones
-  if (window.innerWidth <= 768) return 0.8;  // tablets
-  return 1; // desktop (UNCHANGED)
-};
-
+      if (window.innerWidth <= 480) return 0.65;
+      if (window.innerWidth <= 768) return 0.8;
+      return 1;
+    };
 
     let scaleFactor = calculateScaleFactor();
-
-    const handleResize = () => {
-      scaleFactor = calculateScaleFactor();
-      ScrollTrigger.refresh();
-    };
-
-    window.addEventListener('resize', handleResize);
-
-    iconsRef.current.forEach((icon, i) => {
-      const pos = getPosition(i, 0, texts.length);
-      const props = getIconProps(pos, scaleFactor);
-      gsap.set(icon, props);
-    });
-    textsRef.current.forEach((text, i) => {
-      const pos = getPosition(i, 0, texts.length);
-      const props = getTextProps(pos, scaleFactor);
-      gsap.set(text, props);
-    });
-    titlesRef.current.forEach((title, i) => {
-      const pos = getPosition(i, 0, texts.length);
-      const props = getTitleProps(pos, scaleFactor);
-      gsap.set(title, props);
-    });
-    const tl = gsap.timeline();
+    let isMobile = window.innerWidth <= 768;
     const numSteps = texts.length;
-    for (let step = 1; step < numSteps; step++) {
-      iconsRef.current.forEach((icon, i) => {
-        const pos = getPosition(i, step, numSteps);
-        const props = getIconProps(pos, scaleFactor);
-        tl.to(icon, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
-      });
-      textsRef.current.forEach((text, i) => {
-        const pos = getPosition(i, step, numSteps);
-        const props = getTextProps(pos, scaleFactor);
-        tl.to(text, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
-      });
-      titlesRef.current.forEach((title, i) => {
-        const pos = getPosition(i, step, numSteps);
-        const props = getTitleProps(pos, scaleFactor);
-        tl.to(title, { ...props, duration: 1, ease: "power2.inOut" }, step - 1);
-      });
+
+    // INITIAL STATE
+    iconsRef.current.forEach((icon, i) => {
+      const pos = getPosition(i, 0, numSteps);
+      gsap.set(icon, getIconProps(pos, scaleFactor));
+    });
+
+    textsRef.current.forEach((text, i) => {
+      const pos = getPosition(i, 0, numSteps);
+      gsap.set(text, getTextProps(pos, scaleFactor));
+    });
+
+    titlesRef.current.forEach((title, i) => {
+      const pos = getPosition(i, 0, numSteps);
+      gsap.set(title, getTitleProps(pos, scaleFactor));
+    });
+
+    if (!isMobile) {
+
+      const tl = gsap.timeline();
+
+      for (let step = 1; step < numSteps; step++) {
+
+        iconsRef.current.forEach((icon, i) => {
+          const pos = getPosition(i, step, numSteps);
+          tl.to(icon, {
+            ...getIconProps(pos, scaleFactor),
+            duration: 1,
+            ease: "power1.inOut"
+          }, step - 1);
+        });
+
+        textsRef.current.forEach((text, i) => {
+          const pos = getPosition(i, step, numSteps);
+          tl.to(text, {
+            ...getTextProps(pos, scaleFactor),
+            duration: 1,
+            ease: "power1.inOut"
+          }, step - 1);
+        });
+
+        titlesRef.current.forEach((title, i) => {
+          const pos = getPosition(i, step, numSteps);
+          tl.to(title, {
+            ...getTitleProps(pos, scaleFactor),
+            duration: 1,
+            ease: "power1.inOut"
+          }, step - 1);
+        });
+      }
+
+  ScrollTrigger.create({
+  trigger: sectionRef.current,
+  start: "top top",
+  end: `+=${(numSteps - 1) * 250}%`,
+  pin: pinwrapsectionRef.current,
+  scrub: 1,
+  snap: {
+    snapTo: 1 / (numSteps - 1),
+    duration: 0.1,
+    ease: "power1.inOut"
+  },
+  animation: tl,
+  anticipatePin: 1,
+});
+
+    } else {
+
+      let currentStep = 0;
+
+      const rotateItems = () => {
+        currentStep = (currentStep + 1) % numSteps;
+
+        iconsRef.current.forEach((icon, i) => {
+          const pos = getPosition(i, currentStep, numSteps);
+          gsap.to(icon, {
+            ...getIconProps(pos, scaleFactor),
+            duration: 0.8,
+            ease: "power1.inOut"
+          });
+        });
+
+        textsRef.current.forEach((text, i) => {
+          const pos = getPosition(i, currentStep, numSteps);
+          gsap.to(text, {
+            ...getTextProps(pos, scaleFactor),
+            duration: 0.8,
+            ease: "power1.inOut"
+          });
+        });
+
+        titlesRef.current.forEach((title, i) => {
+          const pos = getPosition(i, currentStep, numSteps);
+          gsap.to(title, {
+            ...getTitleProps(pos, scaleFactor),
+            duration: 0.8,
+            ease: "power1.inOut"
+          });
+        });
+      };
+
+      const interval = setInterval(rotateItems, 2500);
+
+      return () => clearInterval(interval);
     }
 
- if (!isMobile) {
-  ScrollTrigger.create({
-    trigger: sectionRef.current,
-    start: "top top",
-    end: `+=${(numSteps - 1) * 100}%`,
-    pin: pinwrapsectionRef.current,
-    scrub: 1,
-    snap: 1 / (numSteps - 1),
-    animation: tl,
-    anticipatePin: 1,
-  });
-}
-if (isMobile) {
-  let currentStep = 0;
+  }, sectionRef);
 
-  const rotateItems = () => {
-    currentStep = (currentStep + 1) % numSteps;
-
-    iconsRef.current.forEach((icon, i) => {
-      const pos = getPosition(i, currentStep, numSteps);
-      const props = getIconProps(pos, scaleFactor);
-      gsap.to(icon, { ...props, duration: 0.8, ease: "power2.inOut" });
-    });
-
-    textsRef.current.forEach((text, i) => {
-      const pos = getPosition(i, currentStep, numSteps);
-      const props = getTextProps(pos, scaleFactor);
-      gsap.to(text, { ...props, duration: 0.8, ease: "power2.inOut" });
-    });
-
-    titlesRef.current.forEach((title, i) => {
-      const pos = getPosition(i, currentStep, numSteps);
-      const props = getTitleProps(pos, scaleFactor);
-      gsap.to(title, { ...props, duration: 0.8, ease: "power2.inOut" });
-    });
+  const handleResize = () => {
+    ScrollTrigger.refresh();
   };
 
-  const interval = setInterval(rotateItems, 2500); // change every 2.5 sec
+  window.addEventListener("resize", handleResize);
 
-  return () => clearInterval(interval);
-}
+  return () => {
+    ctx.revert();
+    window.removeEventListener("resize", handleResize);
+  };
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []); 
+}, []);
+
   
   return (
     <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black overflow-hidden py-12 sm:py-16">
