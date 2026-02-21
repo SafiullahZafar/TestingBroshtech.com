@@ -62,7 +62,7 @@ onMouseLeave={handleMouseLeave}
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-start z-30 lg:justify-start mt-1 lg:-space-x-6 -space-x-2 stars">
+          <div className="flex justify-start z-30 lg:right-1 lg:relative lg:justify-start mt-1 lg:-space-x-7 -space-x-2 stars1 ">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
@@ -137,7 +137,7 @@ onMouseLeave={handleMouseLeave}
   
   {/* Top Left Label */}
  <div className="absolute top-[30%] left-[-5%] z-10" style={getStyle(40)}>
-  <Link to="/portfolio" state={{ category: "Web Design" }}>
+  <Link to="/portfolio" state={{ category: "Web Development" }}>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Web Development
     </span>

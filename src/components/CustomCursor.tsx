@@ -18,7 +18,7 @@ const CustomCursor = () => {
     let outerX = mouseX;
     let outerY = mouseY;
 
-    const trailCount = 10;
+    const trailCount = 7;
     const trails: { x: number; y: number; el: HTMLDivElement }[] = [];
 
     // Create trail elements and append behind cursor
@@ -60,8 +60,8 @@ const CustomCursor = () => {
 
     const animate = () => {
       // Outer lags behind mouse (slower)
-      outerX += (mouseX - outerX) * 0.18;
-      outerY += (mouseY - outerY) * 0.18;
+      outerX += (mouseX - outerX) * 0.30;
+      outerY += (mouseY - outerY) * 0.30;
 
       // Inner (small dot) follows more directly (little smoothing)
       const innerX = mouseX;
@@ -74,7 +74,7 @@ const CustomCursor = () => {
       let prevX = outerX;
       let prevY = outerY;
       trails.forEach((t, i) => {
-        const lerp = 0.18 - i * 0.012; // decreasing lerp so each is slower
+        const lerp = 0.35 - i * 0.02; // decreasing lerp so each is slower
         t.x += (prevX - t.x) * Math.max(0.02, lerp);
         t.y += (prevY - t.y) * Math.max(0.02, lerp);
         const scale = 1 - i / (trailCount * 1.6);

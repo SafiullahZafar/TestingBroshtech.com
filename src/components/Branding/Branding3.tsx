@@ -23,7 +23,7 @@ const Branding3: React.FC = () => {
     "/branding3(2).png",
     "/branding3(3).png",
     "/branding3(5).png",
-    "/branding3(4).png",
+    "/branding3(4).jpeg",
   ];
 
   const [loaded, setLoaded] = useState<Record<number, boolean>>({});
