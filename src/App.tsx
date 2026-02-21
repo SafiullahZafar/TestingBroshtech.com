@@ -13,6 +13,7 @@ import SCROOLToTop from './components/ScrollToTop';
 import CustomCursor from './components/CustomCursor';
 import Branding2 from './components/Branding/Branding2';
 import { Toaster } from 'react-hot-toast';
+import Branding3 from './components/Branding/Branding3';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/contact" element={<ContactComponent />} />
         <Route path="/branding1" element={<Branding1 />} />
         <Route path="/branding2" element={<Branding2 />} />
+        <Route path="/branding3" element={<Branding3 />} />
         <Route path="/socialmedia1" element={<SocialMedia1 />} />
       </Routes>
 

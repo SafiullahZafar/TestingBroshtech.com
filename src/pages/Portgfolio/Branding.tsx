@@ -11,7 +11,7 @@ type BrandingProject = {
 const brandingData: BrandingProject[] = [
   { id: 1, title: "Bean Bar", subTitle: "Brand Design", image: "/branding1.png", path: "/branding1" },
   { id: 2, title: "Rang Raz", subTitle: "Brand Design", image: "/branding2(8).webp", path: "/branding2" },
-  { id: 3, title: "Sargodha", subTitle: "Brand Design", image: "/branding3.jpg", path: "/branding3" },
+  { id: 3, title: "Sargodha", subTitle: "Brand Design", image: "/branding3.png", path: "/branding3" },
 ];
 
 const Branding: React.FC = () => {

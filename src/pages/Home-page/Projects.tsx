@@ -341,8 +341,6 @@ export const Projects: React.FC = () => {
             top: px !important;
             position: relative !important;
           }
-          .iconwidth{
-            width: 72vw !important;}
             .project-img{
             width: 100% !important;}
         }
