@@ -312,7 +312,7 @@ fontSize: (
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
            <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none">
-          <img src="/whathalfcircle.png" alt="Decoration" className="w-[250px] Width sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
+          <img src="/whathalfcircle.png" alt="Decoration" className="w-[250px] Width Right sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
         </div>
             {/* ICONS - always left side */}
             <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
@@ -378,11 +378,37 @@ fontSize: (
           opacity: 0 !important;
           pointer-events: none !important;
         }
+          @media (min-width: 1680px) and (max-width: 1780px) {
+         .Rights{
+            right: 48% !important;
+}
+         .Right{
+            right: 68% !important;
+            }
+}
+          @media (min-width: 1510px) and (max-width: 1680px) {
+         .Rights{
+            right: 42% !important;
+}
+         .Right{
+            right: 55% !important;
+            }
+}
+          @media (min-width: 1380px) and (max-width: 1510px) {
+         .Rights{
+            right: 38% !important;
+}
+         .Right{
+            right: 32% !important;
+            }
+}
+
         @media (max-width: 990px) {
           .Rights{
             right: 31% !important;
       }
         }
+
       @media (max-width: 798px) {
         .Width{
           // width: 1000px !important;}
