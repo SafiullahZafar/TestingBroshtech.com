@@ -297,7 +297,7 @@ fontSize: (
 
         {/* HEADING */}
         <div
-          className="absolute top-3 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
+          className="absolute top-3 -right-5 sm:top-2 sm:right-0 z-20 text-black font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
           style={{
             background: "rgba(12, 55, 33, 1)",
             fontSize: "clamp(1.8rem, 6vw, 3.75rem)",
