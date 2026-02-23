@@ -9,9 +9,9 @@ type WebDevelopmentProject = {
 };
 
 const webDevData: WebDevelopmentProject[] = [
-  { id: 1, title: "Project One", subTitle: "Web Development", image: "/webdevelopment1.jpeg", path: "https://got-dubai.vercel.app/" },
-  { id: 2, title: "Project Two", subTitle: "Web Development", image: "/webdevelopment2.png", path: "https://bareeze-store.vercel.app/" },
-  { id: 3, title: "Project Three", subTitle: "Web Development", image: "/1.png", path: "https://www.waaris.store/" },
+  { id: 1, title: "Dubai Travel", subTitle: "Web Development", image: "/webdevelopment1.jpeg", path: "https://got-dubai.vercel.app/" },
+  { id: 2, title: "Bareeze Fashion", subTitle: "Web Development", image: "/webdevelopment2.png", path: "https://bareeze-store.vercel.app/" },
+  { id: 3, title: "Waaris Clothing", subTitle: "Web Development", image: "/1.png", path: "https://www.waaris.store/" },
 ];
 
 const WebDevelopment: React.FC = () => {
