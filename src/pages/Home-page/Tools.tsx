@@ -5,7 +5,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const Tools: React.FC = () => {
-  const images = ["/whaticon2.png", "/whaticon1.png", "/whaticon3.png","/whaticon2.png","/whaticon4.png"];
+  const images = ["/whaticon6.png", "/whaticon1.png", "/whaticon3.png","/whaticon6.png","/whaticon4.png"];
   const texts = [
     { id: "t1", title: "BRANDING", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
     { id: "t2", title: "UI/UX DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
