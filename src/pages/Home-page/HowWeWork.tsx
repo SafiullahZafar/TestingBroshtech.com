@@ -16,30 +16,30 @@ export const HowWeWork: React.FC = () => {
       img: "/howicon1.png",
     },
     {
-      title: "DESIGN & DEVELOPMENT",
-      desc: "WE BUILD STUNNING, USER-FRIENDLY, AND OPTIMIZED WEBSITES",
+      title: "UI & UX DESIGN",
+      desc: "WE DESIGN CLEAN, INTUITIVE, AND ENGAGING DIGITAL EXPERIENCES",
       img: "/howicon2.png",
     },
     {
-      title: "DESIGN & DEVELOPMENT",
-      desc: "WE BUILD STUNNING, USER-FRIENDLY, AND OPTIMIZED WEBSITES",
+      title: "WEB DEVELOPMENT",
+      desc: "WE CREATE FAST, SCALABLE, AND RELIABLE MODERN WEB SOLUTIONS",
       img: "/howicon3.png",
     },
     {
-      title: "DESIGN & DEVELOPMENT",
-      desc: "WE BUILD STUNNING, USER-FRIENDLY, AND OPTIMIZED WEBSITES",
+      title: "SEO OPTIMIZATION",
+      desc: "WE IMPROVE RANKINGS, DRIVE TRAFFIC, AND GROW YOUR ONLINE PRESENCE",
       img: "/howicon4.png",
     },
   ];
 
-const getMarginTop = (index: number) => {
-  switch (index) {
-    case 1: return "md:mt-[100px]";
-    case 2: return "md:mt-[190px]";
-    case 3: return "md:mt-[290px]";
-    default: return "md:mt-0";
-  }
-};
+  const getMarginTop = (index: number) => {
+    switch (index) {
+      case 1: return "md:mt-[100px]";
+      case 2: return "md:mt-[190px]";
+      case 3: return "md:mt-[290px]";
+      default: return "md:mt-0";
+    }
+  };
 
 
   const setCardRef = (el: HTMLDivElement | null, index: number) => {
@@ -134,7 +134,7 @@ const getMarginTop = (index: number) => {
               <div
                 key={i}
                 ref={(el) => setCardRef(el, i)}
-                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[20px] lg:rounded-[30px] flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i+1}`}
+                className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[20px] lg:rounded-[30px] flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i + 1}`}
                 style={{
                   backgroundImage: "url('/howbg.png')",
                   backgroundSize: "cover",
