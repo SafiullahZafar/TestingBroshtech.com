@@ -62,7 +62,7 @@ onMouseLeave={handleMouseLeave}
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-start z-30 lg:right-1 lg:relative lg:justify-start mt-1 lg:-space-x-7 -space-x-2 stars1 ">
+          <div className="flex justify-start z-30 lg:right-1 lg:relative lg:justify-start mt-1 lg:-space-x-6 -space-x-2 stars1 ">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
