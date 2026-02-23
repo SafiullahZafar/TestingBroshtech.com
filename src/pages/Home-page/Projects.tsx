@@ -168,11 +168,11 @@ export const Projects: React.FC = () => {
       <div
         ref={gridRef}
         data-section="grid"
-        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl mb-12 px-4 project-grid ${
+        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${
           visible.grid ? "scroll-show" : "scroll-hidden"
         }`}
       >
-        {["/2.png", "/1.png", "/3.png"].map((src, i) => (
+        {["/1.png", "/3.png", "/2.png"].map((src, i) => (
           <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
             <img
               src={src}

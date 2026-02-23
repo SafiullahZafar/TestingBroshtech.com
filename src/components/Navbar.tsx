@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -48,8 +48,8 @@ const styles = `
 export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
-  const [isVisible, setIsVisible] = useState(true);
-  const lastScrollY = useRef(0);
+  // const [isVisible, setIsVisible] = useState(true);
+  // const lastScrollY = useRef(0);
 
   const location = useLocation();
 
@@ -59,23 +59,23 @@ export const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const currentScrollY = window.scrollY;
 
-      if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
-        setIsVisible(false);
-        setIsMobileMenuOpen(false);
-      } else if (currentScrollY < lastScrollY.current) {
-        setIsVisible(true);
-      }
+  //     if (currentScrollY > lastScrollY.current && currentScrollY > 80) {
+  //       setIsVisible(false);
+  //       setIsMobileMenuOpen(false);
+  //     } else if (currentScrollY < lastScrollY.current) {
+  //       setIsVisible(true);
+  //     }
 
-      lastScrollY.current = currentScrollY;
-    };
+  //     lastScrollY.current = currentScrollY;
+  //   };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll, { passive: true });
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
@@ -90,13 +90,14 @@ export const Navbar = () => {
     <>
       <style>{styles}</style>
 
-      <nav
+      {/* <nav
         className={`fixed top-0 left-0 w-full z-50 navbar-transition pt-5 ${
           isVisible ? "navbar-visible" : "navbar-hidden"
         }`}
-      >
+      > */}
+      <nav className="absolute top-0 left-0 w-full z-50 pt-5">
         <div
-          className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
+          className="flex items-center max-w-[1140px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{
             backgroundColor: isDesktop
               ? "rgba(60, 60, 60, 0.9)"
@@ -157,6 +158,10 @@ export const Navbar = () => {
       </nav>
 
       <style>{`
+      .navbar-hidden {
+  transform: translateY(-150%);
+}
+
         @media (max-width: 767px) {
           .nav-bar {
             background-color: rgba(30, 30, 30, 0.8) !important;

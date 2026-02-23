@@ -37,7 +37,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
         </div>
 
         {/* CATEGORY FILTER NAVIGATION */}
-        <nav className="flex justify-start flex-wrap gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-8 lg:gap-x-20 ml-0 sm:ml-1 md:ml-2 lg:ml-3">
+        <nav className="flex justify-start flex-wrap gap-x-4 gap-y-3 sm:gap-x-6 md:gap-x-8 lg:gap-x-20 ml-0 sm:ml-1 md:ml-2 lg:ml-2.5">
           {categories.map((cat) => (
             <button
               key={cat}

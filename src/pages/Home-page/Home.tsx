@@ -21,7 +21,7 @@ const getStyle = (intensity: number) => ({
 });
 
   return (
-    <section className="h-screen Height w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-16"
+    <section className="h-screen Height w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-0"
       onMouseMove={handleMouseMove}
 onMouseLeave={handleMouseLeave}
     >
@@ -33,8 +33,8 @@ onMouseLeave={handleMouseLeave}
           justify-between
           max-w-7xl mx-auto w-full
           px-4
-          lg:pl-8 lg:pr-2
-          xl:pl-5 xl:pr-6
+          lg:pl-8 lg:pr-0
+          xl:pl-5
           2xl:pl-8
           pt-20 lg:pt-10
           gap-12
@@ -77,7 +77,7 @@ onMouseLeave={handleMouseLeave}
           <p
             className="
               text-[15px] sm:text-[16px]
-              w-full z-30
+              w-full z-30 
               leading-tight
               mt-1 px-0 lg:px-5
               mx-auto lg:mx-0 desc
@@ -129,7 +129,7 @@ onMouseLeave={handleMouseLeave}
     lg:w-[520px] xl:w-[620px] 2xl:w-[700px]
     h-[260px] sm:h-[320px] md:h-[420px]
     lg:h-[520px] xl:h-[620px] 2xl:h-[700px]
-    mx-auto lg:mx-0
+    mx-auto lg:mx-0 lg:left-[2%] sm:left-[0.5%]
     mt-12 lg:mt-0 video
   "
 >
@@ -177,7 +177,7 @@ onMouseLeave={handleMouseLeave}
       {/* CUSTOM CSS */}
       <style>{`
         .desc {
-          width: 100% !important;
+          width: 80% !important;
           max-width: 100% !important;
         }
 
