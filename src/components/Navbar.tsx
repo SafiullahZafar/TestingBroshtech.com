@@ -99,7 +99,7 @@ export const Navbar = () => {
           className="flex items-center max-w-[1100px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{
             backgroundColor: isDesktop
-              ? "rgba(30, 30, 30, 0.9)"
+              ? "rgba(60, 60, 60, 0.9)"
               : "rgba(30, 30, 30, 0.9)",
             fontFamily: "Inter, sans-serif",
           }}
