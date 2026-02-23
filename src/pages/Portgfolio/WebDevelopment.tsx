@@ -36,7 +36,7 @@ const WebDevelopment: React.FC = () => {
                 />
 
                 {/* Gradient overlay - lighter to show more image */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-70" />
+                {/* <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-70" /> */}
 
                 {/* Project Text - Bottom Center */}
                 <div className="absolute bottom-0 left-0 lg:left-6 right-0 flex flex-col items-center p-5 md:p-6 text-center">
