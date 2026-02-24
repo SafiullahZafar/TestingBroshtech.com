@@ -95,7 +95,7 @@ export const Navbar = () => {
           isVisible ? "navbar-visible" : "navbar-hidden"
         }`}
       > */}
-      <nav className="absolute top-0 left-0 w-full z-50 pt-5">
+      <nav className="absolute lg:top-0 left-0 w-full z-50 pt-5">
         <div
           className="flex items-center max-w-[1140px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{

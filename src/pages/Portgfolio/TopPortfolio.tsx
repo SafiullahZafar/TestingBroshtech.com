@@ -10,7 +10,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
   setActiveCategory,
 }) => {
   const categories = [
-    "All",
+    // "All",
     "Branding",
     "Social Media",
     "Ui/Ux Designing",
@@ -23,7 +23,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
 
         {/* MAIN HEADING */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8 mb-10">
-          <h2 className="text-[42px] sm:text-[50px] md:text-[60px] lg:text-[72px] font-bold leading-[1] tracking-[-0.04em] text-[#0d7411] z-10 w-full md:w-auto lg:whitespace-nowrap">
+          <h2 className="text-[42px] sm:text-[50px] md:text-[60px] lg:text-[72px] font-bold leading-[1] tracking-[-0.04em] text-white z-10 w-full md:w-auto lg:whitespace-nowrap">
             Explore Our Latest Portfolio
           </h2>
 
@@ -45,7 +45,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
               className="flex items-center group cursor-pointer border-none bg-transparent outline-none"
             >
               {/* Dot only if not All */}
-              {cat !== "All" && (
+              {cat !== "Branding" && (
                 <div
                   className={`w-2 h-2 rounded-full mr-2 transition-all duration-300 ${
                     activeCategory === cat

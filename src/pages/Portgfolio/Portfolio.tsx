@@ -6,7 +6,7 @@ import MiddlePortfolio from './Middle';
 const Portfolio = () => {
   const location = useLocation();
   const [searchParams] = useSearchParams();
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Branding");
 
   // Read category from URL query parameter or location state
   useEffect(() => {

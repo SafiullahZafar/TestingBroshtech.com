@@ -1,5 +1,4 @@
 import { useState, type FC } from "react"
-import { Link } from "react-router-dom";
 
 const Home: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -21,7 +20,7 @@ const getStyle = (intensity: number) => ({
 });
 
   return (
-    <section className="h-screen Height w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-0"
+    <section className="h-screen Height w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-4"
       onMouseMove={handleMouseMove}
 onMouseLeave={handleMouseLeave}
     >
@@ -33,9 +32,9 @@ onMouseLeave={handleMouseLeave}
           justify-between
           max-w-7xl mx-auto w-full
           px-4
-          lg:pl-8 lg:pr-0
-          xl:pl-5
-          2xl:pl-8
+          lg:pl-0 lg:pr-2
+          xl:pl-0 xl:pr-2
+          2xl:pl-0
           pt-20 lg:pt-10
           gap-12
         "
@@ -56,13 +55,13 @@ onMouseLeave={handleMouseLeave}
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            Hi I’am Brosh
+            Hi i’am brosh
             <span className="block">Your Web & Software</span>
             <span className="block">Builder</span>
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-start z-30 lg:right-1 lg:relative lg:justify-start mt-1 lg:-space-x-6 -space-x-2 stars1 ">
+          <div className="flex justify-start z-30 lg:justify-start mt-1 lg:-space-x-6 -space-x-2 stars">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
@@ -77,7 +76,7 @@ onMouseLeave={handleMouseLeave}
           <p
             className="
               text-[15px] sm:text-[16px]
-              w-full z-30 
+              w-full z-30
               leading-tight
               mt-1 px-0 lg:px-5
               mx-auto lg:mx-0 desc
@@ -136,31 +135,35 @@ onMouseLeave={handleMouseLeave}
   {/* --- Floating Labels Start --- */}
   
   {/* Top Left Label */}
- <div className="absolute top-[30%] left-[-5%] z-10" style={getStyle(40)}>
-  <Link to="/portfolio" state={{ category: "Web Development" }}>
+  <div
+  className="absolute top-[30%] left-[-5%] z-10"
+  style={getStyle(40)}
+>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Web Development
     </span>
-  </Link>
-</div>
+  </div>
 
-{/* Middle Left Label */}
-<div className="absolute bottom-[20%] left-[2%] z-10" style={getStyle(-60)}>
-  <Link to="/portfolio" state={{ category: "Social Media" }}>
+  {/* Middle Left Label */}
+  <div
+  className="absolute bottom-[20%] left-[2%] z-10"
+  style={getStyle(-60)}
+>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Social Media
     </span>
-  </Link>
-</div>
+  </div>
 
-{/* Right Side Label */}
-<div className="absolute top-[50%] right-[9%] z-10" style={getStyle(30)}>
-  <Link to="/portfolio" state={{ category: "Branding" }}>
+  {/* Right Side Label */}
+  <div
+  className="absolute top-[50%] right-[9%] z-10"
+  style={getStyle(30)}
+>
     <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
       Branding
     </span>
-  </Link>
-</div>
+  </div>
+
   {/* --- Video Component --- */}
   <video
     src="/character animation final_2.mp4"
@@ -177,7 +180,7 @@ onMouseLeave={handleMouseLeave}
       {/* CUSTOM CSS */}
       <style>{`
         .desc {
-          width: 80% !important;
+          width: 100% !important;
           max-width: 100% !important;
         }
 
@@ -243,7 +246,7 @@ onMouseLeave={handleMouseLeave}
 
         @media (max-width: 480px) {
           .title {
-            top: -15px !important;
+            top: 10px !important;
             right: 41px !important;
             position: relative !important;
             font-size: 1.6rem !important;
