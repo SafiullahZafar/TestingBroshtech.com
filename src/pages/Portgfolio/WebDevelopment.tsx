@@ -10,7 +10,7 @@ type WebDevelopmentProject = {
 
 const webDevData: WebDevelopmentProject[] = [
   { id: 1, title: "Biz Axis", subTitle: "Web Development", image: "/webdevelopment1.png", path: "https://bizaxis.net/" },
-  { id: 2, title: "Bareeze Fashion", subTitle: "Web Development", image: "/webdevelopment2.png", path: "https://saleementerprises.com/" },
+  { id: 2, title: "Bareeze Fashion", subTitle: "Web Development", image: "/webdevelopment4.png", path: "https://saleementerprises.com/" },
   { id: 3, title: "Waaris Clothing", subTitle: "Web Development", image: "/webdevelopment3.png", path: "https://www.waaris.store/" },
 ];
 
