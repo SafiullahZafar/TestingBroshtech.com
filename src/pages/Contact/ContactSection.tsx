@@ -30,7 +30,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   const formData = new FormData(form);
 
   try {
-    await fetch("https://formspree.io/f/mnjbpgvo", {
+    await fetch("https://formspree.io/f/xykdlgwl", {
       method: "POST",
       body: formData,
       headers: {
