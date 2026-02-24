@@ -41,7 +41,7 @@ const UIUx = () => {
   href={item.link}
   target="_blank"
   rel="noopener noreferrer"
-  className="relative w-[280px] md:w-[420px] h-[420px] md:h-[600px] rounded-[28px] overflow-hidden group block"
+  className="relative w-[280px] md:w-[420px] h-[420px] md:h-[600px] rounded-[1px] overflow-hidden group block"
 >
 
             {/* Image */}
