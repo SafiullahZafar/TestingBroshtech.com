@@ -33,7 +33,7 @@ const uiData: UIProject[] = [
 
 const UIUx = () => {
   return (
-    <div className="w-full max-h-screen bg-black flex items-center justify-center p-10">
+    <div className="w-full max-h-screen bg-black flex items-center justify-center lg:p-10  ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">
         {uiData.map((item) => (
        <a

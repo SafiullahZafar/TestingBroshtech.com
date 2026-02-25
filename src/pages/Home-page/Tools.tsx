@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export const Tools: React.FC = () => {
-  const images = ["/whaticon6.png", "/whaticon1.png", "/whaticon7.png","/whaticon5.png","/whaticon4.png"];
+  const images = ["/whaticon6.png", "/whaticon1.png", "/whaticon7.png", "/whaticon5.png", "/whaticon4.png"];
   const texts = [
     { id: "t1", title: "BRANDING", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
     { id: "t2", title: "UI/UX DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
@@ -13,11 +10,32 @@ export const Tools: React.FC = () => {
     { id: "t4", title: "APP DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
     { id: "t5", title: "SEO OPTIMIZATION", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " }
   ];
+
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const iconsRef = useRef<HTMLDivElement[]>([]);
   const textsRef = useRef<HTMLDivElement[]>([]);
   const titlesRef = useRef<HTMLHeadingElement[]>([]);
-  const pinwrapsectionRef = useRef<HTMLDivElement | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const [currentStep, setCurrentStep] = useState(0);
+  const isAnimating = useRef(false);
+  const numSteps = texts.length;
+
+  // Drag state
+ const dragStartY = useRef<number | null>(null);
+const isDragging = useRef(false);
+const userInteracting = useRef(false);
+const resumeTimeout = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const calculateScaleFactor = () => {
+    if (window.innerWidth <= 480) return 0.65;
+    if (window.innerWidth <= 768) return 0.8;
+    return 1;
+  };
+
+  const nextStep = () => setCurrentStep((prev) => (prev + 1) % numSteps);
+  const prevStep = () => setCurrentStep((prev) => (prev - 1 + numSteps) % numSteps);
+
   const getPosition = (i: number, current: number, total: number) => {
     let diff = i - current;
     diff = (diff % total + total) % total;
@@ -31,7 +49,8 @@ export const Tools: React.FC = () => {
       default: return "hidden";
     }
   };
-const getIconProps = (pos: string, scaleFactor: number) => {
+
+   const getIconProps = (pos: string, scaleFactor: number) => {
   const isMobile = window.innerWidth <= 768;
 
   const base = {
@@ -103,16 +122,16 @@ const getTextProps = (pos: string, scaleFactor: number) => {
     },
 
     top: {
-      x: isMobile ? -40 : -158,
-      y: isMobile ? 10 : -92,
+      x: isMobile ? -30 : -158,
+      y: isMobile ? 1 : -92,
       scale: 0.55 * scaleFactor,
       opacity: 0.6,
       zIndex: 10
     },
 
     bottom: {
-      x: isMobile ? -40 : -158,
-      y: isMobile ? 198 : 190,
+      x: isMobile ? -30 : -158,
+      y: isMobile ? 218 : 190,
       scale: 0.6 * scaleFactor,
       opacity: 0.6,
       zIndex: 10
@@ -144,160 +163,189 @@ const getTextProps = (pos: string, scaleFactor: number) => {
   return base[pos as keyof typeof base] || base.hidden;
 };
 
-const getTitleProps = (pos: string, scaleFactor: number) => {
-  const isMobile = window.innerWidth <= 768;
 
-  return {
-fontSize: (
-  isMobile
-    ? pos === "middle" ? 26 : 18
-    : pos === "middle" ? 45 : 34
-) * scaleFactor
-};
-};
- useEffect(() => {
-  if (!sectionRef.current) return;
-
-  let ctx = gsap.context(() => {
-
-    const calculateScaleFactor = () => {
-      if (window.innerWidth <= 480) return 0.65;
-      if (window.innerWidth <= 768) return 0.8;
-      return 1;
-    };
-
-    let scaleFactor = calculateScaleFactor();
-    let isMobile = window.innerWidth <= 768;
-    const numSteps = texts.length;
-
-    // INITIAL STATE
-    iconsRef.current.forEach((icon, i) => {
-      const pos = getPosition(i, 0, numSteps);
-      gsap.set(icon, getIconProps(pos, scaleFactor));
-    });
-
-    textsRef.current.forEach((text, i) => {
-      const pos = getPosition(i, 0, numSteps);
-      gsap.set(text, getTextProps(pos, scaleFactor));
-    });
-
-    titlesRef.current.forEach((title, i) => {
-      const pos = getPosition(i, 0, numSteps);
-      gsap.set(title, getTitleProps(pos, scaleFactor));
-    });
-
-    if (!isMobile) {
-
-      const tl = gsap.timeline();
-
-      for (let step = 1; step < numSteps; step++) {
-
-        iconsRef.current.forEach((icon, i) => {
-          const pos = getPosition(i, step, numSteps);
-          tl.to(icon, {
-            ...getIconProps(pos, scaleFactor),
-            duration: 1,
-            ease: "power1.inOut"
-          }, step - 1);
-        });
-
-        textsRef.current.forEach((text, i) => {
-          const pos = getPosition(i, step, numSteps);
-          tl.to(text, {
-            ...getTextProps(pos, scaleFactor),
-            duration: 1,
-            ease: "power1.inOut"
-          }, step - 1);
-        });
-
-        titlesRef.current.forEach((title, i) => {
-          const pos = getPosition(i, step, numSteps);
-          tl.to(title, {
-            ...getTitleProps(pos, scaleFactor),
-            duration: 1,
-            ease: "power1.inOut"
-          }, step - 1);
-        });
-      }
-
-  ScrollTrigger.create({
-  trigger: sectionRef.current,
-  start: "top top",
-  end: `+=${(numSteps - 1) * 250}%`,
-  pin: pinwrapsectionRef.current,
-  scrub: 1,
-  snap: {
-    snapTo: 1 / (numSteps - 1),
-    duration: 0.1,
-    ease: "power1.inOut"
-  },
-  animation: tl,
-  anticipatePin: 1,
-});
-
-    } else {
-
-      let currentStep = 0;
-
-      const rotateItems = () => {
-        currentStep = (currentStep + 1) % numSteps;
-
-        iconsRef.current.forEach((icon, i) => {
-          const pos = getPosition(i, currentStep, numSteps);
-          gsap.to(icon, {
-            ...getIconProps(pos, scaleFactor),
-            duration: 0.8,
-            ease: "power1.inOut"
-          });
-        });
-
-        textsRef.current.forEach((text, i) => {
-          const pos = getPosition(i, currentStep, numSteps);
-          gsap.to(text, {
-            ...getTextProps(pos, scaleFactor),
-            duration: 0.8,
-            ease: "power1.inOut"
-          });
-        });
-
-        titlesRef.current.forEach((title, i) => {
-          const pos = getPosition(i, currentStep, numSteps);
-          gsap.to(title, {
-            ...getTitleProps(pos, scaleFactor),
-            duration: 0.8,
-            ease: "power1.inOut"
-          });
-        });
-      };
-
-      const interval = setInterval(rotateItems, 2500);
-
-      return () => clearInterval(interval);
-    }
-
-  }, sectionRef);
-
-  const handleResize = () => {
-    ScrollTrigger.refresh();
+  const getTitleProps = (pos: string, scaleFactor: number) => {
+    const isMobile = window.innerWidth <= 798;
+    return { fontSize: (isMobile ? (pos === "middle" ? 26 : 18) : pos === "middle" ? 45 : 34) * scaleFactor };
   };
 
-  window.addEventListener("resize", handleResize);
+  // AUTO ROTATION
+useEffect(() => {
+  const startInterval = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    intervalRef.current = setInterval(() => {
+      if (!userInteracting.current) {
+        nextStep();
+      }
+    }, 2500);
+  };
+
+  startInterval();
 
   return () => {
-    ctx.revert();
-    window.removeEventListener("resize", handleResize);
+    if (intervalRef.current) clearInterval(intervalRef.current);
   };
+}, [numSteps]);
 
-}, []);
+const pauseAuto = () => {
+  userInteracting.current = true;
 
+  if (intervalRef.current) {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  }
+
+  if (resumeTimeout.current) {
+    clearTimeout(resumeTimeout.current);
+  }
+};
+
+const resumeAuto = () => {
+  if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+
+  resumeTimeout.current = setTimeout(() => {
+    userInteracting.current = false;
+
+    if (!intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        if (!userInteracting.current) {
+          nextStep();
+        }
+      }, 2500);
+    }
+  }, 1800); // delay before auto starts again
+};
+
+  // DRAG SUPPORT
+  const handleMouseDown = (e: React.MouseEvent) => { pauseAuto(); isDragging.current = true; dragStartY.current = e.clientY; };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging.current || dragStartY.current === null) return;
+    const diff = e.clientY - dragStartY.current;
+    if (Math.abs(diff) > 40 && !isAnimating.current) {
+  if (diff > 0) {
+    prevStep();
+  } else {
+    nextStep();
+  }
+
+  dragStartY.current = e.clientY;
+}
+  };
+  const handleMouseUp = () => { isDragging.current = false; dragStartY.current = null; resumeAuto(); };
+
+  // TOUCH SUPPORT
+  const handleTouchStart = (e: React.TouchEvent) => { pauseAuto(); dragStartY.current = e.touches[0].clientY; };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (dragStartY.current === null) return;
+    const diff = e.touches[0].clientY - dragStartY.current;
+    if (Math.abs(diff) > 30 && !isAnimating.current) {
+  if (diff > 0) {
+    prevStep();
+  } else {
+    nextStep();
+  }
+
+  dragStartY.current = e.touches[0].clientY;
+}
+  };
+  const handleTouchEnd = () => { dragStartY.current = null; resumeAuto(); };
+
+  // WHEEL SUPPORT
+//   const handleWheel = (e: React.WheelEvent) => {
+//   pauseAuto();
+
+//   if (e.deltaY > 0) {
+//     nextStep();
+//   } else {
+//     prevStep();
+//   }
+
+//   resumeAuto();
+// };
+
+  // INITIAL POSITIONS
+  useEffect(() => {
+    const scaleFactor = calculateScaleFactor();
+    iconsRef.current.forEach((icon, i) => { if (icon) gsap.set(icon, getIconProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+    textsRef.current.forEach((text, i) => { if (text) gsap.set(text, getTextProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+    titlesRef.current.forEach((title, i) => { if (title) gsap.set(title, getTitleProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+  }, []);
+
+  // ANIMATION ON STEP CHANGE
+useEffect(() => {
+  isAnimating.current = true;
+
+  const scaleFactor = calculateScaleFactor();
+
+  iconsRef.current.forEach((icon, i) => {
+    if (icon) {
+      gsap.to(icon, {
+        ...getIconProps(getPosition(i, currentStep, numSteps), scaleFactor),
+        duration: 0.8,
+        ease: "power1.inOut"
+      });
+    }
+  });
+
+  textsRef.current.forEach((text, i) => {
+    if (text) {
+      gsap.to(text, {
+        ...getTextProps(getPosition(i, currentStep, numSteps), scaleFactor),
+        duration: 0.8,
+        ease: "power1.inOut"
+      });
+    }
+  });
+
+  titlesRef.current.forEach((title, i) => {
+    if (title) {
+      gsap.to(title, {
+        ...getTitleProps(getPosition(i, currentStep, numSteps), scaleFactor),
+        duration: 0.8,
+        ease: "power1.inOut"
+      });
+    }
+  });
+
+  const timer = setTimeout(() => {
+    isAnimating.current = false;
+  }, 820);
+
+  return () => clearTimeout(timer);
+}, [currentStep]);
+
+  // RESIZE HANDLER
+  useEffect(() => {
+    const handleResize = () => {
+      const scaleFactor = calculateScaleFactor();
+      iconsRef.current.forEach((icon, i) => { if (icon) gsap.set(icon, getIconProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+      textsRef.current.forEach((text, i) => { if (text) gsap.set(text, getTextProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+      titlesRef.current.forEach((title, i) => { if (title) gsap.set(title, getTitleProps(getPosition(i, currentStep, numSteps), scaleFactor)); });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [currentStep]);
   
   return (
-    <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black overflow-hidden py-12 sm:py-16">
-      <div ref={pinwrapsectionRef} className="relative h-100vh lg:-top-13 sm:min-h-screen w-full">
+    <section
+      ref={sectionRef}
+      className="relative w-full lg:-top-6 h-auto bg-black py-2 sm:py-6 cursor-grab active:cursor-grabbing select-none"
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUp}
+      onMouseLeave={handleMouseUp}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      // onWheel={handleWheel}
+      >
+    {/* // <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black py-2 sm:py-6"> */}
+      <div className="relative h-auto lg:-top-13 w-full">
 
         {/* HEADING */}
         <div
-          className="absolute top-3 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
+          className="absolute top-1 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
           style={{
             background: "rgba(12, 55, 33, 1)",
             fontSize: "clamp(1.8rem, 6vw, 3.75rem)",
@@ -312,7 +360,7 @@ fontSize: (
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
            <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none">
-          <img src="/whathalfcircle.png" alt="Decoration" className="w-[250px] Width Right sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
+          <img src="/whathalfcircle.png" alt="Decoration" className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
         </div>
             {/* ICONS - always left side */}
             <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
@@ -402,7 +450,12 @@ fontSize: (
             right: 32% !important;
             }
 }
-
+      //     @media (min-width: 481px) and (max-width: 640px) {
+      //    .Top{
+      //        top: 55px !important;
+      //     position: relative !important;
+      //    }
+      // }
         @media (max-width: 990px) {
           .Rights{
             right: 31% !important;
@@ -476,20 +529,20 @@ fontSize: (
 
           /* Half circle */
           .absolute.top-0 {
-            top: 110px !important;
+            top: 10.5vh !important;
           }
         }
-          @media (max-width: 640px) {
+          @media (max-width: 637px) {
           .Rights{
-            left: -6% !important;}
+            left: -3.75% !important;}
                 /* Half circle */
           .absolute.top-0 {
-            top: 50px !important;
+            // top: 0px !important;
           }
               .TopDesc{
-          top: -5px !important;
+          // top: -5px !important;
           position: relative !important;
-          width: 300px !important;
+          width: 65vw !important;
           }
 
           }
@@ -509,6 +562,10 @@ fontSize: (
   }
   .Rights{
     left: -1% !important;}
+   .Righting{
+   left: -19% !important;
+   position: relative !important;
+   }
           .Tops{
           top: -60px !important;      /* remove top */
           position: relative !important;

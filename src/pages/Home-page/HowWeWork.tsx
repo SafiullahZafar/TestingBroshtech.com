@@ -113,7 +113,7 @@ export const HowWeWork: React.FC = () => {
       <div className="w-full">
         <div
           ref={containerRef}
-          className="w-full min-h-screen md:min-h-[75vh] bg-black flex flex-col items-center px-4 overflow-visible py-16 md:py-12 md:pt-10"
+          className="w-full min-h-auto Minh md:min-h-[688px] bg-black flex flex-col items-center px-4 overflow-visible py-16 md:py-12 md:pt-10"
         >
 
           {/* Header (always visible) */}
@@ -190,7 +190,7 @@ export const HowWeWork: React.FC = () => {
             opacity: 1;
           }
         }
-        @media (min-width: 768px) {
+         @media (min-width: 768px) {
           .card:not(.howwork-card-visible) {
             opacity: 0;
             transform: translateY(80px);
@@ -215,7 +215,7 @@ export const HowWeWork: React.FC = () => {
             margin-top: 1.5rem !important;
           }
           .card {
-            max-width: 240px !important;
+            max-width: 210px !important;
             border-radius: 4px !important;
             padding: 1.2rem !important;
             aspect-ratio: 1.6/1 !important; /* flatter like in image */
@@ -273,8 +273,8 @@ export const HowWeWork: React.FC = () => {
   left: 65% !important;
 }
           /* Reduce section height */
-          .min-h-screen {
-            min-height: 100vh !important;
+          .Minh {
+            min-height: 830px !important;
             padding-bottom: 2rem !important;
           }
           .header-title {
@@ -370,8 +370,8 @@ export const HowWeWork: React.FC = () => {
 }
 
           /* Reduce section height */
-          .min-h-screen {
-            min-height: 90vh !important;
+          .Minh {
+            min-height: 710px !important;
             padding-bottom: 2rem !important;
           }
           .header-title {
@@ -459,8 +459,8 @@ export const HowWeWork: React.FC = () => {
 }
 
           /* Reduce section height */
-          .min-h-screen {
-            min-height: 80vh !important;
+          .Minh {
+            min-height: 620px !important;
             padding-bottom: 2rem !important;
           }
           .header-title {
@@ -544,9 +544,9 @@ export const HowWeWork: React.FC = () => {
 }
 
           /* Reduce section height */
-          .min-h-screen {
-            min-height: 90vh !important;
-            padding-bottom: 2rem !important;
+          .Minh {
+            min-height: 625px !important;
+            padding-bottom: -0px !important;
           }
           .header-title {
             font-size: 2rem !important;

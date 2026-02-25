@@ -76,7 +76,7 @@ const WhyChooseUs: FC = () => {
         </div>
 
         {/* RIGHT */}
-        <div ref={accordionRef} className="why-right right-3 sm:right-12 relative">
+        <div ref={accordionRef} className="why-right relative">
           {points.map((item, i) => {
             const isOpen = openIndex === i;
 

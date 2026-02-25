@@ -97,7 +97,7 @@ export const Navbar = () => {
       > */}
       <nav className="absolute lg:top-0 left-0 w-full z-50 pt-5">
         <div
-          className="flex items-center max-w-[1140px] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
+          className="flex items-center max-w-[85vw] w-full sm:px-8 px-3 py-3 rounded-[10px] mx-auto nav-bar"
           style={{
             backgroundColor: isDesktop
               ? "rgba(60, 60, 60, 0.9)"
@@ -111,7 +111,7 @@ export const Navbar = () => {
           </a>
 
           {/* DESKTOP MENU - RIGHT */}
-          <ul className="hidden md:flex items-center Right gap-4 text-white text-[14px] font-medium ml-auto desktop-menu">
+          <ul className="hidden md:flex items-center  gap-4 text-white text-[14px] font-medium ml-auto desktop-menu">
             {menuItems.map((item) => (
               <li key={item.name}>
                 <a
@@ -164,15 +164,15 @@ export const Navbar = () => {
 
         @media (max-width: 767px) {
           .nav-bar {
-            background-color: rgba(30, 30, 30, 0.8) !important;
+            background-color: rgba(60, 60, 60, 0.9) !important;
             top: 10px !important;
             position:relative !important;
             border-radius: 10px !important;
             padding: 0.4rem 0.8rem !important;
-            justify-content: flex-start !important;
             align-items: center !important;
-            gap: 0.5rem !important;
-            width: 340px !important;
+            gap: 0rem !important;
+            width: 86vw !important;
+            justify-content: space-between !important;
           }
           .mobile-hamburger {
             display: none !important;
@@ -182,10 +182,6 @@ export const Navbar = () => {
             margin-left: 0.1rem !important;
             gap: 0.1rem !important;
             font-size: 0.8rem !important;
-          }
-          .Right {
-          left: 32px !important;
-          position: relative !important;
           }
           .menu-item {
             padding: 0.2rem 0.3rem !important;

@@ -1,4 +1,5 @@
 import { useState, type FC } from "react"
+import { useNavigate } from "react-router-dom";
 
 const Home: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -9,7 +10,11 @@ const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
   const y = (e.clientY - rect.top) / rect.height - 0.5;
   setMousePos({ x, y });
 };
+const navigate = useNavigate();
 
+const openCategory = (category: string) => {
+  navigate(`/portfolio?category=${encodeURIComponent(category)}`);
+};
 const handleMouseLeave = () => {
   setMousePos({ x: 0, y: 0 });
 };
@@ -20,22 +25,22 @@ const getStyle = (intensity: number) => ({
 });
 
   return (
-    <section className="h-screen Height w-full bg-black text-white flex items-center max-md:items-center ml-3 lg:ml-4"
+    <section className=" Height w-full  bg-black text-white flex items-center max-md:items-center ml-0 lg:ml-0"
       onMouseMove={handleMouseMove}
 onMouseLeave={handleMouseLeave}
     >
       {/* MAIN WRAPPER */}
       <div
         className="
-          flex flex-col lg:flex-row
-          items-center
+          flex flex-col lg:flex-row md:flex-row
+          lg:items-center md:items-center items-start
           justify-between
           max-w-7xl mx-auto w-full
           px-4
-          lg:pl-0 lg:pr-2
-          xl:pl-0 xl:pr-2
+          lg:pl-0 lg:pr-0
+          xl:pl-0 xl:pr-0
           2xl:pl-0
-          pt-20 lg:pt-10
+          pt-25 lg:pt-1 Aligment
           gap-12
         "
       >
@@ -45,13 +50,14 @@ onMouseLeave={handleMouseLeave}
             flex-1
              lg:text-left
             z-10 left-content
+            lg:px-7 py-3
           "
         >
           <h1
             className="
-              text-[35px] sm:text-[42px] lg:text-[51px]
+              text-[24px] sm:text-[28px] md:text-[39px] lg:text-[51px]
               leading-tight z-30
-              tracking-tight px-0 lg:px-4 title
+              tracking-tight px-4 lg:px-4 md:px-5 title TopforHome
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
@@ -61,13 +67,13 @@ onMouseLeave={handleMouseLeave}
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-start z-30 lg:justify-start mt-1 lg:-space-x-6 -space-x-2 stars">
+          <div className="flex justify-start z-30 towardstars  lg:justify-start mt-1 lg:-space-x-6 md:-space-x-7 sm:-space-x-4 -space-x-4  stars">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
                 src="/Star 1.png"
                 alt="star"
-                className="w-[61px] h-[64px] max-md:w-[44px] max-md:h-[46px]"
+                className="w-[61px] TopforHome h-[64px] max-md:w-[44px] max-md:h-[46px]"
               />
             ))}
           </div>
@@ -75,11 +81,11 @@ onMouseLeave={handleMouseLeave}
           {/* DESCRIPTION */}
           <p
             className="
-              text-[15px] sm:text-[16px]
+              text-[13px] TopforHome sm:text-[16px]
               w-full z-30
               leading-tight
-              mt-1 px-0 lg:px-5
-              mx-auto lg:mx-0 desc
+              mt-1 px-0 lg:px-5 md:px-5
+              mx-auto lg:mx-0 desc towarddec
             "
             style={{ fontFamily: "Inter, sans-serif" }}
           >
@@ -87,7 +93,7 @@ onMouseLeave={handleMouseLeave}
           </p>
 
           {/* BUTTON */}
-          <div className="flex Left justify-start lg:justify-start mt-6 ml-2 lg:ml-4 button-wrapper">
+          <div className="flex  TopforHomeLeft toward justify-start md:px-2.5 lg:px-0 lg:justify-start mt-6 ml-2 lg:ml-4 button-wrapper">
             <button
               className="
                 flex Botton items-center gap-1
@@ -124,50 +130,53 @@ onMouseLeave={handleMouseLeave}
     relative
     flex-shrink-0
     w-full
-    sm:w-[360px] md:w-[420px]
+    sm:w-[360px] md:w-[360px]
     lg:w-[520px] xl:w-[620px] 2xl:w-[700px]
-    h-[260px] sm:h-[320px] md:h-[420px]
+    h-[260px] sm:h-[320px] md:h-[380px]
     lg:h-[520px] xl:h-[620px] 2xl:h-[700px]
-    mx-auto lg:mx-0 lg:left-[2%] sm:left-[0.5%]
-    mt-12 lg:mt-0 video
+    mx-auto lg:mx-0 
+    mt-12 md:-mt-8 lg:mt-4 video
   "
 >
+  {/* lg:left-[2%] sm:left-[0.5%] */}
   {/* --- Floating Labels Start --- */}
   
   {/* Top Left Label */}
-  <div
-  className="absolute top-[30%] left-[-5%] z-10"
+ <div
+  className="absolute top-[23%] lg:top-[30%] Development z-10 cursor-pointer"
   style={getStyle(40)}
+  onClick={() => openCategory("Web Development")}
 >
-    <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-      Web Development
-    </span>
-  </div>
+  <span className="bg-white/15  text-white hover:bg-[#064e08] hover:text-white  px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+    Web Development
+  </span>
+</div>
 
-  {/* Middle Left Label */}
-  <div
-  className="absolute bottom-[20%] left-[2%] z-10"
+{/* Social Media */}
+<div
+  className="absolute bottom-[13%] lg:bottom-[20%] socialmedia left-[2%] z-10 cursor-pointer"
   style={getStyle(-60)}
+  onClick={() => openCategory("Social Media")}
 >
-    <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-      Social Media
-    </span>
-  </div>
+  <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+    Social Media
+  </span>
+</div>
 
-  {/* Right Side Label */}
-  <div
-  className="absolute top-[50%] right-[9%] z-10"
+{/* Branding */}
+<div
+  className="absolute top-[50%] right-[0%] Branding lg:top-[50%] lg:right-[9%] z-10 cursor-pointer"
   style={getStyle(30)}
+  onClick={() => openCategory("Branding")}
 >
-    <span className="bg-white/15 text-white hidden sm:block hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-      Branding
-    </span>
-  </div>
-
+  <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+    Branding
+  </span>
+</div>
   {/* --- Video Component --- */}
   <video
     src="/character animation final_2.mp4"
-    className="w-full h-full object-cover rounded-lg"
+    className="w-full h-full Motion object-cover rounded-lg"
     autoPlay
     muted
     playsInline
@@ -180,17 +189,26 @@ onMouseLeave={handleMouseLeave}
       {/* CUSTOM CSS */}
       <style>{`
         .desc {
-          width: 100% !important;
+          margin: 0;
+          width: 40vw !important;
           max-width: 100% !important;
         }
-
+          @media (min-width: 1020px) and (max-width: 1250px) {
+          .Aligment {
+            padding-top: calc(var(--spacing) * 20) !important;
+          }
+      }
         @media (max-width: 767px) {
           .left-content {
             display: contents !important;
           }
           .title {
             order: 1 !important;
-            right: 50px !important;
+            right: 0 !important;
+            .Paddle {
+    padding-inline: calc(var(--spacing) * 20) /* 0rem = 0px */;
+}
+            top:3vh !important;
             position: relative !important;
           }
           .video {
@@ -198,25 +216,38 @@ onMouseLeave={handleMouseLeave}
             margin-top: 1rem !important;
             margin-bottom: 1rem !important;
             height: auto !important;
-            width: 600px !important; /* smaller like in image */
+            width: 355px !important;
+            height: 388px !important;
             top: -30px !important;
             position: relative !important;
           }
+            .Development{
+             left:9vw !important;
+            }
+            .Branding{
+             right:-11vw !important;
+            }
+            .socialmedia{
+             left:9vw !important;
+            }
           .stars {
+          
             order: 3 !important;
-            justify-content: center !important;
-            margin-top: 0.5rem !important; 
+            justify-content: start !important;
+            margin-top: -3rem !important; 
           }
           .desc {
             order: 4 !important;
             margin-top: 0.5rem !important;
-            font-size: 0.85rem !important;
+            font-size: 0.70rem !important;
             line-height: 1.3 !important;
             padding-left: 1rem !important;
             padding-right: 1rem !important;
-            width: 100% !important; /* <-- ADDED */
+            
+            width: 60vh !important; /* <-- ADDED */
             max-width: 100% !important; /* <-- ADDED */
           }
+         
           .button-wrapper {
             order: 5 !important;
             margin-top: 1.5rem !important;
@@ -225,10 +256,12 @@ onMouseLeave={handleMouseLeave}
           button {
             padding: 0.5rem 1rem !important;
             font-size: 0.85rem !important;
+            top:10px !important;
           }
           button img {
             height: 1.25rem !important;
             width: 1.5rem !important;
+            position: relative !important;
           }
           /* Wrapper */
           .flex.flex-col.lg\\:flex-row {
@@ -242,11 +275,36 @@ onMouseLeave={handleMouseLeave}
             margin-left: 0 !important;
             padding: 0 0.5rem !important;
           }
+          //        .towarddec{
+          //   top:-140px !important;
+          //   position: relative !important;
+          // }
+          //        .toward{
+          //   top:-110px !important;
+          //   position: relative !important;
+          // }
+          //        .towardstars{
+          //   top:0px !important;
+          //   position: relative !important;
+          // }
+             .Motion{
+             left:9vw !important;
+             position: relative !important;
+             }
         }
 
         @media (max-width: 480px) {
+        // .TopforHome{
+        // left:12px
+        // }
+        .TopforHome{
+        margin:0px !important;
+        padding:0px !important;
+        left:0px !important;
+        right:0px !important;
+        }
           .title {
-            top: 10px !important;
+            top: 20px !important;
             right: 41px !important;
             position: relative !important;
             font-size: 1.6rem !important;
@@ -258,9 +316,23 @@ onMouseLeave={handleMouseLeave}
             position: relative !important;
             width: 310px !important; /* <-- changed */
           }
+             .Development{
+             left:8vw !important;
+            }
+            .Branding{
+             right:-9vw !important;
+            }
+            .socialmedia{
+             left:8vw !important;
+            }
+             .Motion{
+             left:9vw !important;
+             position: relative !important;
+             }
           .Botton {
             font-size: 0.8rem !important;
-            top: -176px !important;
+            top: -9px !important;
+            left:-11px !important;
             position: relative !important;
             width: 240px !important;
           }
@@ -271,22 +343,40 @@ onMouseLeave={handleMouseLeave}
           position: relative !important;
           }
           .Height{
-            height: 600px !important;
-            top: 117px !important;
+            // height: 600px !important;
+            // top: 117px !important;
             position: relative !important;
             }
           .video {
-            width: 550px !important;
-            top: -63px !important;
-            right: 19px !important;
+            width: 295px !important;
+            height: 308px !important;
+            top: -23px !important;
+            left: 10x !important;
             position: relative !important;
           }
+            .stars {
+            right:9px !important;
+            position: relative !important;
+            margin-top: -1.5rem !important; 
+          }
           .stars img {
-            top: -160px !important;
             position: relative !important;
             width: 32px !important;
             height: 36px !important;
             right: 110px !important;
+          }
+                .towarddec{
+            top:0px !important;
+            position: relative !important;
+          }
+                 .toward{
+            top:0px !important;
+            position: relative !important;
+          }
+                 .towardstars{
+            top:0px !important;
+            padding:0px !important;
+            position: relative !important;
           }
         }
       `}</style>

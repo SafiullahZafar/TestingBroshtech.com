@@ -10,7 +10,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="w-full bg-black text-white pt-16 md:pt-24 px-4 md:px-10">
+    <footer className="w-full bg-black text-white pt-16 md:pt-24 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Card - Adjusted mt for mobile */}
         <div className="bg-[#1b1b1b] border border-white/5 rounded-3xl md:rounded-[40px] p-8 md:p-14 mt-[-40px] md:mt-[-120px] relative overflow-hidden shadow-2xl">

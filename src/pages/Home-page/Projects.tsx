@@ -108,7 +108,7 @@ export const Projects: React.FC = () => {
   }, []);
 
   return (
-    <section className="w-full bg-black flex md:h-screen flex-col md:mb-[124px] items-center justify-center gap-1 px-4">
+    <section className="w-full bg-black flex md:h-auto flex-col md:mb-[104px] md:mt-9 items-center justify-center gap-1 px-2">
 
       {/* ===== ANIMATION STYLE (Desktop Only Effect) ===== */}
       <style>{`
@@ -133,7 +133,7 @@ export const Projects: React.FC = () => {
       <div
         ref={headerRef}
         data-section="header"
-        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-4 shadow-2xl tracking-tight ${
+        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${
           visible.header ? "scroll-show" : "scroll-hidden"
         }`}
       >
@@ -149,7 +149,7 @@ export const Projects: React.FC = () => {
         }`}
       >
         {window.innerWidth < 768
-          ? "--------------------"
+          ? "-------------------"
           : "-------------------------------------------"}
       </div>
 
@@ -172,7 +172,7 @@ export const Projects: React.FC = () => {
           visible.grid ? "scroll-show" : "scroll-hidden"
         }`}
       >
-        {["/1.png", "/3.png", "/2.png"].map((src, i) => (
+        {["/2.png", "/3.png", "/1.png"].map((src, i) => (
           <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
             <img
               src={src}
@@ -265,16 +265,13 @@ export const Projects: React.FC = () => {
           }
           .project-grid > div:nth-child(1),
           .project-grid > div:nth-child(2) {
-            transform: rotate(-5deg) !important; /* slight tilt like in image */
+            transform: rotate(0deg) !important; /* slight tilt like in image */
           }
-          .project-grid > div:nth-child(3) {
-            grid-column: span  !important;
-            justify-self: center !important;
-            width: 180% !important;
-            left: 80px !important;
-            position: relative !important;
-            margin-top: 0.5rem !important;
-          }
+         .project-grid > div:nth-child(3) {
+  width: 100% !important;
+  left: 97px !important;
+  position: relative !important;
+}
           .project-grid img {
             border-radius: 0.5rem !important;
             box-shadow: 0 4px 12px rgba(0,255,0,0.1) !important;
@@ -295,11 +292,11 @@ export const Projects: React.FC = () => {
             padding: 0.25rem !important;
           }
             .third-img {
-    width: 120% !important;
-    transform: scale(1.4) !important;
+    width: 100% !important;
+    transform: scale(1) !important;
     top: 21px !important;
     position: relative !important;
-    margin-left: 10% !important;
+    // margin-left: 10% !important;
   }
           .project-img{
             width: 100% !important;}
@@ -329,7 +326,9 @@ export const Projects: React.FC = () => {
             position: relative !important;
           }
           .project-grid > div:nth-child(3) {
-            width: 65% !important;
+            width: 100% !important;
+            left: 60px !important;
+  position: relative !important;
           }
            .Topsemi{
             top: -8px !important;
