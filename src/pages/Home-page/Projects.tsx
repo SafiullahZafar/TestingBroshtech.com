@@ -41,7 +41,7 @@ export const Projects: React.FC = () => {
   =============================== */
   useEffect(() => {
     // ✅ Disable animation on mobile
-    if (window.innerWidth < 768) {
+    if (window.innerWidth < 168) {
       setVisible({
         header: true,
         divider: true,

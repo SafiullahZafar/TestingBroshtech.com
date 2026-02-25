@@ -20,7 +20,6 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.png", path: "https://naseem-febrics.vercel.app/" },
   { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.png", path: "https://paramount-solutions.vercel.app/" },
 ];
-
 const WebDevelopment: React.FC = () => {
   return (
     <div className="w-full animate-in fade-in duration-1000 flex justify-center">

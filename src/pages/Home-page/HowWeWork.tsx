@@ -78,21 +78,24 @@ export const HowWeWork: React.FC = () => {
       });
     } else {
       // Mobile: unchanged - original GSAP animation
-      gsap.set(cardsRef.current, { opacity: 0, y: 120 });
+      // gsap.set(cardsRef.current, { opacity: 0, y: 120 });
 
       cardsRef.current.forEach((card, i) => {
         if (!card) return;
+        card.classList.remove("howwork-card-visible");
+        whiteGlowRef.current[i]?.classList.remove("howwork-glow-visible");
+
         ScrollTrigger.create({
           trigger: card,
-          start: "top 85%",
+          start: "top 95%",
+          end: "top 30%",
           onEnter: () => {
-            const tl = gsap.timeline();
-            tl.to(card, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0)
-              .to(whiteGlowRef.current[i], { opacity: 1, duration: 0.6, ease: "power2.out" }, 0.6);
+            card.classList.add("howwork-card-visible");
+            whiteGlowRef.current[i] && (whiteGlowRef.current[i].classList.add("howwork-glow-visible"));
           },
           onLeaveBack: () => {
-            gsap.set(card, { opacity: 0, y: 120 });
-            gsap.set(whiteGlowRef.current[i], { opacity: 0 });
+            card.classList.remove("howwork-card-visible");
+            whiteGlowRef.current[i]?.classList.remove("howwork-glow-visible");
           },
         });
       });
@@ -190,21 +193,22 @@ export const HowWeWork: React.FC = () => {
             opacity: 1;
           }
         }
-         @media (min-width: 768px) {
-          .card:not(.howwork-card-visible) {
-            opacity: 0;
-            transform: translateY(80px);
-          }
-          .card.howwork-card-visible {
-            animation: howworkCardSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-          }
-          .glow:not(.howwork-glow-visible) {
-            opacity: 0;
-          }
-          .glow.howwork-glow-visible {
-            animation: howworkGlowFade 0.6s 0.3s ease-out forwards;
-          }
-        }
+        .card:not(.howwork-card-visible) {
+  opacity: 0;
+  transform: translateY(80px);
+}
+
+.card.howwork-card-visible {
+  animation: howworkCardSlideUp 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.glow:not(.howwork-glow-visible) {
+  opacity: 0;
+}
+
+.glow.howwork-glow-visible {
+  animation: howworkGlowFade 0.6s 0.3s ease-out forwards;
+}
 
         @media (max-width: 777px) {
           /* Vertical stack for mobile */
