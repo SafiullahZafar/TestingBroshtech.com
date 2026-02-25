@@ -12,18 +12,25 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 1, title: "Biz Axis", subTitle: "Web Development", image: "/webdevelopment1.png", path: "https://bizaxis.net/" },
   { id: 2, title: "Saleem Enterprises", subTitle: "Web Development", image: "/webdevelopment4.png", path: "https://saleementerprises.com/" },
   { id: 3, title: "Waaris Clothing", subTitle: "Web Development", image: "/webdevelopment3.png", path: "https://www.waaris.store/" },
+  { id: 3, title: "Adamjee Textile", subTitle: "Web Development", image: "/webdevelopment5.png", path: "https://adamjee-textile.vercel.app/" },
+  { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.png", path: "https://bareeze-store.vercel.app/" },
+  { id: 3, title: "Goat Dubai", subTitle: "Web Development", image: "/webdevelopment7.png", path: "https://got-dubai.vercel.app/" },
+  { id: 3, title: "Hassan Textile", subTitle: "Web Development", image: "/webdevelopment8.png", path: "https://hassan-enter-prise.vercel.app/" },
+  { id: 3, title: "Lagend Club", subTitle: "Web Development", image: "/webdevelopment9.png", path: "https://www.lagendclub.info/" },
+  { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.png", path: "https://naseem-febrics.vercel.app/" },
+  { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.png", path: "https://paramount-solutions.vercel.app/" },
 ];
 
 const WebDevelopment: React.FC = () => {
   return (
     <div className="w-full animate-in fade-in duration-1000 flex justify-center">
       <div className="w-full max-w-6xl px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid custom-grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {webDevData.map((project) => (
             <a
               href={project.path}
               key={project.id}
-              className="block cursor-pointer relative group"
+              className="block cursor-pointer custom-card relative group"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -76,6 +83,28 @@ const WebDevelopment: React.FC = () => {
           75% { transform: scale(1.1); opacity: 1; }
           100% { transform: scale(1); opacity: 0.8; }
         }
+          /* Custom Media Queries */
+@media (min-width: 430px) and (max-width: 767px) {
+  .custom-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem; /* same as gap-10 */
+  }
+  .custom-card {
+    height: 260px; /* adjust height for 2-column layout */
+  }
+}
+
+@media (max-width: 429px) {
+  .custom-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem; /* adjust spacing */
+  }
+  .custom-card {
+    height: 220px; /* smaller height for small screen */
+  }
+}
       `}</style>
     </div>
   );
