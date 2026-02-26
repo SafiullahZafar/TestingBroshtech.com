@@ -18,7 +18,7 @@ export const Footer = () => {
 
             {/* Main Grid */}
             <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
-              
+
               {/* Left - Have a project? - FIXED ALIGNMENT */}
               <div className="md:col-span-4 flex flex-col items-start"> {/* Changed from items-center to start for consistency */}
                 <h1 className="text-4xl md:text-[42px] lg:w-92 font-medium leading-tight text-white mb-1">Have a project?</h1>
@@ -33,6 +33,8 @@ export const Footer = () => {
                     className="w-full bg-transparent border-b border-white/70 pb-4 text-white placeholder:text-gray-400 focus:outline-none text-lg"
                   />
                   <button
+                    aria-label="Go to link"
+
                     className="absolute right-0 bottom-2 w-11.5 sm:top-0 h-9.5 sm:w-7 sm:h-7 rounded-[5px] bg-white hover:bg-black flex items-center justify-center shadow-xl transition-all group"
                   >
                     <GoArrowUpRight className="w-6 h-6 text-[#0B6E4F] group-hover:text-white transition-colors" />
@@ -42,10 +44,10 @@ export const Footer = () => {
 
               {/* Right Section */}
               <div className="md:col-span-8 grid grid-cols-2 lg:left-13 lg:top-2.75 md:relative md:grid-cols-3 gap-x-5 md:gap-x-10 gap-y-14 md:gap-12">
-                
+
                 {/* Explore */}
                 <div className="flex lg:relative lg:left-1.25 flex-col items-start">
-                  <h3 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Explore</h3>
+                  <h2 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Explore</h2>
                   <ul className="space-y-3 text-base md:text-xl text-gray-200">
                     <li><a href="/" className="hover:text-[#0B6E4F] transition-colors">Home</a></li>
                     <li><a href="/portfolio" className="hover:text-[#0B6E4F] transition-colors">Portfolio</a></li>
@@ -69,13 +71,15 @@ export const Footer = () => {
                 <div className="col-span-2 md:col-span-1 flex flex-col items-start">
                   <h3 className="text-xl md:text-2xl font-semibold uppercase mb-6 text-white">Quick Links</h3>
                   <div className="flex gap-6 md:gap-5 items-center">
-                    <a href="https://www.facebook.com/p/BroshTech-61569795868977/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+                    <a href="https://www.facebook.com/p/BroshTech-61569795868977/" target="_blank" rel="noopener noreferrer" aria-label="Visit Broshtech on Facebook" className="hover:scale-110 transition-transform">
                       <FaFacebookSquare className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
-                    <a href="https://pk.linkedin.com/company/broshtech" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+
+                    <a href="https://pk.linkedin.com/company/broshtech" target="_blank" rel="noopener noreferrer" aria-label="Visit Broshtech on LinkedIn" className="hover:scale-110 transition-transform">
                       <FaLinkedin className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
-                    <a href="https://www.instagram.com/broshtech/" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+
+                    <a href="https://www.instagram.com/broshtech/" target="_blank" rel="noopener noreferrer" aria-label="Visit Broshtech on Instagram" className="hover:scale-110 transition-transform">
                       <FaSquareInstagram className="w-9 h-9 md:w-8 md:h-8" />
                     </a>
                   </div>

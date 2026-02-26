@@ -22,17 +22,18 @@ function App() {
       <Navbar />
       <SCROOLToTop />
       <CustomCursor />
-      <Routes>
-        <Route path="/" element={<Homemain />} />
-        <Route path="/portfolio" element={< Portfolio/>} />
-        <Route path="/founder" element={<TeamMain />} />
-        <Route path="/contact" element={<ContactComponent />} />
-        <Route path="/branding1" element={<Branding1 />} />
-        <Route path="/branding2" element={<Branding2 />} />
-        <Route path="/branding3" element={<Branding3 />} />
-        <Route path="/socialmedia1" element={<SocialMedia1 />} />
-      </Routes>
-
+      <main>
+        <Routes>
+          <Route path="/" element={<Homemain />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/founder" element={<TeamMain />} />
+          <Route path="/contact" element={<ContactComponent />} />
+          <Route path="/branding1" element={<Branding1 />} />
+          <Route path="/branding2" element={<Branding2 />} />
+          <Route path="/branding3" element={<Branding3 />} />
+          <Route path="/socialmedia1" element={<SocialMedia1 />} />
+        </Routes>
+      </main>
       <Footer />
     </>
   )

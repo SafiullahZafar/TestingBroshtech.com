@@ -51,23 +51,23 @@ export const Projects: React.FC = () => {
       return;
     }
 
-  const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      const type = entry.target.getAttribute("data-section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const type = entry.target.getAttribute("data-section");
 
-      if (!type) return;
+          if (!type) return;
 
-      setVisible((prev) => ({
-        ...prev,
-        [type]: entry.isIntersecting,
-      }));
-    });
-  },
-  {
-    threshold: 0,
-  }
-);
+          setVisible((prev) => ({
+            ...prev,
+            [type]: entry.isIntersecting,
+          }));
+        });
+      },
+      {
+        threshold: 0,
+      }
+    );
 
     if (headerRef.current) observer.observe(headerRef.current);
     if (dividerRef.current) observer.observe(dividerRef.current);
@@ -133,9 +133,8 @@ export const Projects: React.FC = () => {
       <div
         ref={headerRef}
         data-section="header"
-        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${
-          visible.header ? "scroll-show" : "scroll-hidden"
-        }`}
+        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${visible.header ? "scroll-show" : "scroll-hidden"
+          }`}
       >
         Our Successful Project
       </div>
@@ -144,9 +143,8 @@ export const Projects: React.FC = () => {
       <div
         ref={dividerRef}
         data-section="divider"
-        className={`text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90 ${
-          visible.divider ? "scroll-show" : "scroll-hidden"
-        }`}
+        className={`text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90 ${visible.divider ? "scroll-show" : "scroll-hidden"
+          }`}
       >
         {window.innerWidth < 768
           ? "-------------------"
@@ -157,9 +155,8 @@ export const Projects: React.FC = () => {
       <div
         ref={subtextRef}
         data-section="subtext"
-        className={`text-white text-sm Top md:text-3xl font-extralight mb-10 ${
-          visible.subtext ? "scroll-show" : "scroll-hidden"
-        }`}
+        className={`text-white text-sm Top md:text-3xl font-extralight mb-10 ${visible.subtext ? "scroll-show" : "scroll-hidden"
+          }`}
       >
         Projects With Top Ratings!
       </div>
@@ -168,17 +165,17 @@ export const Projects: React.FC = () => {
       <div
         ref={gridRef}
         data-section="grid"
-        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${
-          visible.grid ? "scroll-show" : "scroll-hidden"
-        }`}
+        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"
+          }`}
       >
         {["/2.webp", "/3.webp", "/1.webp"].map((src, i) => (
           <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
             <img
               src={src}
-              className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${
-                i === 2 ? "third-img" : ""
-              }`}
+              className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""
+                }`}
+              loading="lazy"
+              decoding="async"
               alt={`P${i + 1}`}
             />
           </div>
@@ -230,7 +227,7 @@ export const Projects: React.FC = () => {
         })}
       </div>
 
-          {/* CUSTOM CSS for mobile/small screens only */}
+      {/* CUSTOM CSS for mobile/small screens only */}
       <style>{`
         @media (max-width: 767px) {
           /* Make header smaller */
