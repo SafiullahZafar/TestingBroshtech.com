@@ -11,7 +11,7 @@ type WebDevelopmentProject = {
 const webDevData: WebDevelopmentProject[] = [
   { id: 1, title: "Biz Axis", subTitle: "Web Development", image: "/webdevelopment1.png", path: "https://bizaxis.net/" },
   { id: 2, title: "Saleem Enterprises", subTitle: "Web Development", image: "/webdevelopment4.png", path: "https://saleementerprises.com/" },
-  { id: 3, title: "Waaris Clothing", subTitle: "Web Development", image: "/webdevelopment3.png", path: "https://www.waaris.store/" },
+  { id: 3, title: "Waaris", subTitle: "Web Development", image: "/webdevelopment3.png", path: "https://www.waaris.store/" },
   { id: 3, title: "Adamjee Textile", subTitle: "Web Development", image: "/webdevelopment5.png", path: "https://adamjee-textile.vercel.app/" },
   { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.png", path: "https://bareeze-store.vercel.app/" },
   { id: 3, title: "Goat Dubai", subTitle: "Web Development", image: "/webdevelopment7.png", path: "https://got-dubai.vercel.app/" },
@@ -19,6 +19,7 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 3, title: "Lagend Club", subTitle: "Web Development", image: "/webdevelopment9.png", path: "https://www.lagendclub.info/" },
   { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.png", path: "https://naseem-febrics.vercel.app/" },
   { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.png", path: "https://paramount-solutions.vercel.app/" },
+  { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.png", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494pNgF" },
 ];
 const WebDevelopment: React.FC = () => {
   return (

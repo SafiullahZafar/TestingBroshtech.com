@@ -216,41 +216,39 @@ const resumeAuto = () => {
     }
   }, 1800); // delay before auto starts again
 };
-
+const isMobileDevice = () => window.innerWidth <= 768;
   // DRAG SUPPORT
-  const handleMouseDown = (e: React.MouseEvent) => { pauseAuto(); isDragging.current = true; dragStartY.current = e.clientY; };
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging.current || dragStartY.current === null) return;
-    const diff = e.clientY - dragStartY.current;
-    if (Math.abs(diff) > 40 && !isAnimating.current) {
-  if (diff > 0) {
-    prevStep();
-  } else {
-    nextStep();
-  }
-
+ const handleMouseDown = (e: React.MouseEvent) => {
+  if (isMobileDevice()) return;
+  pauseAuto();
+  isDragging.current = true;
   dragStartY.current = e.clientY;
-}
-  };
-  const handleMouseUp = () => { isDragging.current = false; dragStartY.current = null; resumeAuto(); };
+};
 
-  // TOUCH SUPPORT
-  const handleTouchStart = (e: React.TouchEvent) => { pauseAuto(); dragStartY.current = e.touches[0].clientY; };
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (dragStartY.current === null) return;
-    const diff = e.touches[0].clientY - dragStartY.current;
-    if (Math.abs(diff) > 30 && !isAnimating.current) {
-  if (diff > 0) {
-    prevStep();
-  } else {
-    nextStep();
+const handleMouseMove = (e: React.MouseEvent) => {
+  if (isMobileDevice()) return;
+  if (!isDragging.current || dragStartY.current === null) return;
+
+  const diff = e.clientY - dragStartY.current;
+
+  if (Math.abs(diff) > 40 && !isAnimating.current) {
+    diff > 0 ? prevStep() : nextStep();
+    dragStartY.current = e.clientY;
   }
+};
 
-  dragStartY.current = e.touches[0].clientY;
-}
-  };
-  const handleTouchEnd = () => { dragStartY.current = null; resumeAuto(); };
-
+  // const handleMouseUp = () => {
+  //   if (isMobileDevice()) return;
+  //   isDragging.current = false;
+  //   dragStartY.current = null;
+  //   resumeAuto();
+  // };
+  const handleMouseUp = () => { isDragging.current = false; dragStartY.current = null; resumeAuto(); };
+  // TOUCH SUPPORT
+ // TOUCH SUPPORT DISABLED (mobile auto only)
+// const handleTouchStart = () => {};
+// const handleTouchMove = () => {};
+// const handleTouchEnd = () => {};
   // WHEEL SUPPORT
 //   const handleWheel = (e: React.WheelEvent) => {
 //   pauseAuto();
@@ -335,9 +333,9 @@ useEffect(() => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
-      onTouchEnd={handleTouchEnd}
+      // onTouchStart={handleTouchStart}
+      // onTouchMove={handleTouchMove}
+      // onTouchEnd={handleTouchEnd}
       // onWheel={handleWheel}
       >
     {/* // <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black py-2 sm:py-6"> */}
