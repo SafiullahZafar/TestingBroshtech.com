@@ -4,30 +4,30 @@ import { useNavigate } from "react-router-dom";
 const Home: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-  const rect = e.currentTarget.getBoundingClientRect();
-  const x = (e.clientX - rect.left) / rect.width - 0.5;
-  const y = (e.clientY - rect.top) / rect.height - 0.5;
-  setMousePos({ x, y });
-};
-const navigate = useNavigate();
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
+    setMousePos({ x, y });
+  };
+  const navigate = useNavigate();
 
-const openCategory = (category: string) => {
-  navigate(`/portfolio?category=${encodeURIComponent(category)}`);
-};
-const handleMouseLeave = () => {
-  setMousePos({ x: 0, y: 0 });
-};
+  const openCategory = (category: string) => {
+    navigate(`/portfolio?category=${encodeURIComponent(category)}`);
+  };
+  const handleMouseLeave = () => {
+    setMousePos({ x: 0, y: 0 });
+  };
 
-const getStyle = (intensity: number) => ({
-  transform: `translate(${mousePos.x * intensity}px, ${mousePos.y * intensity}px)`,
-  transition: "transform 0.2s ease-out",
-});
+  const getStyle = (intensity: number) => ({
+    transform: `translate(${mousePos.x * intensity}px, ${mousePos.y * intensity}px)`,
+    transition: "transform 0.2s ease-out",
+  });
 
   return (
     <section className=" Height w-full  bg-black text-white flex items-center max-md:items-center ml-0 lg:ml-0"
       onMouseMove={handleMouseMove}
-onMouseLeave={handleMouseLeave}
+      onMouseLeave={handleMouseLeave}
     >
       {/* MAIN WRAPPER */}
       <div
@@ -61,7 +61,7 @@ onMouseLeave={handleMouseLeave}
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            Hi i’am brosh
+            I’ am BROSH
             <span className="block">Your Web & Software</span>
             <span className="block">Builder</span>
           </h1>
@@ -73,7 +73,7 @@ onMouseLeave={handleMouseLeave}
                 key={i}
                 src="/Star 1.png"
                 alt="star"
-                className="w-[61px] TopforHome h-[64px] max-md:w-[44px] max-md:h-[46px]"
+                className="w-[61px] h-auto TopforHome max-md:w-[44px]"
               />
             ))}
           </div>
@@ -117,16 +117,17 @@ onMouseLeave={handleMouseLeave}
               Schedule a Free Consultation
               <img
                 src="/character.png"
-                className="h-7 w-8"
+                className="h-7 w-8 object-contain"
                 alt="icon"
               />
+
             </button>
           </div>
         </div>
 
         {/* RIGHT VIDEO */}
-       <div
-  className="
+        <div
+          className="
     relative
     flex-shrink-0
     w-full
@@ -137,53 +138,53 @@ onMouseLeave={handleMouseLeave}
     mx-auto lg:mx-0 
     mt-12 md:-mt-8 lg:mt-4 video
   "
->
-  {/* lg:left-[2%] sm:left-[0.5%] */}
-  {/* --- Floating Labels Start --- */}
-  
-  {/* Top Left Label */}
- <div
-  className="absolute top-[23%] lg:top-[30%] Development z-10 cursor-pointer"
-  style={getStyle(40)}
-  onClick={() => openCategory("Web Development")}
->
-  <span className="bg-white/15  text-white hover:bg-[#064e08] hover:text-white  px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-    Web Development
-  </span>
-</div>
+        >
+          {/* lg:left-[2%] sm:left-[0.5%] */}
+          {/* --- Floating Labels Start --- */}
 
-{/* Social Media */}
-<div
-  className="absolute bottom-[13%] lg:bottom-[20%] socialmedia left-[2%] z-10 cursor-pointer"
-  style={getStyle(-60)}
-  onClick={() => openCategory("Social Media")}
->
-  <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-    Social Media
-  </span>
-</div>
+          {/* Top Left Label */}
+          <div
+            className="absolute top-[23%] lg:top-[30%] Development z-10 cursor-pointer"
+            style={getStyle(40)}
+            onClick={() => openCategory("Web Development")}
+          >
+            <span className="bg-white/15  text-white hover:bg-[#064e08] hover:text-white  px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+              Web Development
+            </span>
+          </div>
 
-{/* Branding */}
-<div
-  className="absolute top-[50%] right-[0%] Branding lg:top-[50%] lg:right-[9%] z-10 cursor-pointer"
-  style={getStyle(30)}
-  onClick={() => openCategory("Branding")}
->
-  <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
-    Branding
-  </span>
-</div>
-  {/* --- Video Component --- */}
-  <video
-    src="/character animation final_2.mp4"
-    className="w-full h-full Motion object-cover rounded-lg"
-    autoPlay
-    muted
-    playsInline
-    controls={false}
-    loop={false}
-  />
-</div>
+          {/* Social Media */}
+          <div
+            className="absolute bottom-[13%] lg:bottom-[20%] socialmedia left-[2%] z-10 cursor-pointer"
+            style={getStyle(-60)}
+            onClick={() => openCategory("Social Media")}
+          >
+            <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+              Social Media
+            </span>
+          </div>
+
+          {/* Branding */}
+          <div
+            className="absolute top-[50%] right-[0%] Branding lg:top-[50%] lg:right-[9%] z-10 cursor-pointer"
+            style={getStyle(30)}
+            onClick={() => openCategory("Branding")}
+          >
+            <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+              Branding
+            </span>
+          </div>
+          {/* --- Video Component --- */}
+          <video
+            src="/character animation final_2.mp4"
+            className="w-full h-full Motion object-cover rounded-lg"
+            autoPlay
+            muted
+            playsInline
+            controls={false}
+            loop={false}
+          />
+        </div>
       </div>
 
       {/* CUSTOM CSS */}
