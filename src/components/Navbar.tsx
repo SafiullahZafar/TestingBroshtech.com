@@ -450,7 +450,7 @@ export const Navbar = () => {
           }}
         >
           {/* LOGO */}
-          <a href="/" className="flex items-center px-[0.85rem] gap-2">
+          <a href="/" className="flex items-center px-[0.85rem] sm:px-0 gap-2">
             <img src="/html-logo.png" alt="Logo" className="w-7.5 h-7.5 sm:w-8 sm:h-8" />
           </a>
 
