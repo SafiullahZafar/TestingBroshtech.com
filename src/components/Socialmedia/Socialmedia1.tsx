@@ -18,12 +18,12 @@ const Skeleton = () => (
 const SocialMedia1: React.FC = () => {
   // Array of your 6 images from the public folder
   const projectImages = [
-    "/socialmedia1(1).png",
-    "/socialmedia1(2).png",
-    "/socialmedia1(3).png",
-    "/socialmedia1(4).png",
-    "/socialmedia1(5).png",
-    "/socialmedia1(6).png",
+    "/socialmedia1(1).webp",
+    "/socialmedia1(2).webp",
+    "/socialmedia1(3).webp",
+    "/socialmedia1(4).webp",
+    "/socialmedia1(5).webp",
+    "/socialmedia1(6).webp",
   ];
 
   // Track loaded state so skeleton disappears when image is loaded

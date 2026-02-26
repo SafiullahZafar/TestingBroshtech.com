@@ -29,7 +29,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
 
           <div className="flex-shrink-0">
             <img
-              src="/arrowsolution.png"
+              src="/arrowsolution.webp"
               alt="arrow solution"
               className="w-[100px] sm:w-[120px] md:w-[140px] lg:w-[160px] object-contain opacity-20"
             />

@@ -20,9 +20,9 @@ const Skeleton = () => (
 const Branding2: React.FC = () => {
   const images = [
     "/branding2(1).webp",
-    "/branding2(2).jpeg",
-    "/branding2(3).png", // Image 3
-    "/branding2(4).png", // Image 4
+    "/branding2(2).webp",
+    "/branding2(3).webp", // Image 3
+    "/branding2(4).webp", // Image 4
     "/branding2(5).webp",
     "/branding2(6).webp",
     "/branding2(7).webp",

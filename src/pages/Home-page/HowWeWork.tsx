@@ -13,22 +13,22 @@ export const HowWeWork: React.FC = () => {
     {
       title: "STRATEGY & PLANNING",
       desc: "WE ANALYZE YOUR GOALS AND CRAFT A TAILORED STRATEGY.",
-      img: "/howicon1.png",
+      img: "/howicon1.webp",
     },
     {
       title: "UI & UX DESIGN",
       desc: "WE DESIGN CLEAN, INTUITIVE, AND ENGAGING DIGITAL EXPERIENCES",
-      img: "/howicon2.png",
+      img: "/howicon2.webp",
     },
     {
       title: "WEB DEVELOPMENT",
       desc: "WE CREATE FAST, SCALABLE, AND RELIABLE MODERN WEB SOLUTIONS",
-      img: "/howicon3.png",
+      img: "/howicon3.webp",
     },
     {
       title: "SEO OPTIMIZATION",
       desc: "WE IMPROVE RANKINGS, DRIVE TRAFFIC, AND GROW YOUR ONLINE PRESENCE",
-      img: "/howicon4.png",
+      img: "/howicon4.webp",
     },
   ];
 
@@ -139,7 +139,7 @@ export const HowWeWork: React.FC = () => {
                 ref={(el) => setCardRef(el, i)}
                 className={`relative w-full max-w-[310px] lg:w-[290px] aspect-[1.4/1] rounded-[20px] lg:rounded-[30px] flex flex-col items-center justify-center text-center p-7 overflow-hidden transition-all duration-300 ${getMarginTop(i)} card card-${i + 1}`}
                 style={{
-                  backgroundImage: "url('/howbg.png')",
+                  backgroundImage: "url('/howbg.webp')",
                   backgroundSize: "cover",
                   zIndex: 10 + i,
                   backgroundColor: "#050505",

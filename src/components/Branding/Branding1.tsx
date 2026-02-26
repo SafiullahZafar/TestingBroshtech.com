@@ -18,13 +18,13 @@ const Skeleton = () => (
 
 const Branding1: React.FC = () => {
   const images = [
-    "/branding1(1).png",
-    "/branding1(2).png",
-    "/branding1(3).png",
-    "/branding1(4).png",
-    "/branding1(7).png",
-    "/branding1(5).png",
-    "/branding1(6).png",
+    "/branding1(1).webp",
+    "/branding1(2).webp",
+    "/branding1(3).webp",
+    "/branding1(4).webp",
+    "/branding1(7).webp",
+    "/branding1(5).webp",
+    "/branding1(6).webp",
   ];
 
   const [loaded, setLoaded] = useState<Record<number, boolean>>({});

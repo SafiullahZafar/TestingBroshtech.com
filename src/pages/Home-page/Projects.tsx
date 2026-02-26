@@ -2,22 +2,22 @@ import React, { useEffect, useRef, useState } from "react";
 
 export const Projects: React.FC = () => {
   const icons = [
-    "/sucessicon1.png",
-    "/sucessicon2.png",
-    "/sucessicon3.png",
-    "/sucessicon4.png",
-    "/sucessicon5.png",
-    "/sucessicon6.png",
-    "/sucessicon7.png",
-    "/sucessicon8.png",
-    "/sucessicon9.png",
-    "/sucessicon10.png",
-    "/sucessicon11.png",
-    "/sucessicon12.png",
-    "/sucessicon13.png",
-    "/sucessicon14.png",
-    "/sucessicon15.png",
-    "/sucessicon16.png",
+    "/sucessicon1.webp",
+    "/sucessicon2.webp",
+    "/sucessicon3.webp",
+    "/sucessicon4.webp",
+    "/sucessicon5.webp",
+    "/sucessicon6.webp",
+    "/sucessicon7.webp",
+    "/sucessicon8.webp",
+    "/sucessicon9.webp",
+    "/sucessicon10.webp",
+    "/sucessicon11.webp",
+    "/sucessicon12.webp",
+    "/sucessicon13.webp",
+    "/sucessicon14.webp",
+    "/sucessicon15.webp",
+    "/sucessicon16.webp",
   ];
 
   const scrollRef = useRef<HTMLDivElement | null>(null);
@@ -41,7 +41,7 @@ export const Projects: React.FC = () => {
   =============================== */
   useEffect(() => {
     // ✅ Disable animation on mobile
-    if (window.innerWidth < 168) {
+    if (window.innerWidth < 1) {
       setVisible({
         header: true,
         divider: true,
@@ -172,7 +172,7 @@ export const Projects: React.FC = () => {
           visible.grid ? "scroll-show" : "scroll-hidden"
         }`}
       >
-        {["/2.png", "/3.png", "/1.png"].map((src, i) => (
+        {["/2.webp", "/3.webp", "/1.webp"].map((src, i) => (
           <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
             <img
               src={src}
@@ -202,7 +202,7 @@ export const Projects: React.FC = () => {
           `}
         </style>
 
-        {[...icons, ...icons, ...icons].map((icon, index) => {
+        {[...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons].map((icon, index) => {
           // const isSpecial = index % icons.length === 6;
 
           return (

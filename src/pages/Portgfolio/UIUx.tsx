@@ -11,7 +11,7 @@ const uiData: UIProject[] = [
     id: 1,
     name: "Sophie Bennett",
     role: "Product Designer focused on intuitive user experiences",
-    image: "/ui1.png",
+    image: "/ui1.webp",
     link: "https://www.figma.com/proto/e0ZACWvNUx5WbwqFQc5iV8/ProvenPrepCenter?node-id=250-832",
   },
   // {

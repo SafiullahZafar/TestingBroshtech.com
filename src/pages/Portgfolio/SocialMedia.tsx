@@ -2,7 +2,7 @@ import React from "react";
 
 const SocialMedia: React.FC = () => {
   // Configuration
-  const mainImage = "/socialmedia3.png"; 
+  const mainImage = "/socialmedia3.webp"; 
   const destinationPath = "/socialmedia1"; // The logic/route we will handle later
 
   return (

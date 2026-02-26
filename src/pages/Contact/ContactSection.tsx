@@ -339,7 +339,7 @@ const ContactComponent: React.FC = () => {
 
       {/* Background Text */}
      <div className="absolute hidden sm:block sm:top-[123px] w-full md:w-[74vw] sm:w-[74vw] flex justify-center pointer-events-none">
-            <img src="/contact.png" alt="contact" />
+            <img src="/contact.webp" alt="contact" />
       </div>
 
       {/* MAIN CONTAINER */}

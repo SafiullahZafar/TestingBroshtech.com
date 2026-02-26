@@ -71,7 +71,7 @@ onMouseLeave={handleMouseLeave}
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
-                src="/Star 1.png"
+                src="/Star 1.webp"
                 alt="star"
                 className="w-[61px] TopforHome h-[64px] max-md:w-[44px] max-md:h-[46px]"
               />
@@ -116,7 +116,7 @@ onMouseLeave={handleMouseLeave}
             >
               Schedule a Free Consultation
               <img
-                src="/character.png"
+                src="/character.webp"
                 className="h-7 w-8"
                 alt="icon"
               />
