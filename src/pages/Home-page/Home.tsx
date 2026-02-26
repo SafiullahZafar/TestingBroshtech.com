@@ -35,7 +35,7 @@ onMouseLeave={handleMouseLeave}
           flex flex-col lg:flex-row md:flex-row
           lg:items-center md:items-center items-start
           justify-between
-          max-w-7xl mx-auto w-full
+          max-w-[100vw] mx-auto w-full
           px-4
           lg:pl-0 lg:pr-0
           xl:pl-0 xl:pr-0
@@ -96,7 +96,7 @@ onMouseLeave={handleMouseLeave}
           <div className="flex  TopforHomeLeft toward justify-start md:px-2.5 lg:px-0 lg:justify-start mt-6 ml-2 lg:ml-4 button-wrapper">
             <button
               className="
-                flex Botton items-center gap-1
+                flex Botton buttons items-center gap-1
                 rounded-lg
                 font-medium 
                 px-1 py-1
@@ -253,7 +253,7 @@ onMouseLeave={handleMouseLeave}
             margin-top: 1.5rem !important;
             justify-content: center !important;
           }
-          button {
+          buttons {
             padding: 0.5rem 1rem !important;
             font-size: 0.85rem !important;
             top:10px !important;

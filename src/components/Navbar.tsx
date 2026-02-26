@@ -383,7 +383,7 @@ const styles = `
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  .mobile-menu-items {
+  .mobile-menu-item {
     width: 100%;
     padding: 0.5rem .5rem;
     border-radius: 0.75rem;
@@ -392,11 +392,11 @@ const styles = `
     color: white;
   }
 
-  .mobile-menu-items:hover {
+  .mobile-menu-item:hover {
     background-color: rgba(255, 255, 255, 0.15);
   }
 
-  .mobile-menu-items.active {
+  .mobile-menu-item.active {
     background-color: rgba(255, 255, 255, 0.15);
   }
 `;
@@ -469,9 +469,9 @@ export const Navbar = () => {
           </ul>
 
           {/* MOBILE HAMBURGER */}
-          <div className="ml-auto md:hidden relative">
+          <div className="ml-auto md:hidden px-[0.85rem] relative">
             <button onClick={toggleMobileMenu}>
-              <Menu className="w-5.75 h-5.75 text-white" />
+              <Menu className="w-5.75 h-5.75 top-1 relative text-white" />
             </button>
           </div>
         </div>
@@ -497,7 +497,7 @@ export const Navbar = () => {
             <Link
               key={item.name}
               to={item.path}
-              className={`mobile-menu-items text-xl ${
+              className={`mobile-menu-item text-xl ${
                 location.pathname === item.path ? "active" : ""
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
@@ -533,7 +533,7 @@ export const Navbar = () => {
             align-items: center !important;
           }
 
-          .mobile-menu-items {
+          .mobile-menu-item {
             color: white !important;
             font-size: 1.2rem !important;
             text-align: left !important;
