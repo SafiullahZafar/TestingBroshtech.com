@@ -13,13 +13,13 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 2, title: "Saleem Enterprises", subTitle: "Web Development", image: "/webdevelopment4.png", path: "https://saleementerprises.com/" },
   { id: 3, title: "Waaris", subTitle: "Web Development", image: "/webdevelopment3.png", path: "https://www.waaris.store/" },
   { id: 3, title: "Adamjee Textile", subTitle: "Web Development", image: "/webdevelopment5.png", path: "https://adamjee-textile.vercel.app/" },
-  { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.png", path: "https://bareeze-store.vercel.app/" },
-  { id: 3, title: "Goat Dubai", subTitle: "Web Development", image: "/webdevelopment7.png", path: "https://got-dubai.vercel.app/" },
-  { id: 3, title: "Hassan Textile", subTitle: "Web Development", image: "/webdevelopment8.png", path: "https://hassan-enter-prise.vercel.app/" },
+  { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.jpeg", path: "https://bareeze-store.vercel.app/" },
+  { id: 3, title: "Goat Dubai", subTitle: "Web Development", image: "/webdevelopment7.jpeg", path: "https://got-dubai.vercel.app/" },
+  { id: 3, title: "Hassan Textile", subTitle: "Web Development", image: "/webdevelopment8.jpeg", path: "https://hassan-enter-prise.vercel.app/" },
   { id: 3, title: "Lagend Club", subTitle: "Web Development", image: "/webdevelopment9.png", path: "https://www.lagendclub.info/" },
   { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.png", path: "https://naseem-febrics.vercel.app/" },
-  { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.png", path: "https://paramount-solutions.vercel.app/" },
-  { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.png", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494pNgF" },
+  { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.jpeg", path: "https://paramount-solutions.vercel.app/" },
+  { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.jpeg", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494pNgF" },
 ];
 const WebDevelopment: React.FC = () => {
   return (
