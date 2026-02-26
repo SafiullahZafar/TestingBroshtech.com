@@ -44,7 +44,6 @@ const Home: FC = () => {
           gap-12
         "
       >
-        {/* LEFT CONTENT */}
         <div
           className="
             flex-1
@@ -61,7 +60,7 @@ const Home: FC = () => {
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            I’ am BROSH
+            Hi i’am brosh
             <span className="block">Your Web & Software</span>
             <span className="block">Builder</span>
           </h1>
@@ -78,7 +77,6 @@ const Home: FC = () => {
             ))}
           </div>
 
-          {/* DESCRIPTION */}
           <p
             className="
               text-[13px] TopforHome sm:text-[16px]
