@@ -114,14 +114,8 @@ const Home: FC = () => {
             >
               Schedule a Free Consultation
               <img
-<<<<<<< HEAD
                 src="/character.webp"
                 className="h-7 w-8"
-=======
-                src="/character.png"
-                className="h-7 w-8 object-contain"
->>>>>>> 5d22a5af7a83e6252130fdc0f0d651fb5aeefc08
-                alt="icon"
               />
 
             </button>
