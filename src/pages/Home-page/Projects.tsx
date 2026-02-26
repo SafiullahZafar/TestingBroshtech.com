@@ -34,7 +34,7 @@ export const Projects: React.FC = () => {
     grid: false,
   });
 
-  const speed = 0.4;
+  // const speed = 0.4;
 
   /* ===============================
      DESKTOP ONLY SCROLL ANIMATION
@@ -80,17 +80,48 @@ export const Projects: React.FC = () => {
   /* ===============================
         ICON STRIP AUTO SCROLL
   =============================== */
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
+  // useEffect(() => {
+  //   const el = scrollRef.current;
+  //   if (!el) return;
 
+  //   const singleWidth = el.scrollWidth / 3;
+  //   el.scrollLeft = singleWidth;
+
+  //   let rafId: number;
+
+  //   const autoScroll = () => {
+  //     el.scrollLeft += speed;
+
+  //     if (el.scrollLeft >= singleWidth * 2) {
+  //       el.scrollLeft -= singleWidth;
+  //     }
+  //     if (el.scrollLeft <= 0) {
+  //       el.scrollLeft += singleWidth;
+  //     }
+
+  //     rafId = requestAnimationFrame(autoScroll);
+  //   };
+
+  //   rafId = requestAnimationFrame(autoScroll);
+
+  //   return () => cancelAnimationFrame(rafId);
+  // }, []);
+
+  useEffect(() => {
+  const el = scrollRef.current;
+  if (!el) return;
+
+  // Adjust speed relative to screen width for smooth motion on all laptops
+  const adjustedSpeed = Math.max(0.4, window.innerWidth / 2500);
+
+  let rafId: number;
+
+  const startScroll = () => {
     const singleWidth = el.scrollWidth / 3;
     el.scrollLeft = singleWidth;
 
-    let rafId: number;
-
     const autoScroll = () => {
-      el.scrollLeft += speed;
+      el.scrollLeft += adjustedSpeed;
 
       if (el.scrollLeft >= singleWidth * 2) {
         el.scrollLeft -= singleWidth;
@@ -103,9 +134,31 @@ export const Projects: React.FC = () => {
     };
 
     rafId = requestAnimationFrame(autoScroll);
+  };
 
-    return () => cancelAnimationFrame(rafId);
-  }, []);
+  // Wait for all images to load to calculate scrollWidth correctly
+  const images = Array.from(el.querySelectorAll("img"));
+  let loadedCount = 0;
+  images.forEach((img) => {
+    if (img.complete) {
+      loadedCount++;
+    } else {
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === images.length) startScroll();
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === images.length) startScroll();
+      };
+    }
+  });
+
+  if (loadedCount === images.length) startScroll();
+
+  // Cleanup on unmount
+  return () => cancelAnimationFrame(rafId);
+}, []);
 
   return (
     <section className="w-full bg-black flex md:h-auto flex-col md:mb-[104px] md:mt-9 items-center justify-center gap-1 px-2">
@@ -199,7 +252,7 @@ export const Projects: React.FC = () => {
           `}
         </style>
 
-        {[...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons, ...icons].map((icon, index) => {
+        {[...icons, ...icons, ...icons, ...icons, ...icons, ...icons].map((icon, index) => {
           // const isSpecial = index % icons.length === 6;
 
           return (
@@ -211,7 +264,7 @@ export const Projects: React.FC = () => {
                 // height: isSpecial ? "112.6px" : "95px",
                 width: "85px",
                 // height: "80px",
-                borderRadius: "20px",
+                borderRadius: "10px",
                 overflow: "hidden",
                 backgroundColor: "transparent",
               }}
@@ -220,7 +273,7 @@ export const Projects: React.FC = () => {
                 src={icon}
                 alt={`tech-icon-${(index % icons.length) + 1}`}
                 className="w-full h-full object-contain p-2"
-                style={{ borderRadius: "20px" }}
+                style={{ borderRadius: "10px" }}
               />
             </div>
           );
@@ -283,7 +336,7 @@ export const Projects: React.FC = () => {
           .icon-strip > div {
             width: 48px !important;
             height: 48px !important;
-            border-radius: 12px !important;
+            border-radius: 6px !important;
           }
           .icon-strip img {
             padding: 0.25rem !important;
@@ -305,7 +358,7 @@ export const Projects: React.FC = () => {
             padding: 0.4rem 0.8rem !important;
           }
              .header-box {
-    border-radius: 6px !important; /* sharper corners */
+    border-radius: 4px !important; /* sharper corners */
     width: 260px !important; /* shrink to fit text */
     content-center !important; /* center text */
       text-align: center !important;
