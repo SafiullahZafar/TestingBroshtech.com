@@ -58,7 +58,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
       <div className="relative z-10 top-14 sm:-top-14 max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
         {/* LEFT SIDE */}
-        <div className="flex flex-col gap-10 relative md:top-9 lg:left-7 lg:w-[510px]">
+        <div className="flex flex-col gap-10 relative md:top-14 lg:w-[45vw]">
 
           {/* Top Header */}
           <div className="flex flex-col gap-4">
@@ -84,7 +84,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           <div className="flex flex-col gap-5">
             {[
               { id: 'email', icon: EnvelopeIcon, title: 'Email Us', desc: 'Broshtech123@gmail.com' },
-              { id: 'call', icon: PhoneIcon, title: 'Call Us', desc: '(41) 1234-1234' },
+              { id: 'call', icon: PhoneIcon, title: 'Call Us', desc: '(41) 1521-8391' },
               { id: 'location', icon: MapPinIcon, title: 'Our Location', desc: '113 Mall Of, Faisalabad' }
             ].map((item) => (
               <button
@@ -119,8 +119,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-full md:top-14 relative md:right-3">
-          <div className="w-full lg:w-[510px] bg-[#D9D9D9]/21 border lg:left-7 relative border-white/10 rounded-[10px] p-6 md:p-8 text-[#8B8B8B]">
+        <div className="w-full md:top-14 relative">
+          <div className="w-full lg:w-[44vw] bg-[#D9D9D9]/21 border lg:left-7 relative border-white/10 rounded-[10px] p-6 md:p-8 text-[#8B8B8B]">
 
             <AnimatePresence mode="wait">
 
@@ -200,9 +200,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
                   </h3>
 
                   {[
-                    { label: 'Corporate Office', number: '+92 41 1234-1234' },
-                    { label: 'Founder & CEO', number: '+92 300 123-4567' },
-                    { label: 'Technical Lead', number: '+92 321 987-6543' }
+                    { label: 'Corporate Office', number: '+92 41 1521-8391' },
+                    { label: 'Founder', number: '+92 300 366-2818' },
+                    // { label: 'Technical Lead', number: '+92 321 987-6543' }
                   ].map((item) => (
                     <div
                       key={item.label}
