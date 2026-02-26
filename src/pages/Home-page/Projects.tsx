@@ -208,12 +208,12 @@ export const Projects: React.FC = () => {
           return (
             <div
               key={index}
-              className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-110 shadow-lg active:scale-95"
+              className="flex-shrink-0 flex items-center justify-center transition-all duration-300 hover:scale-100 shadow-lg active:scale-100"
               style={{
                 // width: isSpecial ? "112.6px" : "95px",
                 // height: isSpecial ? "112.6px" : "95px",
                 width: "85px",
-                height: "80px",
+                // height: "80px",
                 borderRadius: "20px",
                 overflow: "hidden",
                 backgroundColor: "transparent",
