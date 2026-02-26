@@ -41,7 +41,7 @@ export default function Mastermind() {
                         <div className="relative w-[280px] h-[380px] lg:w-[320px] lg:h-[500px]">
                             <div className="w-full h-full bg-gradient-to-b from-gray-800 to-gray-900 rounded-lg overflow-hidden">
                                 <img
-                                    src="./leader.png"
+                                    src="./leader.webp"
                                     alt="CEO"
                                     className="w-full h-full object-cover object-center"
                                 />
