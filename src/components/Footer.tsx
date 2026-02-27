@@ -121,7 +121,7 @@ export const Footer = () => {
         {/* Background Image - Adjusted to prevent overflow */}
         <div className="flex justify-center mt-8 md:mt-20">
           <img
-            src="/fotterfotter.png"
+            src="/fotterfotter.webp"
             alt="Background"
             className="w-full md:w-[103%] max-w-none h-auto object-cover"
           />
