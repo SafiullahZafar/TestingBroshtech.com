@@ -23,7 +23,7 @@ const Branding3: React.FC = () => {
     "/branding3(2).webp",
     "/branding3(3).webp",
     "/branding3(5).webp",
-    "/branding3(4).webp",
+    "/brand.webp",
   ];
 
   const [loaded, setLoaded] = useState<Record<number, boolean>>({});

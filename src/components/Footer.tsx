@@ -119,7 +119,7 @@ export const Footer = () => {
         </div>
 
         {/* Background Image - Adjusted to prevent overflow */}
-        <div className="flex justify-center mt-8 md:mt-20">
+        <div className="flex justify-center mt-8 md:mt-10">
           <img
             src="/fotterfotter.webp"
             alt="Background"

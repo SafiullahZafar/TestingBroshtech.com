@@ -1,7 +1,7 @@
 export default function Mastermind() {
     return (
-        <div className=" bg-black text-white flex items-center justify-center px-4 py-5">
-            <div className="max-w-7xl w-full mx-auto mt-8">
+        <div className=" bg-black text-white flex items-center justify-center px-4 py-6">
+            <div className="max-w-7xl w-full mx-auto mt-5">
                 {/* Header with border */}
                 <div className="mt-4 md:mt-12 text-center ml-0 md:ml-4" style={{ fontFamily: "GeneralSans, sans-serif", fontWeight: 800 }}>
                     <h1 className="
@@ -21,7 +21,7 @@ export default function Mastermind() {
                     <p className="text-[14px] sm:text-[16px] md:text-[18px] lg:text-[23px] mt-2 sm:mt-0 uppercase tracking-wider text-white font-medium ml-0 md:ml-3 px-4 md:px-0">
                         AT THE CORE OF BROSHTECH IS A CLEAR{" "}
                         TECHNICAL
-                        VISION LED BY ITS FOUNDER AND CEO.
+                        VISION LED BY ITS FOUNDER.
                     </p>
                 </div>
 

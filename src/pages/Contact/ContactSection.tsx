@@ -67,7 +67,7 @@ const ContactComponent: React.FC = () => {
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setShowInfo(true)}
-              className="flex items-center gap-1 bg-[#D9D9D9]/21 border border-white/30 px-4 py-2 hover:bg-[#D9D9D9]/31 rounded-full w-fit"
+              className="flex items-center gap-1 bg-[#D9D9D9]/21 border border-white/30 px-2` py-2 hover:bg-[#D9D9D9]/31 rounded-lg w-fit"
             >
               <QuestionMarkCircleIcon className="w-5 h-5" />
               <span className="text-[13px] font-semibold">
@@ -102,8 +102,8 @@ const ContactComponent: React.FC = () => {
                 <div className="flex items-center gap-4">
                   <div
                     className={`w-10 h-10 rounded-[10px] flex items-center justify-center ${activeTab === item.id
-                        ? 'bg-[#D9D9D9]/21 text-black'
-                        : 'bg-[#A0A0A0]/10'
+                        ? 'bg-[#D9D9D9]/21 text-white'
+                        : 'bg-[#A0A0A0]/10 text-[#D9D9D9]/60'
                       }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -117,7 +117,7 @@ const ContactComponent: React.FC = () => {
 
                 <ArrowUpRightIcon
                   className={`w-4 h-4 transition-colors duration-300 ${activeTab === item.id
-                      ? 'text-black'
+                      ? 'text-white'
                       : 'text-[#D9D9D9]/60'
                     }`}
                 />

@@ -60,7 +60,7 @@ const Home: FC = () => {
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            Hi i’am brosh
+            I am BROSH
             <span className="block">Your Web & Software</span>
             <span className="block">Builder</span>
           </h1>
