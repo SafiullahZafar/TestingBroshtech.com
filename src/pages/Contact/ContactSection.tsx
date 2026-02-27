@@ -53,7 +53,7 @@ const ContactComponent: React.FC = () => {
     >
 
       {/* Background Text */}
-     <div className="absolute hidden sm:block sm:top-[123px] w-full md:w-[74vw] sm:w-[74vw] flex justify-center pointer-events-none">
+     <div className="absolute hidden opacity-20 sm:block sm:top-[123px] w-full md:w-[74vw] sm:w-[74vw] flex justify-center pointer-events-none">
             <img src="/contact.webp" alt="contact" />
       </div>
 
@@ -61,13 +61,13 @@ const ContactComponent: React.FC = () => {
       <div className="relative z-10 w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
 
         {/* LEFT SIDE */}
-        <div className="flex flex-col gap-10 top-10 relative md:mt-2">
+        <div className="flex flex-col gap-10 top-10 relative md:top-0 md:mt-12">
 
           {/* Header */}
           <div className="flex flex-col gap-4">
             <button
               onClick={() => setShowInfo(true)}
-              className="flex items-center gap-1 bg-[#D9D9D9]/21 border border-white/30 px-2` py-2 hover:bg-[#D9D9D9]/31 rounded-lg w-fit"
+              className="flex items-center gap-1 bg-[#D9D9D9]/21 border border-white/30 px-2 py-2 hover:bg-[#D9D9D9]/31 rounded-lg w-fit"
             >
               <QuestionMarkCircleIcon className="w-5 h-5" />
               <span className="text-[13px] font-semibold">
@@ -127,7 +127,7 @@ const ContactComponent: React.FC = () => {
         </div>
 
         {/* RIGHT SIDE */}
-        <div className="w-full md:mt-1.5 top-10 relative">
+        <div className="w-full top-10 relative md:top-0 md:mt-12">
           <div className="w-full lg:max-w-[550px]   bg-[#D9D9D9]/21 border border-white/10 rounded-[10px] p-6 md:p-8 text-[#8B8B8B]">
 
             <AnimatePresence mode="wait">
@@ -150,7 +150,7 @@ const ContactComponent: React.FC = () => {
                       type="text"
                       name="name"
                       required
-                      placeholder="John Doe"
+                      placeholder="User name"
                       className="w-full p-3 py-4 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm outline-none"
                     />
                   </div>
@@ -163,7 +163,7 @@ const ContactComponent: React.FC = () => {
                       type="email"
                       name="email"
                       required
-                      placeholder="example@gmail.com"
+                      placeholder="Example@gmail.com"
                       className="w-full p-3 py-4 rounded-[10px] bg-[#A0A0A0]/5 border border-white/10 text-sm outline-none"
                     />
                   </div>
