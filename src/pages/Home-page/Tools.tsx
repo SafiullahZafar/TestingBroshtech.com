@@ -22,10 +22,10 @@ export const Tools: React.FC = () => {
   const numSteps = texts.length;
 
   // Drag state
- const dragStartY = useRef<number | null>(null);
-const isDragging = useRef(false);
-const userInteracting = useRef(false);
-const resumeTimeout = useRef<ReturnType<typeof setInterval> | null>(null);
+  const dragStartY = useRef<number | null>(null);
+  const isDragging = useRef(false);
+  const userInteracting = useRef(false);
+  const resumeTimeout = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const calculateScaleFactor = () => {
     if (window.innerWidth <= 480) return 0.65;
@@ -50,118 +50,118 @@ const resumeTimeout = useRef<ReturnType<typeof setInterval> | null>(null);
     }
   };
 
-   const getIconProps = (pos: string, scaleFactor: number) => {
-  const isMobile = window.innerWidth <= 768;
+  const getIconProps = (pos: string, scaleFactor: number) => {
+    const isMobile = window.innerWidth <= 768;
 
-  const base = {
-    middle: {
-      x: isMobile ? 1 : -76,
-      y: isMobile ? 97 : 31,
-      scale: (isMobile ? 3.4 : 2.15) * scaleFactor,
-      opacity: 1,
-      zIndex: 20,
-      filter: "blur(0px) grayscale(0)"
-    },
+    const base = {
+      middle: {
+        x: isMobile ? 1 : -76,
+        y: isMobile ? 97 : 31,
+        scale: (isMobile ? 3.4 : 2.15) * scaleFactor,
+        opacity: 1,
+        zIndex: 20,
+        filter: "blur(0px) grayscale(0)"
+      },
 
-    top: {
-      x: isMobile ? -53 : -170,
-      y: isMobile ? 10 : -93,
-      scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
-      opacity: 0.6,
-      zIndex: 10,
-      filter: "blur(2px) grayscale(0.6)"
-    },
+      top: {
+        x: isMobile ? -53 : -170,
+        y: isMobile ? 10 : -93,
+        scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
+        opacity: 0.6,
+        zIndex: 10,
+        filter: "blur(2px) grayscale(0.6)"
+      },
 
-    bottom: {
-      x: isMobile ? -53 : -170,
-      y: isMobile ? 190 : 180,
-      scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
-      opacity: 0.6,
-      zIndex: 10,
-      filter: "blur(2px) grayscale(0.6)"
-    },
+      bottom: {
+        x: isMobile ? -53 : -170,
+        y: isMobile ? 190 : 180,
+        scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
+        opacity: 0.6,
+        zIndex: 10,
+        filter: "blur(2px) grayscale(0.6)"
+      },
 
-    above: {
-      x: isMobile ? -53 : -190,
-      y: isMobile ? 10 : -103,
-      scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
-      opacity: 0,
-      zIndex: 10,
-      filter: "blur(2px) grayscale(0.6)"
-    },
+      above: {
+        x: isMobile ? -53 : -190,
+        y: isMobile ? 10 : -103,
+        scale: (isMobile ? 1.7 : 0.75) * scaleFactor,
+        opacity: 0,
+        zIndex: 10,
+        filter: "blur(2px) grayscale(0.6)"
+      },
 
-    below: {
-      x: isMobile ? -53 : -190,
-      y: isMobile ? 190 : 200,
-      scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
-      opacity: 0,
-      zIndex: 10,
-      filter: "blur(2px) grayscale(0.6)"
-    },
+      below: {
+        x: isMobile ? -53 : -190,
+        y: isMobile ? 190 : 200,
+        scale: (isMobile ? 1.7 : 0.9) * scaleFactor,
+        opacity: 0,
+        zIndex: 10,
+        filter: "blur(2px) grayscale(0.6)"
+      },
 
-    hidden: {
-      opacity: 0,
-      scale: 0,
-      zIndex: 0
-    }
+      hidden: {
+        opacity: 0,
+        scale: 0,
+        zIndex: 0
+      }
+    };
+
+    return base[pos as keyof typeof base] || base.hidden;
   };
 
-  return base[pos as keyof typeof base] || base.hidden;
-};
+  const getTextProps = (pos: string, scaleFactor: number) => {
+    const isMobile = window.innerWidth <= 768;
 
-const getTextProps = (pos: string, scaleFactor: number) => {
-  const isMobile = window.innerWidth <= 768;
+    const base = {
+      middle: {
+        x: isMobile ? 30 : 58,
+        y: isMobile ? 104 : 50,
+        scale: (isMobile ? 0.95 : .9) * scaleFactor,
+        opacity: 1,
+        zIndex: 30
+      },
 
-  const base = {
-    middle: {
-      x: isMobile ? 30 : 58,
-      y: isMobile ? 104 : 50,
-      scale: (isMobile ? 0.95 : .9) * scaleFactor,
-      opacity: 1,
-      zIndex: 30
-    },
+      top: {
+        x: isMobile ? -30 : -158,
+        y: isMobile ? 1 : -92,
+        scale: 0.55 * scaleFactor,
+        opacity: 0.6,
+        zIndex: 10
+      },
 
-    top: {
-      x: isMobile ? -30 : -158,
-      y: isMobile ? 1 : -92,
-      scale: 0.55 * scaleFactor,
-      opacity: 0.6,
-      zIndex: 10
-    },
+      bottom: {
+        x: isMobile ? -30 : -158,
+        y: isMobile ? 218 : 190,
+        scale: 0.6 * scaleFactor,
+        opacity: 0.6,
+        zIndex: 10
+      },
 
-    bottom: {
-      x: isMobile ? -30 : -158,
-      y: isMobile ? 218 : 190,
-      scale: 0.6 * scaleFactor,
-      opacity: 0.6,
-      zIndex: 10
-    },
+      above: {
+        x: isMobile ? -40 : -258,
+        y: isMobile ? -20 : -92,
+        scale: 0.45 * scaleFactor,
+        opacity: 0,
+        zIndex: 0
+      },
 
-    above: {
-      x: isMobile ? -40 : -258,
-      y: isMobile ? -20 : -92,
-      scale: 0.45 * scaleFactor,
-      opacity: 0,
-      zIndex: 0
-    },
+      below: {
+        x: isMobile ? -40 : -208,
+        y: isMobile ? 170 : 190,
+        scale: 0.45 * scaleFactor,
+        opacity: 0,
+        zIndex: 0
+      },
 
-    below: {
-      x: isMobile ? -40 : -208,
-      y: isMobile ? 170 : 190,
-      scale: 0.45 * scaleFactor,
-      opacity: 0,
-      zIndex: 0
-    },
+      hidden: {
+        opacity: 0,
+        scale: 0,
+        zIndex: 0
+      }
+    };
 
-    hidden: {
-      opacity: 0,
-      scale: 0,
-      zIndex: 0
-    }
+    return base[pos as keyof typeof base] || base.hidden;
   };
-
-  return base[pos as keyof typeof base] || base.hidden;
-};
 
 
   const getTitleProps = (pos: string, scaleFactor: number) => {
@@ -170,72 +170,72 @@ const getTextProps = (pos: string, scaleFactor: number) => {
   };
 
   // AUTO ROTATION
-useEffect(() => {
-  const startInterval = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+  useEffect(() => {
+    const startInterval = () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
 
-    intervalRef.current = setInterval(() => {
-      if (!userInteracting.current) {
-        nextStep();
-      }
-    }, 2500);
-  };
-
-  startInterval();
-
-  return () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
-  };
-}, [numSteps]);
-
-const pauseAuto = () => {
-  userInteracting.current = true;
-
-  if (intervalRef.current) {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-  }
-
-  if (resumeTimeout.current) {
-    clearTimeout(resumeTimeout.current);
-  }
-};
-
-const resumeAuto = () => {
-  if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
-
-  resumeTimeout.current = setTimeout(() => {
-    userInteracting.current = false;
-
-    if (!intervalRef.current) {
       intervalRef.current = setInterval(() => {
         if (!userInteracting.current) {
           nextStep();
         }
       }, 2500);
+    };
+
+    startInterval();
+
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, [numSteps]);
+
+  const pauseAuto = () => {
+    userInteracting.current = true;
+
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
     }
-  }, 1800); // delay before auto starts again
-};
-const isMobileDevice = () => window.innerWidth <= 768;
+
+    if (resumeTimeout.current) {
+      clearTimeout(resumeTimeout.current);
+    }
+  };
+
+  const resumeAuto = () => {
+    if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+
+    resumeTimeout.current = setTimeout(() => {
+      userInteracting.current = false;
+
+      if (!intervalRef.current) {
+        intervalRef.current = setInterval(() => {
+          if (!userInteracting.current) {
+            nextStep();
+          }
+        }, 2500);
+      }
+    }, 1800); // delay before auto starts again
+  };
+  const isMobileDevice = () => window.innerWidth <= 768;
   // DRAG SUPPORT
- const handleMouseDown = (e: React.MouseEvent) => {
-  if (isMobileDevice()) return;
-  pauseAuto();
-  isDragging.current = true;
-  dragStartY.current = e.clientY;
-};
-
-const handleMouseMove = (e: React.MouseEvent) => {
-  if (isMobileDevice()) return;
-  if (!isDragging.current || dragStartY.current === null) return;
-
-  const diff = e.clientY - dragStartY.current;
-
-  if (Math.abs(diff) > 40 && !isAnimating.current) {
-    diff > 0 ? prevStep() : nextStep();
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (isMobileDevice()) return;
+    pauseAuto();
+    isDragging.current = true;
     dragStartY.current = e.clientY;
-  }
-};
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isMobileDevice()) return;
+    if (!isDragging.current || dragStartY.current === null) return;
+
+    const diff = e.clientY - dragStartY.current;
+
+    if (Math.abs(diff) > 40 && !isAnimating.current) {
+      diff > 0 ? prevStep() : nextStep();
+      dragStartY.current = e.clientY;
+    }
+  };
 
   // const handleMouseUp = () => {
   //   if (isMobileDevice()) return;
@@ -245,22 +245,22 @@ const handleMouseMove = (e: React.MouseEvent) => {
   // };
   const handleMouseUp = () => { isDragging.current = false; dragStartY.current = null; resumeAuto(); };
   // TOUCH SUPPORT
- // TOUCH SUPPORT DISABLED (mobile auto only)
-// const handleTouchStart = () => {};
-// const handleTouchMove = () => {};
-// const handleTouchEnd = () => {};
+  // TOUCH SUPPORT DISABLED (mobile auto only)
+  // const handleTouchStart = () => {};
+  // const handleTouchMove = () => {};
+  // const handleTouchEnd = () => {};
   // WHEEL SUPPORT
-//   const handleWheel = (e: React.WheelEvent) => {
-//   pauseAuto();
+  //   const handleWheel = (e: React.WheelEvent) => {
+  //   pauseAuto();
 
-//   if (e.deltaY > 0) {
-//     nextStep();
-//   } else {
-//     prevStep();
-//   }
+  //   if (e.deltaY > 0) {
+  //     nextStep();
+  //   } else {
+  //     prevStep();
+  //   }
 
-//   resumeAuto();
-// };
+  //   resumeAuto();
+  // };
 
   // INITIAL POSITIONS
   useEffect(() => {
@@ -271,47 +271,47 @@ const handleMouseMove = (e: React.MouseEvent) => {
   }, []);
 
   // ANIMATION ON STEP CHANGE
-useEffect(() => {
-  isAnimating.current = true;
+  useEffect(() => {
+    isAnimating.current = true;
 
-  const scaleFactor = calculateScaleFactor();
+    const scaleFactor = calculateScaleFactor();
 
-  iconsRef.current.forEach((icon, i) => {
-    if (icon) {
-      gsap.to(icon, {
-        ...getIconProps(getPosition(i, currentStep, numSteps), scaleFactor),
-        duration: 0.8,
-        ease: "power1.inOut"
-      });
-    }
-  });
+    iconsRef.current.forEach((icon, i) => {
+      if (icon) {
+        gsap.to(icon, {
+          ...getIconProps(getPosition(i, currentStep, numSteps), scaleFactor),
+          duration: 0.8,
+          ease: "power1.inOut"
+        });
+      }
+    });
 
-  textsRef.current.forEach((text, i) => {
-    if (text) {
-      gsap.to(text, {
-        ...getTextProps(getPosition(i, currentStep, numSteps), scaleFactor),
-        duration: 0.8,
-        ease: "power1.inOut"
-      });
-    }
-  });
+    textsRef.current.forEach((text, i) => {
+      if (text) {
+        gsap.to(text, {
+          ...getTextProps(getPosition(i, currentStep, numSteps), scaleFactor),
+          duration: 0.8,
+          ease: "power1.inOut"
+        });
+      }
+    });
 
-  titlesRef.current.forEach((title, i) => {
-    if (title) {
-      gsap.to(title, {
-        ...getTitleProps(getPosition(i, currentStep, numSteps), scaleFactor),
-        duration: 0.8,
-        ease: "power1.inOut"
-      });
-    }
-  });
+    titlesRef.current.forEach((title, i) => {
+      if (title) {
+        gsap.to(title, {
+          ...getTitleProps(getPosition(i, currentStep, numSteps), scaleFactor),
+          duration: 0.8,
+          ease: "power1.inOut"
+        });
+      }
+    });
 
-  const timer = setTimeout(() => {
-    isAnimating.current = false;
-  }, 820);
+    const timer = setTimeout(() => {
+      isAnimating.current = false;
+    }, 820);
 
-  return () => clearTimeout(timer);
-}, [currentStep]);
+    return () => clearTimeout(timer);
+  }, [currentStep]);
 
   // RESIZE HANDLER
   useEffect(() => {
@@ -324,7 +324,7 @@ useEffect(() => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, [currentStep]);
-  
+
   return (
     <section
       ref={sectionRef}
@@ -337,12 +337,11 @@ useEffect(() => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      // onTouchStart={handleTouchStart}
-      // onTouchMove={handleTouchMove}
-      // onTouchEnd={handleTouchEnd}
-      // onWheel={handleWheel}
-      >
-    {/* // <section ref={sectionRef} className="relative w-full lg:-top-6 h-auto bg-black py-2 sm:py-6"> */}
+    // onTouchStart={handleTouchStart}
+    // onTouchMove={handleTouchMove}
+    // onTouchEnd={handleTouchEnd}
+    // onWheel={handleWheel}
+    >
       <div className="relative h-auto lg:-top-13 w-full">
 
         {/* HEADING */}
@@ -361,13 +360,13 @@ useEffect(() => {
         {/* HALF CIRCLE */}
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 py-1 sm:py-6 md:py-8 lg:py-5 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
-           <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none" aria-hidden="true">
-          <img src="/whathalfcircle.webp" alt=" " className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
-        </div>
+            <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none" aria-hidden="true">
+              <img src="/whathalfcircle.webp" alt=" " className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
+            </div>
             {/* ICONS - always left side */}
             <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5" aria-hidden="true">
               {Array.from({ length: texts.length }).map((_, i) => {
-                const src = images[i % images.length]; 
+                const src = images[i % images.length];
                 return (
                   <div
                     key={`icon-${i}`}
@@ -386,7 +385,7 @@ useEffect(() => {
 
             {/* TEXT - always right side */}
             <div
-            aria-live="polite"
+              aria-live="polite"
               aria-atomic="true"
               className="relative w-[65%] sm:w-[68%] md:w-[70%] Rights h-[360px] sm:h-[400px] md:h-[420px] flex items-center"
               style={{ fontFamily: "Inter, sans-serif" }}
@@ -397,14 +396,14 @@ useEffect(() => {
                   ref={(el) => { if (el) textsRef.current[i] = el; }}
                   className="absolute w-full pl-1 sm:pl-2 md:pl-0"
                 >
-                  <h3
+                  <h1
                     ref={(el) => { if (el) titlesRef.current[i] = el; }}
                     className="text-white tracking-tighter leading-none m-0 p-0 font-bold uppercase"
                   >
                     {item.title}
-                  </h3>
+                  </h1>
 
-                  <p className="text-white/90 font-medium text-xs sm:text-sm md:text-[14px] TopDesc sm:-top-4 relative w-[320px] sm:w-[350px] lg:w-[450px] uppercase mt-3 sm:mt-4 md:mt-5 leading-normal">
+                  <p className="text-white font-medium text-xs sm:text-sm md:text-[14px] TopDesc sm:-top-4 relative w-[320px] sm:w-[350px] lg:w-[450px] uppercase mt-3 sm:mt-4 md:mt-5 leading-normal">
                     {item.desc}
                   </p>
                 </div>

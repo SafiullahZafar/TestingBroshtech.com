@@ -67,7 +67,7 @@ const Home: FC = () => {
 
           {/* STARS */}
           <div className="flex justify-start z-30 towardstars  lg:justify-start mt-1 lg:-space-x-6 md:-space-x-7 sm:-space-x-4 -space-x-4  stars"
-          aria-hidden="true">
+            aria-hidden="true">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
@@ -117,9 +117,9 @@ const Home: FC = () => {
               Schedule a Free Consultation
               <img
                 src="/character.webp"
-                className="h-7 w-8"
+                className="h-8 w-8 object-contain"
+                alt="Customer support assistant illustration"
               />
-
             </button>
           </div>
         </div>
