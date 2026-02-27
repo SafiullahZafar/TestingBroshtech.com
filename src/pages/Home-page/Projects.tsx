@@ -108,57 +108,57 @@ export const Projects: React.FC = () => {
   // }, []);
 
   useEffect(() => {
-  const el = scrollRef.current;
-  if (!el) return;
+    const el = scrollRef.current;
+    if (!el) return;
 
-  // Adjust speed relative to screen width for smooth motion on all laptops
-  const adjustedSpeed = Math.max(0.4, window.innerWidth / 2500);
+    // Adjust speed relative to screen width for smooth motion on all laptops
+    const adjustedSpeed = Math.max(0.4, window.innerWidth / 2500);
 
-  let rafId: number;
+    let rafId: number;
 
-  const startScroll = () => {
-    const singleWidth = el.scrollWidth / 3;
-    el.scrollLeft = singleWidth;
+    const startScroll = () => {
+      const singleWidth = el.scrollWidth / 3;
+      el.scrollLeft = singleWidth;
 
-    const autoScroll = () => {
-      el.scrollLeft += adjustedSpeed;
+      const autoScroll = () => {
+        el.scrollLeft += adjustedSpeed;
 
-      if (el.scrollLeft >= singleWidth * 2) {
-        el.scrollLeft -= singleWidth;
-      }
-      if (el.scrollLeft <= 0) {
-        el.scrollLeft += singleWidth;
-      }
+        if (el.scrollLeft >= singleWidth * 2) {
+          el.scrollLeft -= singleWidth;
+        }
+        if (el.scrollLeft <= 0) {
+          el.scrollLeft += singleWidth;
+        }
+
+        rafId = requestAnimationFrame(autoScroll);
+      };
 
       rafId = requestAnimationFrame(autoScroll);
     };
 
-    rafId = requestAnimationFrame(autoScroll);
-  };
-
-  // Wait for all images to load to calculate scrollWidth correctly
-  const images = Array.from(el.querySelectorAll("img"));
-  let loadedCount = 0;
-  images.forEach((img) => {
-    if (img.complete) {
-      loadedCount++;
-    } else {
-      img.onload = () => {
+    // Wait for all images to load to calculate scrollWidth correctly
+    const images = Array.from(el.querySelectorAll("img"));
+    let loadedCount = 0;
+    images.forEach((img) => {
+      if (img.complete) {
         loadedCount++;
-        if (loadedCount === images.length) startScroll();
-      };
-      img.onerror = () => {
-        loadedCount++;
-        if (loadedCount === images.length) startScroll();
-      };
-    }
-  });
+      } else {
+        img.onload = () => {
+          loadedCount++;
+          if (loadedCount === images.length) startScroll();
+        };
+        img.onerror = () => {
+          loadedCount++;
+          if (loadedCount === images.length) startScroll();
+        };
+      }
+    });
 
-  if (loadedCount === images.length) startScroll();
+    if (loadedCount === images.length) startScroll();
 
-  // Cleanup on unmount
-  return () => cancelAnimationFrame(rafId);
-}, []);
+    // Cleanup on unmount
+    return () => cancelAnimationFrame(rafId);
+  }, []);
 
   return (
     <section aria-labelledby="projects-title" className="w-full bg-black flex md:h-auto flex-col md:mb-[104px] md:mt-9 items-center justify-center gap-1 px-2">
@@ -218,13 +218,15 @@ export const Projects: React.FC = () => {
       {/* Project Grid */}
       <div
         ref={gridRef}
-        role="list"
         data-section="grid"
         className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"
           }`}
       >
         {["/2.webp", "/3.webp", "/1.webp"].map((src, i) => (
-          <div key={i} className="group transition-all duration-500 hover:-translate-y-3">
+          <div
+            key={i}
+            className="list-none group transition-all duration-500 hover:-translate-y-3"
+          >
             <img
               src={src}
               className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""
