@@ -161,7 +161,7 @@ export const Projects: React.FC = () => {
 }, []);
 
   return (
-    <section className="w-full bg-black flex md:h-auto flex-col md:mb-[104px] md:mt-9 items-center justify-center gap-1 px-2">
+    <section aria-labelledby="projects-title" className="w-full bg-black flex md:h-auto flex-col md:mb-[104px] md:mt-9 items-center justify-center gap-1 px-2">
 
       {/* ===== ANIMATION STYLE (Desktop Only Effect) ===== */}
       <style>{`
@@ -183,18 +183,19 @@ export const Projects: React.FC = () => {
       `}</style>
 
       {/* Header */}
-      <div
+      <h2
         ref={headerRef}
         data-section="header"
         className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${visible.header ? "scroll-show" : "scroll-hidden"
           }`}
       >
         Our Successful Project
-      </div>
+      </h2>
 
       {/* Divider */}
       <div
         ref={dividerRef}
+        aria-hidden="true"
         data-section="divider"
         className={`text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90 ${visible.divider ? "scroll-show" : "scroll-hidden"
           }`}
@@ -217,6 +218,7 @@ export const Projects: React.FC = () => {
       {/* Project Grid */}
       <div
         ref={gridRef}
+        role="list"
         data-section="grid"
         className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"
           }`}
@@ -229,7 +231,7 @@ export const Projects: React.FC = () => {
                 }`}
               loading="lazy"
               decoding="async"
-              alt={`P${i + 1}`}
+              alt={`Featured project showcase ${i + 1}`}
             />
           </div>
         ))}

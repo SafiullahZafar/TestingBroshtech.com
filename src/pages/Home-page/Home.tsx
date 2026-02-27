@@ -66,12 +66,13 @@ const Home: FC = () => {
           </h1>
 
           {/* STARS */}
-          <div className="flex justify-start z-30 towardstars  lg:justify-start mt-1 lg:-space-x-6 md:-space-x-7 sm:-space-x-4 -space-x-4  stars">
+          <div className="flex justify-start z-30 towardstars  lg:justify-start mt-1 lg:-space-x-6 md:-space-x-7 sm:-space-x-4 -space-x-4  stars"
+          aria-hidden="true">
             {[...Array(5)].map((_, i) => (
               <img
                 key={i}
                 src="/Star 1.webp"
-                alt="star"
+                alt=""
                 className="w-[61px] h-auto TopforHome max-md:w-[44px]"
               />
             ))}
@@ -93,6 +94,7 @@ const Home: FC = () => {
           {/* BUTTON */}
           <div className="flex  TopforHomeLeft toward justify-start md:px-2.5 lg:px-0 lg:justify-start mt-6 ml-2 lg:ml-4 button-wrapper">
             <button
+              aria-label="Schedule a Free Consultation"
               className="
                 flex Botton buttons items-center gap-1
                 rounded-lg
@@ -141,6 +143,9 @@ const Home: FC = () => {
 
           {/* Top Left Label */}
           <div
+            role="button"
+            tabIndex={0}
+            aria-label="View Web Development Projects"
             className="absolute top-[23%] lg:top-[30%] Development z-10 cursor-pointer"
             style={getStyle(40)}
             onClick={() => openCategory("Web Development")}
@@ -153,6 +158,7 @@ const Home: FC = () => {
           {/* Social Media */}
           <div
             className="absolute bottom-[13%] lg:bottom-[20%] socialmedia left-[2%] z-10 cursor-pointer"
+            aria-label="View Social Media Projects"
             style={getStyle(-60)}
             onClick={() => openCategory("Social Media")}
           >
@@ -164,10 +170,12 @@ const Home: FC = () => {
           {/* Branding */}
           <div
             className="absolute top-[50%] right-[0%] Branding lg:top-[50%] lg:right-[9%] z-10 cursor-pointer"
+            aria-label="View Branding Projects"
             style={getStyle(30)}
             onClick={() => openCategory("Branding")}
           >
             <span className="bg-white/15 text-white hover:bg-[#064e08] hover:text-white px-2 py-1 rounded-md shadow-lg text-sm md:text-sm">
+
               Branding
             </span>
           </div>

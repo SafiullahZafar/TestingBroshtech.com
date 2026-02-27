@@ -328,6 +328,10 @@ useEffect(() => {
   return (
     <section
       ref={sectionRef}
+      role="region"
+      aria-roledescription="carousel"
+      aria-label="Our Services and Tools"
+      tabIndex={0} // Makes the section focusable for keyboard users
       className="relative w-full lg:-top-6 h-auto bg-black py-2 sm:py-6 cursor-grab active:cursor-grabbing select-none"
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
@@ -342,7 +346,7 @@ useEffect(() => {
       <div className="relative h-auto lg:-top-13 w-full">
 
         {/* HEADING */}
-        <div
+        <h2
           className="absolute top-1 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
           style={{
             background: "rgba(12, 55, 33, 1)",
@@ -353,17 +357,17 @@ useEffect(() => {
           }}
         >
           WHAT WE DO
-        </div>
+        </h2>
         {/* HALF CIRCLE */}
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 py-1 sm:py-6 md:py-8 lg:py-5 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
-           <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none">
-          <img src="/whathalfcircle.webp" alt="Decoration" className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
+           <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none" aria-hidden="true">
+          <img src="/whathalfcircle.webp" alt=" " className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
         </div>
             {/* ICONS - always left side */}
-            <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5">
+            <div className="relative w-[35%] sm:w-[32%] md:w-[30%] Rights h-[200px] sm:h-[400px] md:h-[400px] flex items-center justify-center shrink-0 md:pt-[30px] md:-translate-x-5" aria-hidden="true">
               {Array.from({ length: texts.length }).map((_, i) => {
-                const src = images[i % images.length];
+                const src = images[i % images.length]; 
                 return (
                   <div
                     key={`icon-${i}`}
@@ -373,7 +377,7 @@ useEffect(() => {
                     <img
                       src={src}
                       className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 object-contain"
-                      alt="service icon"
+                      alt=" "
                     />
                   </div>
                 );
@@ -382,6 +386,8 @@ useEffect(() => {
 
             {/* TEXT - always right side */}
             <div
+            aria-live="polite"
+              aria-atomic="true"
               className="relative w-[65%] sm:w-[68%] md:w-[70%] Rights h-[360px] sm:h-[400px] md:h-[420px] flex items-center"
               style={{ fontFamily: "Inter, sans-serif" }}
             >
@@ -411,6 +417,9 @@ useEffect(() => {
       </div>
 
       <style>{`
+      .hidden-text {
+          pointer-events: none;
+        }
         /* IMPORTANT FIX - NO WHITE TOP/BOTTOM */
         html, body, #__next {
           background: #000 !important;

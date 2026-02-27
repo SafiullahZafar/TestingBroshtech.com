@@ -450,7 +450,7 @@ export const Navbar = () => {
           }}
         >
           {/* LOGO */}
-          <a href="/" className="flex items-center px-[0.85rem] sm:px-0 gap-2">
+          <a href="/" aria-label="Go to home page" className="flex items-center px-[0.85rem] sm:px-0 gap-2">
             <img src="/html-logo.webp" alt="Logo" className="w-7.5 h-7.5 sm:w-8 sm:h-8" />
           </a>
 
@@ -470,7 +470,11 @@ export const Navbar = () => {
 
           {/* MOBILE HAMBURGER */}
           <div className="ml-auto md:hidden px-[0.85rem] relative">
-            <button onClick={toggleMobileMenu}>
+            <button onClick={toggleMobileMenu}
+            aria-expanded={isMobileMenuOpen}
+  aria-controls="mobile-menu"
+  aria-label="Open main menu"
+            >
               <Menu className="w-5.75 h-5.75 top-1 relative text-white" />
             </button>
           </div>
@@ -479,6 +483,10 @@ export const Navbar = () => {
 
       {/* MOBILE SIDE MENU */}
       <div
+      id="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Mobile Navigation"
         className={`fixed top-0 right-0 h-full z-50 bg-[rgba(30,30,30,0.9)] backdrop-blur-md transition-transform duration-300 ${
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
@@ -486,7 +494,9 @@ export const Navbar = () => {
       >
         {/* Close Button */}
         <div className="flex justify-end p-4">
-          <button onClick={toggleMobileMenu}>
+          <button onClick={toggleMobileMenu} 
+          aria-label="Close main menu"
+          >
             <X className="w-6 h-6 text-white" />
           </button>
         </div>
@@ -501,6 +511,7 @@ export const Navbar = () => {
                 location.pathname === item.path ? "active" : ""
               }`}
               onClick={() => setIsMobileMenuOpen(false)}
+              aria-current={location.pathname === item.path ? "page" : undefined}
             >
               {item.name}
             </Link>

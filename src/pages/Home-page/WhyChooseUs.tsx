@@ -336,14 +336,17 @@ const WhyChooseUs: FC = () => {
 
   const points = [
     {
+      id: 'custom-web',
       title: 'Custom Web Platforms & Scalable Systems',
       desc: 'At BroshTech, We Help Businesses Grow With Powerful Digital Solutions, Combining Creativity, Technology, And Strategy.',
     },
     {
+      id: 'partner-long',
       title: 'Partner For Long-Term Products',
       desc: 'Our Client-Focused Approach Ensures Scalable Results, Strong Online Presence, And Long-Term Success From Planning To Execution.',
     },
     {
+      id: 'top-rated',
       title: 'Top-Rated Web & Digital Solutions Agency',
       desc: 'We pride ourselves on delivering industry-leading results that empower your brand to lead the market.',
     },
@@ -370,7 +373,7 @@ const WhyChooseUs: FC = () => {
   };
 
   return (
-    <div className="why-container">
+    <section className="why-container" aria-labelledby="why-title-id">
       <div className="why-wrapper">
 
         {/* LEFT */}
@@ -408,6 +411,9 @@ const WhyChooseUs: FC = () => {
               >
                 <div
                   className="accordion-header"
+                  aria-expanded={isOpen}
+                  aria-controls={`content-${item.id}`}
+                  id={`header-${item.id}`}
                   onClick={() => toggleAccordion(i)}
                 >
                   <span className="accordion-title">{item.title}</span>
@@ -565,7 +571,7 @@ const WhyChooseUs: FC = () => {
           .accordion-header { height: 52px; }
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 
