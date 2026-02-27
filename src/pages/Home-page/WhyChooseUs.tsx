@@ -378,11 +378,11 @@ const WhyChooseUs: FC = () => {
 
         {/* LEFT */}
         <div className="why-left relative">
-          <h2 className="why-title">
+          <h1 className="why-title">
             Why Choose <br />
             <span className="why-highlight">BroshTech</span><br />
             Your Digital Growth <br /> Partner?
-          </h2>
+          </h1>
 
           <div className="why-divider">      
             {window.innerWidth < 768 ? "------------------" : "-------------------------------------------"}

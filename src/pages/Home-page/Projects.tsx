@@ -183,14 +183,14 @@ export const Projects: React.FC = () => {
       `}</style>
 
       {/* Header */}
-      <h2
+      <h1
         ref={headerRef}
         data-section="header"
         className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${visible.header ? "scroll-show" : "scroll-hidden"
           }`}
       >
         Our Successful Project
-      </h2>
+      </h1>
 
       {/* Divider */}
       <div

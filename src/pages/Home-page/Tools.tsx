@@ -346,7 +346,7 @@ useEffect(() => {
       <div className="relative h-auto lg:-top-13 w-full">
 
         {/* HEADING */}
-        <h2
+        <h1
           className="absolute top-1 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
           style={{
             background: "rgba(12, 55, 33, 1)",
@@ -357,7 +357,7 @@ useEffect(() => {
           }}
         >
           WHAT WE DO
-        </h2>
+        </h1>
         {/* HALF CIRCLE */}
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 py-1 sm:py-6 md:py-8 lg:py-5 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
@@ -397,12 +397,12 @@ useEffect(() => {
                   ref={(el) => { if (el) textsRef.current[i] = el; }}
                   className="absolute w-full pl-1 sm:pl-2 md:pl-0"
                 >
-                  <h3
+                  <h2
                     ref={(el) => { if (el) titlesRef.current[i] = el; }}
                     className="text-white tracking-tighter leading-none m-0 p-0 font-bold uppercase"
                   >
                     {item.title}
-                  </h3>
+                  </h2>
 
                   <p className="text-white/90 font-medium text-xs sm:text-sm md:text-[14px] TopDesc sm:-top-4 relative w-[320px] sm:w-[350px] lg:w-[450px] uppercase mt-3 sm:mt-4 md:mt-5 leading-normal">
                     {item.desc}
