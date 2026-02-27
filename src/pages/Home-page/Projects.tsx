@@ -229,6 +229,8 @@ export const Projects: React.FC = () => {
           >
             <img
               src={src}
+              width={1200}
+              height={800}
               className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""
                 }`}
               loading="lazy"

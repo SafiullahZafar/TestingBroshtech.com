@@ -76,7 +76,7 @@ const WhyChooseUs: FC = () => {
           <p className="why-desc">
             {window.innerWidth < 450
               ? `At BroshTech, We Help Businesses Grow With Powerful Digital Solutions, Combining Creativity, Technology, And Strategy.`
-              : `At BroshTech, We Help Businesses Grow With Powerful Digital Solutions, Combining Creativity, Technology, And Strategy. Our Client-Focused Approach Ensures Scalable Results, Strong Online Presence, And Long-Term Success From Planning To Execution.`}
+              : `At BroshTech, We Help Businesses Grow With Powerful Digital Solutions, Combining Creativity, Technology, And Strategy. Our Client Focused Approach Ensures Scalable Results, Strong Online Presence, And Long-Term Success From Planning To Execution.`}
           </p>
         </div>
 
