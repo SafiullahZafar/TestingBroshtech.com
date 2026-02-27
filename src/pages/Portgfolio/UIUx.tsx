@@ -9,7 +9,7 @@ type UIProject = {
 const uiData: UIProject[] = [
   {
     id: 1,
-    name: "Sophie Bennett",
+    name: "Saleem Enterprises",
     role: "Product Designer focused on intuitive user experiences",
     image: "/ui1.webp",
     link: "https://www.figma.com/proto/e0ZACWvNUx5WbwqFQc5iV8/ProvenPrepCenter?node-id=250-832",

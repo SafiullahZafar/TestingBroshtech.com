@@ -121,8 +121,8 @@ export const HowWeWork: React.FC = () => {
 
           {/* Header (always visible) */}
           <div className="flex flex-col items-center z-30 text-center header-container">
-            <div className="bg-[#0b2414] px-10 py-3 md:px-14 md:py-4 rounded-[20px] border border-[#1a3a26] mb-4 header-bg">
-              <h2 id="how-we-work-title" className="text-white text-4xl md:text-6xl font-black uppercase tracking-tight header-title">
+            <div className="bg-[#0b2414] px-10 py-3 md:px-14 md:py-4 rounded-[10px] border border-[#1a3a26] mb-4 header-bg">
+              <h2 id="how-we-work-title" className="text-white text-4xl md:text-5xl font-bold uppercase tracking-tight header-title">
                 HOW WE WORK
               </h2>
             </div>

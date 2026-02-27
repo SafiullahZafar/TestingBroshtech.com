@@ -1,5 +1,6 @@
 import { useState, type FC } from "react"
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Home: FC = () => {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
@@ -40,7 +41,7 @@ const Home: FC = () => {
           lg:pl-0 lg:pr-0
           xl:pl-0 xl:pr-0
           2xl:pl-0
-          pt-25 lg:pt-1 Aligment
+          pt-25 lg:pt-7 Aligment
           gap-12
         "
       >
@@ -49,20 +50,20 @@ const Home: FC = () => {
             flex-1
              lg:text-left
             z-10 left-content
-            lg:px-7 py-3
+            lg:px-7 py-4 mt-0 lg:mt-10
           "
         >
           <h1
             className="
-              text-[24px] sm:text-[28px] md:text-[39px] lg:text-[51px]
+              text-[28px] sm:text-[28px] md:text-[39px] lg:text-[51px]
               leading-tight z-30
               tracking-tight px-4 lg:px-4 md:px-5 title TopforHome
             "
             style={{ fontFamily: "Inter, sans-serif", fontWeight: 800 }}
           >
-            I am BROSH
-            <span className="block">Your Web & Software</span>
-            <span className="block">Builder</span>
+            I'am BROSH
+            <span className="block">Your Technology </span>
+            <span className="block">Partner</span>
           </h1>
 
           {/* STARS */}
@@ -88,12 +89,13 @@ const Home: FC = () => {
             "
             style={{ fontFamily: "Inter, sans-serif" }}
           >
-            I design and build reliable, high-performance web applications and software systems with clean architecture, modern technologies, and long-term scalabilitty in mind.
+            I design and build reliable, high performance web applications and software systems with clean architecture, modern technologies, and long term scalabilitty in mind.
           </p>
 
           {/* BUTTON */}
           <div className="flex  TopforHomeLeft toward justify-start md:px-2.5 lg:px-0 lg:justify-start mt-6 ml-2 lg:ml-4 button-wrapper">
-            <button
+            <Link
+             to="/contact"
               aria-label="Schedule a Free Consultation"
               className="
                 flex Botton buttons items-center gap-1
@@ -120,7 +122,7 @@ const Home: FC = () => {
                 className="h-8 w-8 object-contain"
                 alt="Customer support assistant illustration"
               />
-            </button>
+            </Link>
           </div>
         </div>
 

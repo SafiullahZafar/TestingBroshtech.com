@@ -15,8 +15,15 @@ const Skeleton = () => (
   </div>
 );
 
+import { useNavigate } from "react-router-dom";
+
 const SocialMedia1: React.FC = () => {
-  // Array of your 6 images from the public folder
+  const navigate = useNavigate();
+
+  const handleStart = () => {
+    // Navigate to Portfolio with category=Social Media
+    navigate(`/portfolio?category=Social Media`);
+  };
   const projectImages = [
     "/socialmedia1(1).webp",
     "/socialmedia1(2).webp",
@@ -34,7 +41,7 @@ const SocialMedia1: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-[#0d7411]">
+    <div className="min-h-screen bg-black text-white font-sans ">
       
       {/* 1. TOP SPACE & HEADING SECTION */}
       <div className="pt-20 md:pt-32 pb-16 px-6 md:px-12 max-w-7xl mx-auto">
@@ -45,8 +52,8 @@ const SocialMedia1: React.FC = () => {
           className="space-y-6"
         >
           <div className="flex items-center gap-4">
-            <span className="w-12 h-[1px] bg-[#0d7411]"></span>
-            <span className="text-[#0d7411] uppercase tracking-[0.4em] text-sm font-bold">Project Details</span>
+            <span className="w-12 h-[1px] bg-[#ffffff]"></span>
+            <span className="text-[#ffffff] uppercase tracking-[0.3em] text-sm font-bold">Project Details</span>
           </div>
           
           <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tighter leading-none">
@@ -98,15 +105,14 @@ const SocialMedia1: React.FC = () => {
       </div>
 
       {/* FOOTER CALL TO ACTION */}
-      <div className="py-20 text-center border-t border-white/5">
-        <a href="/portfolio">
-          <button     
-            className="px-8 py-4 bg-white text-black font-bold uppercase text-sm hover:bg-[#0d7411] hover:text-white transition-all duration-300 rounded-sm"
-          >
-            Let's start
-          </button>
-        </a>
-      </div>
+     <div className="py-20 text-center border-t border-white/5">
+      <button
+        onClick={handleStart}
+        className="px-8 py-4 bg-white text-black font-bold uppercase text-sm transition-all duration-300 rounded-sm"
+      >
+        Go to Portfolio
+      </button>
+    </div>
     </div>
   );
 };

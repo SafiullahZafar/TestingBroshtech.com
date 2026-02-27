@@ -123,6 +123,8 @@ export const Footer = () => {
           <img
             src="/fotterfotter.webp"
             alt="Background"
+            width={1200}
+            height={500}
             className="w-full md:w-[103%] max-w-none h-auto object-cover"
           />
         </div>

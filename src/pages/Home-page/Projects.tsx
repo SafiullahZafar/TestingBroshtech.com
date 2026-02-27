@@ -186,7 +186,7 @@ export const Projects: React.FC = () => {
       <h2
         ref={headerRef}
         data-section="header"
-        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-2 shadow-2xl tracking-tight ${visible.header ? "scroll-show" : "scroll-hidden"
+        className={`bg-[#0b2b1a] header-box z-30 text-white text-2xl md:text-5xl font-bold rounded-[9px] px-12 py-4 shadow-2xl tracking-tight ${visible.header ? "scroll-show" : "scroll-hidden"
           }`}
       >
         Our Successful Project
@@ -197,7 +197,7 @@ export const Projects: React.FC = () => {
         ref={dividerRef}
         aria-hidden="true"
         data-section="divider"
-        className={`text-white Topsemi tracking-[0.1em] text-xl font-bold opacity-90 ${visible.divider ? "scroll-show" : "scroll-hidden"
+        className={`text-white Topsemi tracking-[0.1em] text-xl md:0 md:mt-2 font-bold opacity-90 ${visible.divider ? "scroll-show" : "scroll-hidden"
           }`}
       >
         {window.innerWidth < 768

@@ -20,6 +20,11 @@ const webDevData: WebDevelopmentProject[] = [
   // { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.webp", path: "https://naseem-febrics.vercel.app/" },
   { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.webp", path: "https://paramount-solutions.vercel.app/" },
   { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.webp", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494webpF" },
+  { id: 3, title: "Canarie Shirts", subTitle: "Web Development", image: "/webdevelopment13.webp", path: "https://canarieshirts.com/" },
+  { id: 3, title: "Shirt Active", subTitle: "Web Development", image: "/webdevelopment15.webp", path: "https://shirtactive.com/" },
+  { id: 3, title: "AB Exports", subTitle: "Web Development", image: "/webdevelopment14.webp", path: "https://ab.com.pk/" },
+
+
 ];
 const WebDevelopment: React.FC = () => {
   return (
@@ -51,8 +56,8 @@ const WebDevelopment: React.FC = () => {
                     {project.title}
                   </h3>
                   <div className="flex items-center justify-center gap-2">
-                    <span className="w-6 h-[1.5px] bg-[#0d7411]"></span>
-                    <p className="text-[#0d7411] text-xs md:text-sm font-bold uppercase tracking-widest">
+                    <span className="w-6 h-[1.5px] bg-[#ffffff]"></span>
+                    <p className="text-[#ffffff] text-xs md:text-sm font-bold uppercase tracking-widest">
                       {project.subTitle}
                     </p>
                   </div>

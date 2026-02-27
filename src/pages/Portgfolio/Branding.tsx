@@ -43,8 +43,8 @@ const Branding: React.FC = () => {
                   {project.title}
                 </h3>
                 <div className="flex items-center gap-3">
-                  <span className="w-12 h-[2px] bg-[#0d7411]"></span>
-                  <p className="text-[#0d7411] text-xl md:text-xl font-bold uppercase tracking-widest">
+                  <span className="w-12 h-[2px] bg-[#c4c4c4]"></span>
+                  <p className="text-[#c4c4c4] text-xl md:text-xl font-bold uppercase tracking-widest">
                     {project.subTitle}
                   </p>
                 </div>
