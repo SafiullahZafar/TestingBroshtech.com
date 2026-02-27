@@ -41,7 +41,7 @@ const Home: FC = () => {
           lg:pl-0 lg:pr-0
           xl:pl-0 xl:pr-0
           2xl:pl-0
-          pt-25 lg:pt-4 Aligment
+          pt-25 lg:pt-2.5 Aligment
           gap-12
         "
       >
