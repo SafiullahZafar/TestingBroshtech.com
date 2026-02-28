@@ -18,7 +18,6 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 3, title: "Hassan Textile", subTitle: "Web Development", image: "/webdevelopment8.webp", path: "https://hassan-enter-prise.vercel.app/" },
   { id: 3, title: "Lagend Club", subTitle: "Web Development", image: "/webdevelopment9.webp", path: "https://www.lagendclub.info/" },
   // { id: 3, title: "Naseem Fabrics", subTitle: "Web Development", image: "/webdevelopment10.webp", path: "https://naseem-febrics.vercel.app/" },
-  { id: 3, title: "Paramount Solution", subTitle: "Web Development", image: "/webdevelopment11.webp", path: "https://paramount-solutions.vercel.app/" },
   { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.webp", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494webpF" },
   { id: 3, title: "Canarie Shirts", subTitle: "Web Development", image: "/webdevelopment13.webp", path: "https://canarieshirts.com/" },
   { id: 3, title: "Shirt Active", subTitle: "Web Development", image: "/webdevelopment15.webp", path: "https://shirtactive.com/" },
