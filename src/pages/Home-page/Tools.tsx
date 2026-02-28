@@ -345,13 +345,8 @@ export const Tools: React.FC = () => {
       <div className="relative h-auto lg:-top-13 w-full">
 
         {/* HEADING */}
-<<<<<<< HEAD
-        <h2
-          className="absolute top-1 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-2xl border border-white/10"
-=======
         <h1
           className="absolute top-1 -right-5 sm:top-2 sm:right-0 z-20 text-white font-bold uppercase tracking-tight px-6 py-2 sm:px-10 sm:py-3 rounded-l-3xl border border-white/10"
->>>>>>> 84d5e612040e439ec436508da1c0d4ac5be3130f
           style={{
             background: "rgba(12, 55, 33, 1)",
             fontSize: "clamp(1.8rem, 6vw, 3.75rem)",
@@ -401,20 +396,14 @@ export const Tools: React.FC = () => {
                   ref={(el) => { if (el) textsRef.current[i] = el; }}
                   className="absolute w-full pl-1 sm:pl-2 md:pl-0"
                 >
-<<<<<<< HEAD
-                  <h1
-=======
                   <h2
->>>>>>> 84d5e612040e439ec436508da1c0d4ac5be3130f
+
                     ref={(el) => { if (el) titlesRef.current[i] = el; }}
                     className="text-white tracking-tighter leading-none m-0 p-0 font-bold uppercase"
                   >
                     {item.title}
-<<<<<<< HEAD
-                  </h1>
-=======
++
                   </h2>
->>>>>>> 84d5e612040e439ec436508da1c0d4ac5be3130f
 
                   <p className="text-white font-medium text-xs sm:text-sm md:text-[14px] TopDesc sm:-top-4 relative w-[320px] sm:w-[350px] lg:w-[450px] uppercase mt-3 sm:mt-4 md:mt-5 leading-normal">
                     {item.desc}

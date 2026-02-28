@@ -309,7 +309,7 @@ export const Projects: React.FC = () => {
           /* Subtext smaller */
           .text-white.text-xl {
             font-size: 1.2rem !important;
-            margin-bottom: 1rem !important;
+            margin-bottom: 0.5rem !important;
           }
 
           /* Project grid: two on top, one below centered */
