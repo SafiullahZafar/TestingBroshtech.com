@@ -9,11 +9,12 @@ type WebDevelopmentProject = {
 };
 
 const webDevData: WebDevelopmentProject[] = [
+  { id: 3, title: "AB Exports", subTitle: "Web Development", image: "/webdevelopment14.webp", path: "https://ab.com.pk/" },
   { id: 1, title: "Biz Axis", subTitle: "Web Development", image: "/webdevelopment1.webp", path: "https://bizaxis.net/" },
   { id: 2, title: "Saleem Enterprises", subTitle: "Web Development", image: "/webdevelopment4.webp", path: "https://saleementerprises.com/" },
   { id: 3, title: "Waaris", subTitle: "Web Development", image: "/webdevelopment3.webp", path: "https://www.waaris.store/" },
   { id: 3, title: "Adamjee Textile", subTitle: "Web Development", image: "/webdevelopment5.webp", path: "https://adamjee-textile.vercel.app/" },
-  { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.webp", path: "https://bareeze-store.vercel.app/" },
+  // { id: 3, title: "Bareeze Store", subTitle: "Web Development", image: "/webdevelopment6.webp", path: "https://bareeze-store.vercel.app/" },
   { id: 3, title: "Goat Dubai", subTitle: "Web Development", image: "/webdevelopment7.webp", path: "https://got-dubai.vercel.app/" },
   { id: 3, title: "Hassan Textile", subTitle: "Web Development", image: "/webdevelopment8.webp", path: "https://hassan-enter-prise.vercel.app/" },
   { id: 3, title: "Lagend Club", subTitle: "Web Development", image: "/webdevelopment9.webp", path: "https://www.lagendclub.info/" },
@@ -21,7 +22,6 @@ const webDevData: WebDevelopmentProject[] = [
   { id: 3, title: "Renew Lens", subTitle: "Web Development", image: "/webdevelopment12.webp", path: "https://renewlens.com/?srsltid=AfmBOoqEaE2TD3pdLHurSdTWAYTS9JJkPmQMqIFHdTPOsiWeR494webpF" },
   { id: 3, title: "Canarie Shirts", subTitle: "Web Development", image: "/webdevelopment13.webp", path: "https://canarieshirts.com/" },
   { id: 3, title: "Shirt Active", subTitle: "Web Development", image: "/webdevelopment15.webp", path: "https://shirtactive.com/" },
-  { id: 3, title: "AB Exports", subTitle: "Web Development", image: "/webdevelopment14.webp", path: "https://ab.com.pk/" },
 
 
 ];

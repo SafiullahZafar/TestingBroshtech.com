@@ -215,31 +215,35 @@ export const Projects: React.FC = () => {
         Projects With Top Ratings!
       </div>
 
-      {/* Project Grid */}
-      <div
-        ref={gridRef}
-        data-section="grid"
-        className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"
-          }`}
-      >
-        {["/2.webp", "/3.webp", "/1.webp"].map((src, i) => (
-          <div
-            key={i}
-            className="list-none group transition-all duration-500 hover:-translate-y-3"
-          >
-            <img
-              src={src}
-              width={1200}
-              height={800}
-              className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""
-                }`}
-              loading="lazy"
-              decoding="async"
-              alt={`Featured project showcase ${i + 1}`}
-            />
-          </div>
-        ))}
-      </div>
+     {/* Project Grid */}
+<div
+  ref={gridRef}
+  data-section="grid"
+  className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"}`}
+>
+  {[
+    { src: "/2.webp", link: "http://google.com" },
+    { src: "/3.webp", link: "http://hhi.com/2" },
+    { src: "/1.webp", link: "http://hhi.com/3" },
+  ].map((project, i) => (
+    <div
+      key={i}
+      className="list-none group transition-all duration-500 hover:-translate-y-3"
+    >
+      <a href={project.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={project.src}
+          width={1200}
+          height={800}
+          className={`w-full h-auto object-contain project-img rounded-xl shadow-lg group-hover:shadow-[0_20px_50px_rgba(0,255,100,0.2)] transition-all duration-500 ${i === 2 ? "third-img" : ""}`}
+          loading="lazy"
+          decoding="async"
+          alt={`Featured project showcase ${i + 1}`}
+        />
+      </a>
+    </div>
+  ))}
+</div>
 
       {/* ICON STRIP */}
       <div

@@ -11,10 +11,10 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
 }) => {
   const categories = [
     // "All",
+    "Web Development",
     "Branding",
     "Social Media",
-    "Ui/Ux Designing",
-    "Web Development",
+    "UI/UX Designing",
   ];
 
   return (
@@ -45,7 +45,7 @@ const TopPortfolio: React.FC<TopPortfolioProps> = ({
               className="flex items-center group cursor-pointer border-none bg-transparent outline-none"
             >
               {/* Dot only if not All */}
-              {cat !== "Branding" && (
+              {cat !== "Web Development" && (
                 <div
                   className={`w-2 h-2 rounded-full mr-2 transition-all duration-300 ${
                     activeCategory === cat
