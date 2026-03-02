@@ -53,8 +53,8 @@ const ContactComponent: React.FC = () => {
     >
 
       {/* Background Text */}
-     <div className="absolute hidden opacity-20 sm:block sm:top-[123px] w-full md:w-[74vw] sm:w-[74vw] flex justify-center pointer-events-none">
-            <img src="/contact.webp" alt="contact" />
+      <div className="absolute hidden opacity-20 sm:block sm:top-[123px] w-full md:w-[74vw] sm:w-[74vw] flex justify-center pointer-events-none">
+        <img src="/contact.webp" alt="contact" />
       </div>
 
       {/* MAIN CONTAINER */}
@@ -95,15 +95,15 @@ const ContactComponent: React.FC = () => {
                 key={item.id}
                 onClick={() => setActiveTab(item.id as Section)}
                 className={`flex items-center justify-between p-4 rounded-[10px] border transition-all ${activeTab === item.id
-                    ? 'bg-[#D9D9D9]/21 border-white/20'
-                    : 'bg-[#D9D9D9]/11 border-transparent hover:bg-[#A0A0A0]/6'
+                  ? 'bg-[#D9D9D9]/21 border-white/20'
+                  : 'bg-[#D9D9D9]/11 border-transparent hover:bg-[#A0A0A0]/6'
                   }`}
               >
                 <div className="flex items-center gap-4">
                   <div
                     className={`w-10 h-10 rounded-[10px] flex items-center justify-center ${activeTab === item.id
-                        ? 'bg-[#D9D9D9]/21 text-white'
-                        : 'bg-[#A0A0A0]/10 text-[#D9D9D9]/60'
+                      ? 'bg-[#D9D9D9]/21 text-white'
+                      : 'bg-[#A0A0A0]/10 text-[#D9D9D9]/60'
                       }`}
                   >
                     <item.icon className="w-5 h-5" />
@@ -117,8 +117,8 @@ const ContactComponent: React.FC = () => {
 
                 <ArrowUpRightIcon
                   className={`w-4 h-4 transition-colors duration-300 ${activeTab === item.id
-                      ? 'text-white'
-                      : 'text-[#D9D9D9]/60'
+                    ? 'text-white'
+                    : 'text-[#D9D9D9]/60'
                     }`}
                 />
               </button>
@@ -222,6 +222,7 @@ const ContactComponent: React.FC = () => {
               )}
 
               {/* LOCATION */}
+              {/* LOCATION */}
               {activeTab === 'location' && (
                 <motion.div
                   key="location"
@@ -239,18 +240,39 @@ const ContactComponent: React.FC = () => {
                     </p>
                   </div>
 
-                <a
-  href="https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382383,73.1381741,17z/data=!3m1!4b1!4m6!3m5!1s0x392268f81b2ee939:0xf63788f52a5ff58c!8m2!3d31.4382383!4d73.1381741!16s%2Fg%2F11b8_vwrrg?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <div className="h-46 rounded-[6px] border border-white/10 bg-[#A0A0A0]/4 flex items-center justify-center cursor-pointer hover:bg-[#B0B0B0]/5 transition-colors">
-    <MapPinIcon className="w-8 h-8 text-[#D9D9D9]" />
-  </div>
-</a>
+                  {/* GOOGLE MAP */}
+                  <a
+                    href="https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382383,73.1381741,17z"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    {/* GOOGLE MAP */}
+                    <div className="relative rounded-[10px] overflow-hidden border border-white/10">
+
+                      <iframe
+                        src="https://www.google.com/maps?q=31.4382383,73.1381741&z=17&output=embed"
+                        width="100%"
+                        height="250"
+                        style={{ border: 0 }}
+                        loading="lazy"
+                        title="Google Map"
+                      ></iframe>
+
+                      {/* CLICK OVERLAY */}
+                      <div
+                        onClick={() =>
+                          window.open(
+                            "https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382383,73.1381741,17z",
+                            "_blank"
+                          )
+                        }
+                        className="absolute inset-0 cursor-pointer"
+                      ></div>
+                    </div>
+                  </a>
                 </motion.div>
               )}
-
             </AnimatePresence>
           </div>
         </div>

@@ -222,9 +222,9 @@ export const Projects: React.FC = () => {
   className={`grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl mb-12 project-grid ${visible.grid ? "scroll-show" : "scroll-hidden"}`}
 >
   {[
-    { src: "/2.webp", link: "http://google.com" },
-    { src: "/3.webp", link: "http://hhi.com/2" },
-    { src: "/1.webp", link: "http://hhi.com/3" },
+    { src: "/2.webp", link: "https://huff-puff-seven.vercel.app/" },
+    { src: "/3.webp", link: "https://nail-candy.vercel.app/" },
+    { src: "/1.webp", link: "https://ab.com.pk/" },
   ].map((project, i) => (
     <div
       key={i}
