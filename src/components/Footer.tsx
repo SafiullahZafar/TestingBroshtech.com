@@ -3,8 +3,10 @@ import { GoArrowUpRight } from "react-icons/go";
 import { FaFacebookSquare } from "react-icons/fa";
 import { FaSquareInstagram } from "react-icons/fa6";
 import { FaLinkedin } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const Footer = () => {
+  const navigate = useNavigate();
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -40,6 +42,7 @@ export const Footer = () => {
 
                   <button
                     aria-label="Go to link"
+                    onClick={() => navigate("/contact")}
                     className="absolute right-0 bottom-2 w-10 h-9 rounded-[5px] bg-white hover:bg-black flex items-center justify-center shadow-xl transition-all group"
                   >
                     <GoArrowUpRight className="w-5 h-5 text-[#0B6E4F] group-hover:text-white transition-colors" />
