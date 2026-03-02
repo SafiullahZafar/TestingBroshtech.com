@@ -4,11 +4,11 @@ import gsap from "gsap";
 export const Tools: React.FC = () => {
   const images = ["/whaticon6.webp", "/whaticon1.webp", "/whaticon7.webp", "/whaticon5.webp", "/whaticon4.webp"];
   const texts = [
-    { id: "t1", title: "BRANDING", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
-    { id: "t2", title: "UI/UX DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
-    { id: "t3", title: "WEB DEVELOPMENT", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
-    { id: "t4", title: "APP DESIGN", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " },
-    { id: "t5", title: "SEO OPTIMIZATION", desc: "We craft distinctive brand identities that communicate clarity, credibility, and character. From visual language to brand strategy, we help " }
+    { id: "t1", title: "BRANDING", desc: "Your brand, but unforgettable.We shape identities that tell your story and leave a lasting impression." },
+    { id: "t2", title: "UI/UX DESIGN", desc: "Designs that feel effortless.Turning complex ideas into smooth, intuitive experiences your users will love." },
+    { id: "t3", title: "WEB DEVELOPMENT", desc: "Websites that work as good as they look.Fast, secure, and scalable engineered to grow with your business." },
+    { id: "t4", title: "APP DESIGN", desc: "Beautiful apps, built for impact.From first tap to final screen we craft designs that engage, convert, and delight. " },
+    { id: "t5", title: "SEO OPTIMIZATION", desc: "Be seen where it matters.Smart SEO strategies that boost visibility, rankings, and real business growth. " }
   ];
 
   const sectionRef = useRef<HTMLDivElement | null>(null);
