@@ -239,9 +239,15 @@ const ContactComponent: React.FC = () => {
                     </p>
                   </div>
 
-                  <div className="h-36 rounded-[10px] border border-white/10 bg-[#A0A0A0]/4 flex items-center justify-center">
-                    <MapPinIcon className="w-8 h-8 text-[#D9D9D9]" />
-                  </div>
+                <a
+  href="https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382383,73.1381741,17z/data=!3m1!4b1!4m6!3m5!1s0x392268f81b2ee939:0xf63788f52a5ff58c!8m2!3d31.4382383!4d73.1381741!16s%2Fg%2F11b8_vwrrg?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <div className="h-46 rounded-[6px] border border-white/10 bg-[#A0A0A0]/4 flex items-center justify-center cursor-pointer hover:bg-[#B0B0B0]/5 transition-colors">
+    <MapPinIcon className="w-8 h-8 text-[#D9D9D9]" />
+  </div>
+</a>
                 </motion.div>
               )}
 
