@@ -87,7 +87,7 @@ const ContactComponent: React.FC = () => {
           {/* Navigation Cards */}
           <div className="flex flex-col gap-5">
             {[
-              { id: 'email', icon: EnvelopeIcon, title: 'Email Us', desc: 'Broshtech123@gmail.com' },
+              { id: 'email', icon: EnvelopeIcon, title: 'Email Us', desc: 'info@broshtech.com' },
               { id: 'call', icon: PhoneIcon, title: 'Call Us', desc: '(41) 521-8391' },
               { id: 'location', icon: MapPinIcon, title: 'Our Location', desc: '113 Mall Of, Faisalabad' }
             ].map((item) => (
