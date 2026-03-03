@@ -69,7 +69,7 @@ const MiddlePortfolio: React.FC<MiddlePortfolioProps> = ({ activeCategory }) => 
           )}
 
           {/* UI/UX DESIGNING */}
-          {activeCategory === "Ui/Ux Designing" && (
+          {activeCategory === "UI/UX Designing" && (
             <motion.div
               key="uiux"
               variants={slideUpVariants}
