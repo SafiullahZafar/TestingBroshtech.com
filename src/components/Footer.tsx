@@ -134,7 +134,7 @@ export const Footer = () => {
   </h3>
 
   <a
-    href="https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382429,73.1355992,17z/data=!3m1!4b1!4m6!3m5!1s0x392268f81b2ee939:0xf63788f52a5ff58c!8m2!3d31.4382383!4d73.1381741!16s%2Fg%2F11b8_vwrrg?entry=ttu"
+    href="https://www.google.com/maps/place/BroshTech/@31.4381134,73.1353426,17z/data=!3m1!4b1!4m6!3m5!1s0x392243e31133ff57:0xecfaf8661c68abd2!8m2!3d31.4381088!4d73.1379175!16s%2Fg%2F11ybh1w15v?entry=ttu&g_ep=EgoyMDI2MDMwMS4xIKXMDSoASAFQAw%3D%3D"
     target="_blank"
     rel="noopener noreferrer"
     className="text-gray-200 text-base md:text-lg leading-tight max-w-full md:max-w-[260px] mt-2 block hover:text-[#0B6E4F] transition-colors"

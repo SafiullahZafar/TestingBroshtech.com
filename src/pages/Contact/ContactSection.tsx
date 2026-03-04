@@ -263,7 +263,7 @@ const ContactComponent: React.FC = () => {
                       <div
                         onClick={() =>
                           window.open(
-                            "https://www.google.com/maps/place/Mall+of+Faisalabad/@31.4382383,73.1381741,17z",
+                            "https://www.google.com/maps/place/BroshTech/@31.4381134,73.1353426,17z/data=!3m1!4b1!4m6!3m5!1s0x392243e31133ff57:0xecfaf8661c68abd2!8m2!3d31.4381088!4d73.1379175!16s%2Fg%2F11ybh1w15v?entry=ttu&g_ep=EgoyMDI2MDMwMS4xIKXMDSoASAFQAw%3D%3D",
                             "_blank"
                           )
                         }
