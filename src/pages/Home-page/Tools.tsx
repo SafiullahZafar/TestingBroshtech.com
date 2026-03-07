@@ -360,7 +360,7 @@ export const Tools: React.FC = () => {
         {/* HALF CIRCLE */}
         <div className="relative z-10 h-[50svh] sm:h-full flex items-center justify-center px-4 py-1 sm:py-6 md:py-8 lg:py-5 sm:px-6 md:px-8 lg:px-12">
           <div className="flex flex-row items-center Tops justify-between w-full max-w-7xl gap-4 sm:gap-8 md:gap-15 lg:gap-25">
-            <div className="absolute sm:relative half-circle top-0 sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none" aria-hidden="true">
+            <div className="absolute sm:relative half-circle top-0 Righting sm:top-4 md:top-10 left-0 sm:left-auto z-40 opacity-80 pointer-events-none" aria-hidden="true">
               <img src="/whathalfcircle.webp" alt=" " width={950} height={480} className="w-[250px] Width Righting  sm:w-[980px] md:w-[820px] lg:w-[950px] right-12 relative Top h-auto" />
             </div>
             {/* ICONS - always left side */}
@@ -427,6 +427,9 @@ export const Tools: React.FC = () => {
         .Rights{
         right: 35% !important;
         }
+        // .Righting{
+        // right: 2% !important;
+        // }
         .hidden-text {
           visibility: hidden !important;
           opacity: 0 !important;
@@ -435,15 +438,21 @@ export const Tools: React.FC = () => {
           @media (min-width: 1680px) and (max-width: 1780px) {
          .Rights{
             right: 48% !important;
-}
+}         
+                .Righting{
+        right: 16% !important;
+        }
          .Right{
             right: 68% !important;
             }
 }
           @media (min-width: 1510px) and (max-width: 1680px) {
          .Rights{
-            right: 42% !important;
+            right: 43% !important;
 }
+                .Righting{
+        right: 11% !important;
+        }
          .Right{
             right: 55% !important;
             }
@@ -452,6 +461,9 @@ export const Tools: React.FC = () => {
          .Rights{
             right: 38% !important;
 }
+                .Righting{
+        right: 7% !important;
+        }
          .Right{
             right: 32% !important;
             }
